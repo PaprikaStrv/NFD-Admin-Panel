@@ -2,7 +2,7 @@
   "name": "admin-panel",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://paprikastrv.github.io/NFD-Admin-Panel/",
+  "homepage": "https://paprikastrv.github.io/nfd-admin-panel/",
   "dependencies": {
     "@testing-library/jest-dom": "^5.11.4",
     "@testing-library/react": "^11.1.0",
