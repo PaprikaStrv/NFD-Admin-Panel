@@ -1,0 +1,23 @@
+{
+  "files": {
+    "main.css": "/NFD-Admin-Panel/static/css/main.8c8b27cf.chunk.css",
+    "main.js": "/NFD-Admin-Panel/static/js/main.34cf5808.chunk.js",
+    "main.js.map": "/NFD-Admin-Panel/static/js/main.34cf5808.chunk.js.map",
+    "runtime-main.js": "/NFD-Admin-Panel/static/js/runtime-main.c25e694a.js",
+    "runtime-main.js.map": "/NFD-Admin-Panel/static/js/runtime-main.c25e694a.js.map",
+    "static/js/2.63ae83fe.chunk.js": "/NFD-Admin-Panel/static/js/2.63ae83fe.chunk.js",
+    "static/js/2.63ae83fe.chunk.js.map": "/NFD-Admin-Panel/static/js/2.63ae83fe.chunk.js.map",
+    "static/js/3.3ea37016.chunk.js": "/NFD-Admin-Panel/static/js/3.3ea37016.chunk.js",
+    "static/js/3.3ea37016.chunk.js.map": "/NFD-Admin-Panel/static/js/3.3ea37016.chunk.js.map",
+    "index.html": "/NFD-Admin-Panel/index.html",
+    "static/css/main.8c8b27cf.chunk.css.map": "/NFD-Admin-Panel/static/css/main.8c8b27cf.chunk.css.map",
+    "static/js/2.63ae83fe.chunk.js.LICENSE.txt": "/NFD-Admin-Panel/static/js/2.63ae83fe.chunk.js.LICENSE.txt",
+    "static/media/logo.6ce24c58.svg": "/NFD-Admin-Panel/static/media/logo.6ce24c58.svg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.c25e694a.js",
+    "static/js/2.63ae83fe.chunk.js",
+    "static/css/main.8c8b27cf.chunk.css",
+    "static/js/main.34cf5808.chunk.js"
+  ]
+}
