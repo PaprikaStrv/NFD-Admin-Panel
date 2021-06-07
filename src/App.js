@@ -1,11 +1,8 @@
-import './App.css';
+import "./App.css";
+import StartPage from "./Pages/StartPage/StartPage";
 
 function App() {
-  return (
-    <div className="App">
-      test
-    </div>
-  );
+  return <StartPage />;
 }
 
 export default App;

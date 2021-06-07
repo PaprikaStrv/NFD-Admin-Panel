@@ -1,0 +1,40 @@
+@mixin columnCenterFlex() {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+@mixin greyBlueText {
+  color: #3d5170;
+}
+
+@mixin darkGrey {
+  color: #495057;
+}
+
+@mixin blue {
+  color: #007bff;
+}
+
+@mixin btn($width, $heigth, $bgColor, $textColor) {
+  width: $width;
+  height: $heigth;
+  background: $bgColor;
+  color: $textColor;
+  cursor: pointer;
+  border: 0.5px solid $bgColor;
+  border-radius: 4px;
+  &:hover {
+    filter: brightness(90%);
+  }
+  &:active {
+    filter: brightness(80%);
+  }
+}
+
+@mixin inputErrorMsg {
+    color: #C4183C;
+    font-size: 10px;
+    margin-left: 10px;
+    margin-top: 4px;
+}
