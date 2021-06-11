@@ -1,22 +1,35 @@
 {
   "files": {
-    "main.css": "/nfd-admin-panel/static/css/main.ff4c0171.chunk.css",
-    "main.js": "/nfd-admin-panel/static/js/main.321619e8.chunk.js",
-    "main.js.map": "/nfd-admin-panel/static/js/main.321619e8.chunk.js.map",
+    "main.css": "/nfd-admin-panel/static/css/main.6ecfe956.chunk.css",
+    "main.js": "/nfd-admin-panel/static/js/main.07932686.chunk.js",
+    "main.js.map": "/nfd-admin-panel/static/js/main.07932686.chunk.js.map",
     "runtime-main.js": "/nfd-admin-panel/static/js/runtime-main.373bff25.js",
     "runtime-main.js.map": "/nfd-admin-panel/static/js/runtime-main.373bff25.js.map",
-    "static/js/2.ae9acef2.chunk.js": "/nfd-admin-panel/static/js/2.ae9acef2.chunk.js",
-    "static/js/2.ae9acef2.chunk.js.map": "/nfd-admin-panel/static/js/2.ae9acef2.chunk.js.map",
+    "static/js/2.a4571c47.chunk.js": "/nfd-admin-panel/static/js/2.a4571c47.chunk.js",
+    "static/js/2.a4571c47.chunk.js.map": "/nfd-admin-panel/static/js/2.a4571c47.chunk.js.map",
     "index.html": "/nfd-admin-panel/index.html",
-    "static/css/main.ff4c0171.chunk.css.map": "/nfd-admin-panel/static/css/main.ff4c0171.chunk.css.map",
-    "static/js/2.ae9acef2.chunk.js.LICENSE.txt": "/nfd-admin-panel/static/js/2.ae9acef2.chunk.js.LICENSE.txt",
-    "static/media/App.css": "/nfd-admin-panel/static/media/HelveticaNeueCyr-Medium.bfdbae3c.ttf",
-    "static/media/Logo Icon.bc4f3ee8.svg": "/nfd-admin-panel/static/media/Logo Icon.bc4f3ee8.svg"
+    "static/css/main.6ecfe956.chunk.css.map": "/nfd-admin-panel/static/css/main.6ecfe956.chunk.css.map",
+    "static/js/2.a4571c47.chunk.js.LICENSE.txt": "/nfd-admin-panel/static/js/2.a4571c47.chunk.js.LICENSE.txt",
+    "static/media/Add New Post Icon.f2c1be7b.svg": "/nfd-admin-panel/static/media/Add New Post Icon.f2c1be7b.svg",
+    "static/media/Avatar.338afc99.svg": "/nfd-admin-panel/static/media/Avatar.338afc99.svg",
+    "static/media/Blog Posts Icon.738fc3f8.svg": "/nfd-admin-panel/static/media/Blog Posts Icon.738fc3f8.svg",
+    "static/media/Count.d7bfc1d2.svg": "/nfd-admin-panel/static/media/Count.d7bfc1d2.svg",
+    "static/media/Error Icon.9ae656e3.svg": "/nfd-admin-panel/static/media/Error Icon.9ae656e3.svg",
+    "static/media/Forms & Components Icon.66a68a11.svg": "/nfd-admin-panel/static/media/Forms & Components Icon.66a68a11.svg",
+    "static/media/App.css": "/nfd-admin-panel/static/media/Roboto-Medium.7429a63c.ttf",
+    "static/media/Logo Icon.bc4f3ee8.svg": "/nfd-admin-panel/static/media/Logo Icon.bc4f3ee8.svg",
+    "static/media/Notifications.4a73f89d.svg": "/nfd-admin-panel/static/media/Notifications.4a73f89d.svg",
+    "static/media/Overview (Components) Icon.f1fc228f.svg": "/nfd-admin-panel/static/media/Overview (Components) Icon.f1fc228f.svg",
+    "static/media/Person Icon.83a584d6.svg": "/nfd-admin-panel/static/media/Person Icon.83a584d6.svg",
+    "static/media/SmallLogoIcon.554e71f6.svg": "/nfd-admin-panel/static/media/SmallLogoIcon.554e71f6.svg",
+    "static/media/dropdown_icon.e709e3e8.svg": "/nfd-admin-panel/static/media/dropdown_icon.e709e3e8.svg",
+    "static/media/linza.c8b5b3af.svg": "/nfd-admin-panel/static/media/linza.c8b5b3af.svg",
+    "static/media/pensil.ad2cc03f.svg": "/nfd-admin-panel/static/media/pensil.ad2cc03f.svg"
   },
   "entrypoints": [
     "static/js/runtime-main.373bff25.js",
-    "static/js/2.ae9acef2.chunk.js",
-    "static/css/main.ff4c0171.chunk.css",
-    "static/js/main.321619e8.chunk.js"
+    "static/js/2.a4571c47.chunk.js",
+    "static/css/main.6ecfe956.chunk.css",
+    "static/js/main.07932686.chunk.js"
   ]
 }
