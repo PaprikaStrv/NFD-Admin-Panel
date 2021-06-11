@@ -61,6 +61,9 @@
       border: 0.5px solid #becad6;
       border-radius: 3px;
       padding-left: 10px;
+      font-size: 11px;
+      @include darkGrey();
+      font-family: "HelveticaNeueCyr-Medium";
     }
     .inputErrorMsg {
       @include inputErrorMsg();

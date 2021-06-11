@@ -12,6 +12,7 @@
 .siderBarLogoWrapper {
   justify-content: center;
   @include rowCenterFlex();
+  height: 68px;
   padding: 24px 116px 24px 46px;
   .logoText {
     font-size: 16px;
@@ -35,6 +36,7 @@
     li {
       list-style: none;
       box-shadow: inset 0px -1px 0px #e1e5eb;
+      height: 58px;
       a {
         @include rowCenterFlex();
         padding: 20px 32px 20px 26px;
@@ -47,7 +49,7 @@
           @include greyBlueText();
           margin-left: 12px;
           &:hover {
-            @include mainColor();
+            @include blue();
           }
         }
       }

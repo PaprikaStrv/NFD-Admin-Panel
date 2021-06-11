@@ -2,3 +2,13 @@
   font-family: "HelveticaNeueCyr-Medium";
   src: url(./Fonts/HeleveticaNeue/HelveticaNeueCyr-Medium.ttf);
 }
+
+@font-face {
+  font-family: "Roboto-Medium";
+  src: url(./Fonts/Roboto/Roboto-Medium.ttf);
+}
+
+@font-face {
+  font-family: "Roboto-Light";
+  src: url(./Fonts/Roboto/Roboto-Light.ttf);
+}

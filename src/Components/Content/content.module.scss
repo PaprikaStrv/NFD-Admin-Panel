@@ -3,16 +3,16 @@
 .contentWrapper {
   width: 80%;
   header {
-    @include rowCenterFlex();
-    height: 68px;
-    background: #ffffff;
-    box-shadow: 0px 2.5px 9.5px rgba(90, 97, 105, 0.12);
+    @include headerAndFooterWrapp();
 
     .searchWrapper {
       @include rowCenterFlex();
       width: 74%;
       .linzaIconWrapper {
-          margin-left: 28px;
+        width: 15px;
+        height: 14px;
+        margin-left: 28px;
+        margin-right: 10px;
       }
       input {
         width: 100%;
@@ -21,13 +21,72 @@
     }
 
     .notificationWrapper {
+      position: relative;
+      @include rowCenterFlex();
+      justify-content: center;
       width: 70px;
       box-shadow: 0.5px 0px 0px #cacedb, -0.5px 0px 0px #cacedb;
       height: 100%;
+      .countNotification {
+        position: absolute;
+        top: 36px;
+        left: 38px;
+      }
     }
 
     .adminBlockWrapper {
       @include rowCenterFlex();
+      cursor: pointer;
+      height: 100%;
+      &:hover {
+        background: #e5e5e5;
+      }
+      position: relative;
+      .logOutWrapper {
+        position: absolute;
+        top: 68px;
+        left: 62px;
+        button {
+          @include btn(110px, 29px, #007bff, #ffffff);
+        }
+      }
+      .adminAvatar {
+        margin-left: 26px;
+      }
+      .adminName {
+        font-family: "HelveticaNeueCyr-Medium";
+        color: #5a6169;
+        font-size: 15px;
+        width: 70px;
+        margin-left: 14px;
+        margin-right: 26px;
+      }
+    }
+  }
+
+  footer {
+    @include headerAndFooterWrapp();
+    font-size: 14px;
+
+    .footerContainer {
+      @include rowCenterFlex();
+      justify-content: space-between;
+      margin: 0 28px;
+      width: 100%;
+      a {
+        font-family: "HelveticaNeueCyr-Medium";
+        @include blue();
+
+        &:first-child {
+          margin-right: 16px;
+        }
+      }
+      .coopyRightText {
+        font-family: "Roboto-Medium";
+        color: #818ea3;
+      }
     }
   }
 }
+
+@include placeholder();
