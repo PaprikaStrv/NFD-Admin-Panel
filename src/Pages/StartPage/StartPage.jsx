@@ -4,7 +4,6 @@ import Cookies from "js-cookie";
 import AdminPage from "../AdminPage/AdminPage";
 
 const StartPage = () => {
-  // Cookies.remove('userToken')
   return (
     <div>
       {Cookies.get("userToken") ? <AdminPage /> : <LoginFormContainer />}
