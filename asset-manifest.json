@@ -1,6 +1,6 @@
 {
   "files": {
-    "main.css": "/nfd-admin-panel/static/css/main.8ca54c6d.chunk.css",
+    "main.css": "/nfd-admin-panel/static/css/main.7d686d03.chunk.css",
     "main.js": "/nfd-admin-panel/static/js/main.82175b3e.chunk.js",
     "main.js.map": "/nfd-admin-panel/static/js/main.82175b3e.chunk.js.map",
     "runtime-main.js": "/nfd-admin-panel/static/js/runtime-main.373bff25.js",
@@ -8,7 +8,7 @@
     "static/js/2.2f760726.chunk.js": "/nfd-admin-panel/static/js/2.2f760726.chunk.js",
     "static/js/2.2f760726.chunk.js.map": "/nfd-admin-panel/static/js/2.2f760726.chunk.js.map",
     "index.html": "/nfd-admin-panel/index.html",
-    "static/css/main.8ca54c6d.chunk.css.map": "/nfd-admin-panel/static/css/main.8ca54c6d.chunk.css.map",
+    "static/css/main.7d686d03.chunk.css.map": "/nfd-admin-panel/static/css/main.7d686d03.chunk.css.map",
     "static/js/2.2f760726.chunk.js.LICENSE.txt": "/nfd-admin-panel/static/js/2.2f760726.chunk.js.LICENSE.txt",
     "static/media/Add New Post Icon.f2c1be7b.svg": "/nfd-admin-panel/static/media/Add New Post Icon.f2c1be7b.svg",
     "static/media/Avatar.338afc99.svg": "/nfd-admin-panel/static/media/Avatar.338afc99.svg",
@@ -36,7 +36,7 @@
   "entrypoints": [
     "static/js/runtime-main.373bff25.js",
     "static/js/2.2f760726.chunk.js",
-    "static/css/main.8ca54c6d.chunk.css",
+    "static/css/main.7d686d03.chunk.css",
     "static/js/main.82175b3e.chunk.js"
   ]
 }
