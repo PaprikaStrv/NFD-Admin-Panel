@@ -19,6 +19,14 @@ a {
 
 section {
   background: #f5f6f8;
-  padding: 28px 26px 0 32px;
+  padding: 28px 26px 32px 32px;
   flex: 1;
+}
+
+
+@media screen and (max-width: 900px) {
+  section {
+    padding-left: 16px;
+    padding-right: 16px;
+  }
 }

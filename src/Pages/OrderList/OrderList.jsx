@@ -1,12 +1,19 @@
 import React from "react";
 import Paginator from "../../Components/Paginator/Paginator";
-import ServerError from "../../Components/ServerError/ServerError";
 import s from "./OrderList.module.scss";
 import { prepareImgLink } from "./../../helpers/imgPrepare";
+import checkBox from "../../Images/checkBoxIcon.svg";
+import dsblCheckBox from "../../Images/disabledCheckBox.svg";
+import checkIcon from "../../Images/checkIcon.svg";
+import reject from "../../Images/reject.svg";
+import edit from "../../Images/edit.svg";
 import moment from "moment";
 import "moment/locale/ru";
 import "moment-duration-format";
 import { formatPrice } from "./../../helpers/formatPrice";
+import { ReactSVG } from "react-svg";
+import ServerError from "../ServerError/ServerError";
+
 require("moment-duration-format");
 
 const OrderList = ({ orderList, response, handlePageChange }) => {
@@ -14,7 +21,7 @@ const OrderList = ({ orderList, response, handlePageChange }) => {
   return (
     <section>
       {response ? (
-        <ServerError />
+        <ServerError {...{ response }} />
       ) : (
         <>
           <div className={s.pageTitle}>Заказы</div>
@@ -102,29 +109,80 @@ const OrderList = ({ orderList, response, handlePageChange }) => {
                       </div>
                     </div>
 
-                    <div>
-                      <div>
-                        <div>checkBox</div>
-                        <div>Полный бак</div>
+                    <div className={s.extraOrderInfoWrapper}>
+                      <div className={s.extraOrderInfo}>
+                        <div className={s.iconWrapper}>
+                          {isFullTank ? (
+                            <ReactSVG src={checkBox} />
+                          ) : (
+                            <ReactSVG src={dsblCheckBox} />
+                          )}
+                        </div>
+                        <div
+                          className={isFullTank ? s.activeText : s.disabledText}
+                        >
+                          Полный бак
+                        </div>
                       </div>
 
-                      <div>
-                        <div>checkBox</div>
-                        <div>Детское кресло</div>
+                      <div className={s.extraOrderInfo}>
+                        <div className={s.iconWrapper}>
+                          {isNeedChildChair ? (
+                            <ReactSVG src={checkBox} />
+                          ) : (
+                            <ReactSVG src={dsblCheckBox} />
+                          )}
+                        </div>
+                        <div
+                          className={
+                            isNeedChildChair ? s.activeText : s.disabledText
+                          }
+                        >
+                          Детское кресло
+                        </div>
                       </div>
 
-                      <div>
-                        <div>checkBox</div>
-                        <div>Правый руль</div>
+                      <div className={s.extraOrderInfo}>
+                        <div className={s.iconWrapper}>
+                          {isRightWheel ? (
+                            <ReactSVG src={checkBox} />
+                          ) : (
+                            <ReactSVG src={dsblCheckBox} />
+                          )}
+                        </div>
+                        <div
+                          className={
+                            isRightWheel ? s.activeText : s.disabledText
+                          }
+                        >
+                          Правый руль
+                        </div>
                       </div>
                     </div>
 
-                    <div>{price && formatPrice(price)} ₽</div>
+                    <div className={s.orderPrice}>
+                      {price && formatPrice(price)} ₽
+                    </div>
 
-                    <div>
-                      <button>Готово</button>
-                      <button>Отмена</button>
-                      <button>Изменить</button>
+                    <div className={s.buttonsWrapper}>
+                      <button>
+                        <div className={s.btnIconWrapper}>
+                          <ReactSVG src={checkIcon} />
+                        </div>
+                        <div>Готово</div>
+                      </button>
+                      <button>
+                        <div className={s.btnIconWrapper}>
+                          <ReactSVG src={reject} />
+                        </div>
+                        <div>Отмена</div>
+                      </button>
+                      <button>
+                        <div className={s.btnIconWrapper}>
+                          <ReactSVG src={edit} />
+                        </div>
+                        <div>Изменить</div>
+                      </button>
                     </div>
                   </div>
                 );

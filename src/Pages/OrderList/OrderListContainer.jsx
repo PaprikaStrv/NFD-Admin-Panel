@@ -13,7 +13,7 @@ const OrderListContainer = ({ getOrderList, orderList, response }) => {
     getOrderList(pageNumber);
   }, [pageNumber]);
 
-  if (!orderList || orderList.length === 0) {
+  if (!orderList || orderList.length === 0 && !response) {
     return <Preloader />;
   }
   return <OrderList {...{ orderList, response, handlePageChange }} />;

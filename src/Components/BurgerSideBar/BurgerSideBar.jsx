@@ -45,7 +45,7 @@ const BurgerSideBar = () => {
           </li>
 
           <li>
-            <NavLink to="/">
+            <NavLink to="/Orders">
               <div className={style.iconWrapper}>
                 <ReactSVG src={orders} />
               </div>
