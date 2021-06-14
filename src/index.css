@@ -16,3 +16,9 @@ ul {
 a {
   text-decoration: none;
 }
+
+section {
+  background: #f5f6f8;
+  padding: 28px 26px 0 32px;
+  flex: 1;
+}

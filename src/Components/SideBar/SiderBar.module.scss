@@ -13,7 +13,7 @@
   justify-content: center;
   @include rowCenterFlex();
   height: 68px;
-  padding: 24px 116px 24px 46px;
+  // padding: 24px 116px 24px 46px;
   .logoText {
     font-size: 16px;
     margin-left: 8px;
@@ -36,10 +36,10 @@
     li {
       list-style: none;
       box-shadow: inset 0px -1px 0px #e1e5eb;
-      height: 58px;
+      // height: 58px;
       a {
         @include rowCenterFlex();
-        padding: 20px 32px 20px 26px;
+        padding: 20px 10px 20px 10px;
         .iconWrapper {
           width: 14px;
           height: 14px;
@@ -51,6 +51,35 @@
           &:hover {
             @include blue();
           }
+        }
+      }
+    }
+  }
+}
+
+.sideBarBtn {
+  display: none;
+}
+
+@media screen and (max-width: 640px) {
+  .sideBarWrapper {
+    display: none;
+  }
+  .sideBarBtn {
+    display: inline-block;
+    background: #007bff;
+  }
+}
+
+@media screen and (min-width: 1440px) {
+  .siderBarLogoWrapper {
+    padding: 24px 116px 24px 46px;
+  }
+  .linksListWrapper {
+    ul {
+      li {
+        a {
+          padding: 20px 32px 20px 26px;
         }
       }
     }
