@@ -63,3 +63,14 @@ header {
 
   @include placeholder();
 }
+
+@media screen and (max-width: 370px) {
+  header {
+    .searchWrapper {
+      .linzaIconWrapper {
+        margin-left: 7px;
+        margin-right: 0px;
+      }
+    }
+  }
+}

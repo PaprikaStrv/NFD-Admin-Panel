@@ -6,6 +6,12 @@
 
 @media screen and (max-width: 640px) {
   .contentWrapper {
-    width: 100%;
+    width: 95%;
+  }
+}
+
+@media screen and (max-width: 420px) {
+  .contentWrapper {
+    width: 90%;
   }
 }
