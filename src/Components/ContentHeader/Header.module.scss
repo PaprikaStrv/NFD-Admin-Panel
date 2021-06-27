@@ -6,6 +6,7 @@ header {
   .searchWrapper {
     @include rowCenterFlex();
     width: 74%;
+    height: 100%;
     .linzaIconWrapper {
       width: 15px;
       height: 14px;
@@ -14,6 +15,7 @@ header {
     }
     input {
       width: 100%;
+      height: 100%;
       border: none;
     }
   }
@@ -42,10 +44,18 @@ header {
     position: relative;
     .logOutWrapper {
       position: absolute;
-      top: 68px;
-      left: 62px;
+      @include rowCenterFlex();
+      justify-content: center;
+      top: 72px;
+      // left: 62px;
+      box-shadow: 0px 2px 0px rgba(90, 97, 105, 0.11),
+      0px 4px 8px rgba(90, 97, 105, 0.12), 0px 10px 10px rgba(90, 97, 105, 0.06),
+      0px 7px 70px rgba(90, 97, 105, 0.1);
+      width: 193px;
+      height: 40px;
       button {
         @include btn(110px, 29px, #007bff, #ffffff);
+      
       }
     }
     .adminAvatar {
@@ -58,6 +68,9 @@ header {
       width: 70px;
       margin-left: 14px;
       margin-right: 26px;
+    }
+    .adminArrow {
+      margin-right: 8px;
     }
   }
 

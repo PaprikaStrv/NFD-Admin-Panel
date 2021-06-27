@@ -45,8 +45,8 @@ const Header = () => {
         </div>
 
         <div className={s.adminName}>Admin</div>
-        <div>
-          <ReactSVG src={arrow} />
+        <div className={s.adminArrow}>
+          <img src={arrow} alt="" />
         </div>
       </div>
     </header>

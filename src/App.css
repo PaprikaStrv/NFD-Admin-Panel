@@ -1,6 +1,9 @@
 @font-face {
   font-family: "HelveticaNeueCyr-Medium";
-  src: url(./Fonts/HeleveticaNeue/HelveticaNeueCyr-Medium.ttf);
+  src: local("Helvetiva"),
+    url(./Fonts/HeleveticaNeue/HelveticaNeueCyr-Medium.woff2) format("woff2"),
+    url(./Fonts/HeleveticaNeue/HelveticaNeueCyr-Medium.woff) format("woff");
+  /* src: url(./Fonts/HeleveticaNeue/HelveticaNeueCyr-Medium.ttf); */
 }
 
 @font-face {

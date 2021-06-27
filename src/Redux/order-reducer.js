@@ -39,9 +39,9 @@ export const setResponseError = (response) => ({
   response,
 });
 
-export const getOrderList = (page) => {
+export const getOrderList = (pageNumber, cityId, orderStatusId) => {
   return async (dispatch) => {
-    const response = await simbirSoftAPI.getOrders(page);
+    const response = await simbirSoftAPI.getOrders(pageNumber, cityId, orderStatusId);
     if (response.status !== 200) {
       dispatch(setResponseError(response));
     } else {

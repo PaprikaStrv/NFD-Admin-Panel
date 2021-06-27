@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import Paginator from "../../Components/Paginator/Paginator";
 import s from "./OrderList.module.scss";
 import { prepareImgLink } from "./../../helpers/imgPrepare";
@@ -13,10 +13,41 @@ import "moment-duration-format";
 import { formatPrice } from "./../../helpers/formatPrice";
 import { ReactSVG } from "react-svg";
 import ServerError from "../ServerError/ServerError";
+import Select from "../../Components/Select/Select";
 
 require("moment-duration-format");
 
-const OrderList = ({ orderList, response, handlePageChange }) => {
+const OrderList = ({
+  orderList,
+  response,
+  handlePageChange,
+  cities,
+  setFilterId,
+  handlerApplyFilter,
+  orderStatus,
+  setFilterStatusId,
+}) => {
+  // const [period, setPeriod] = useState("");
+  // const handlerPeriodFilter = (e) => {
+  //   setPeriod(e.target.value);
+  // };
+  //   let date = new Date();
+  // //  console.log(moment(date).valueOf())
+  // let filteredOrderList = orderList;
+  // if(period !== "") {
+  //   filteredOrderList.data.filter((order) => {
+  //      switch(period) {
+  //     case 0: {
+  //       if(moment(date).valueOf - order.createdAt > 0) {
+  //         console.log(moment(date).valueOf - order.createdAt)
+  //       }
+  //     }
+  //   }
+  //   })
+   
+    
+  // }
+
   const pagesCount = Math.ceil(orderList.count / 3);
   return (
     <section>
@@ -28,38 +59,31 @@ const OrderList = ({ orderList, response, handlePageChange }) => {
           <div className={s.ordersWrapper}>
             <div className={s.sortParamsWrapper}>
               <div className={s.sortParamsContainer}>
-                <div className={s.selectWrapper}>
-                  <select>
-                    <option>За день</option>
-                    <option>За неделю</option>
-                    <option>За месяц</option>
+                {/* <div className={s.selectWrapper}>
+                  <select onChange={(e) => handlerPeriodFilter(e)}>
+                    <option>Период</option>
+                    <option value={0}>За день</option>
+                    <option value={1}>За неделю</option>
+                    <option value={2}>За месяц</option>
                   </select>
+                </div> */}
+                <div className={s.selectWrapper}>
+                  <Select
+                    array={cities}
+                    defaultText={"Город"}
+                    setFilter={setFilterId}
+                  />
                 </div>
                 <div className={s.selectWrapper}>
-                  <select>
-                    <option>Модель1</option>
-                    <option>Модель2</option>
-                    <option>Модель3</option>
-                  </select>
-                </div>
-
-                <div className={s.selectWrapper}>
-                  <select>
-                    <option>Город1</option>
-                    <option>Город2</option>
-                    <option>Город3</option>
-                  </select>
-                </div>
-                <div className={s.selectWrapper}>
-                  <select>
-                    <option>В процессе</option>
-                    <option>Отменён</option>
-                    <option>Завершён</option>
-                  </select>
+                  <Select
+                    array={orderStatus}
+                    defaultText={"Cтатус"}
+                    setFilter={setFilterStatusId}
+                  />
                 </div>
               </div>
 
-              <button>Применить</button>
+              <button onClick={() => handlerApplyFilter()}>Применить</button>
             </div>
 
             {orderList.data.map(
