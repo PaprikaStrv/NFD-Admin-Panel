@@ -30,3 +30,9 @@ section {
     padding-right: 16px;
   }
 }
+
+@media screen and (max-width: 420px) {
+  section {
+    padding-top: 16px;
+  }
+}

@@ -49,13 +49,13 @@ header {
       top: 72px;
       // left: 62px;
       box-shadow: 0px 2px 0px rgba(90, 97, 105, 0.11),
-      0px 4px 8px rgba(90, 97, 105, 0.12), 0px 10px 10px rgba(90, 97, 105, 0.06),
-      0px 7px 70px rgba(90, 97, 105, 0.1);
+        0px 4px 8px rgba(90, 97, 105, 0.12),
+        0px 10px 10px rgba(90, 97, 105, 0.06),
+        0px 7px 70px rgba(90, 97, 105, 0.1);
       width: 193px;
       height: 40px;
       button {
         @include btn(110px, 29px, #007bff, #ffffff);
-      
       }
     }
     .adminAvatar {
@@ -75,6 +75,19 @@ header {
   }
 
   @include placeholder();
+}
+
+@media screen and (max-width: 420px) {
+  header {
+    height: 54px;
+
+    .countNotification {
+      top: 32px !important;
+    }
+    .logOutWrapper {
+      top: 52px !important;
+    }
+  }
 }
 
 @media screen and (max-width: 370px) {
