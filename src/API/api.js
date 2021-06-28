@@ -83,4 +83,10 @@ export const simbirSoftAPI = {
       return response.data;
     });
   },
+
+  getCars(page) {
+    return instanceWithToken.get(`car?page=${page}&limit=7`).then((response) => {
+      return response.data;
+    });
+  },
 };

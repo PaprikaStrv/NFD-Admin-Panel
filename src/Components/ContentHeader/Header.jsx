@@ -17,6 +17,7 @@ const Header = () => {
 
   const handlerLogOut = () => {
     Cookies.remove("userToken");
+    Cookies.remove("refreshToken");
     window.location.reload();
   };
   return (

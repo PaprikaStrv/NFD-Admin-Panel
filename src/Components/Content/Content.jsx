@@ -4,6 +4,8 @@ import s from "./content.module.scss";
 import Header from "../ContentHeader/Header";
 import Footer from "../ContentFooter/Footer";
 import OrderListContainer from "../../Pages/OrderList/OrderListContainer";
+import CarListContainer from "./../../Pages/CarList/CarListContainer";
+import CarFormContainer from "../../Pages/CarForm/CarFormContainer";
 
 const Content = () => {
   return (
@@ -12,6 +14,12 @@ const Content = () => {
       <Switch>
         <Route path="/Orders">
           <OrderListContainer />
+        </Route>
+        <Route path="/Cars">
+          <CarListContainer />
+        </Route>
+        <Route path="/AddCar">
+          <CarFormContainer />
         </Route>
       </Switch>
       <Footer />

@@ -87,7 +87,9 @@ const LoginForm = ({ handleSubmitLogimForm, response }) => {
               )}
             />
           </div>
-          <div className={s.submitError}>{submitError ? submitError : null}</div>
+          <div className={s.submitError}>
+            {submitError ? submitError : null}
+          </div>
         </div>
       </div>
     </div>

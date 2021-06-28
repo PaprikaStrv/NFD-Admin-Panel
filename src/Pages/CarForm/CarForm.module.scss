@@ -1,0 +1,212 @@
+@import "../../scss/mixins";
+
+.carChangePageWrapper {
+  max-height: 550px;
+  overflow-y: auto;
+}
+
+.carFormTitle {
+  @include pageTitle();
+}
+
+.formWrapper {
+  margin-top: 30px;
+  font-family: "Roboto-Medium";
+  form {
+    @include rowCenterFlex();
+    // justify-content: space-between;
+  }
+
+  .leftFormBlock {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: #ffffff;
+    box-shadow: 0px 2px 4px rgba(90, 97, 105, 0.12);
+    border-radius: 9px;
+    width: 334px;
+    margin-right: 28px;
+    // height: 506px;
+
+    .carImageWrapper {
+      margin-top: 34px;
+      max-width: 232px;
+      max-height: 206px;
+      img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+    }
+
+    .leftCarInfo {
+      display: flex;
+      flex-direction: column;
+      margin-top: 10px;
+      .carName {
+        @include pageTitle();
+        font-size: 24px;
+      }
+      .category {
+        margin-top: 6px;
+        font-family: "HelveticaNeueCyr-Medium";
+        font-size: 12px;
+        color: #818ea3;
+        text-align: center;
+      }
+    }
+
+    .fileSelect {
+      input {
+        opacity: 0;
+        visibility: hidden;
+        position: absolute;
+      }
+      label {
+        .labelWrapper {
+          @include rowCenterFlex();
+          width: 232px;
+          height: 29px;
+          margin-top: 10px;
+          background: #ffffff;
+          border: 0.5px solid #becad6;
+          box-sizing: border-box;
+          border-radius: 4px;
+          cursor: pointer;
+          .selectFileText {
+            margin-left: 12px;
+            font-size: 10px;
+            color: #495057;
+          }
+          .selectBtn {
+            @include rowCenterFlex();
+            width: 65px;
+            height: 100%;
+            background: #e9ecef;
+            border: 0.5px solid #becad6;
+            box-sizing: border-box;
+            justify-content: center;
+
+            margin-left: auto;
+            font-size: 10px;
+            color: #495057;
+          }
+        }
+      }
+    }
+
+    .loadProcessWrapper {
+      width: 100%;
+      height: 60px;
+      margin-top: 22px;
+      background: #ffffff;
+      box-shadow: 0px -1px 0px rgba(0, 0, 0, 0.12),
+        0px 1px 0px rgba(0, 0, 0, 0.12);
+
+      .loadProcessContainer {
+        padding-left: 22px;
+        padding-right: 22px;
+
+        .loadProcessText {
+          @include rowCenterFlex();
+          justify-content: space-between;
+          margin-top: 14px;
+          font-family: "HelveticaNeueCyr-Medium";
+          font-size: 13px;
+          color: #868e96;
+        }
+
+        .outerProcessLine {
+          width: 100%;
+          height: 5px;
+          margin-top: 10px;
+          background: #ffffff;
+          box-shadow: inset 0px 0.5px 4px rgba(0, 0, 0, 0.25);
+          border-radius: 4px;
+
+          .innerProcessLine {
+            height: 5px;
+            background: #007bff;
+            border-radius: 4px;
+          }
+        }
+      }
+    }
+    .carDescription {
+      padding-left: 22px;
+      padding-right: 22px;
+      padding-bottom: 44px;
+      .descriptionText {
+        margin-top: 14px;
+        @include rowCenterFlex();
+        justify-content: space-between;
+        margin-top: 14px;
+        font-family: "HelveticaNeueCyr-Medium";
+        font-size: 13px;
+        color: #868e96;
+      }
+      .description {
+        color: #5a6169;
+        font-size: 13px;
+      }
+    }
+  }
+
+  .rightFormBlock {
+    background: #ffffff;
+    box-shadow: 0px 2px 4px rgba(90, 97, 105, 0.12);
+    border-radius: 9px;
+    width: 697px;
+    height: 506px;
+    padding-left: 18px;
+    padding-right: 18px;
+
+    .carSettingsText {
+      @include pageTitle();
+      font-size: 17px;
+      margin-top: 20px;
+    }
+
+    .rightInputsWrapper {
+      display: flex;
+      margin-top: 20px;
+      .leftColumn {
+        margin-right: 20px;
+      }
+      .fieldWrapper {
+        display: flex;
+        flex-direction: column;
+        margin-bottom: 28px;
+        label {
+          font-family: "HelveticaNeueCyr-Medium";
+          font-size: 11px;
+          color: #121212;
+        }
+        .inputField {
+          height: 30px;
+          width: 320px;
+          background: #ffffff;
+          border: 0.5px solid #becad6;
+          border-radius: 4px;
+          padding-left: 10px;
+          font-size: 11px;
+          @include darkGrey();
+          font-family: "HelveticaNeueCyr-Medium";
+        }
+        .inputErrorMsg {
+          @include inputErrorMsg();
+        }
+        .inputWithError {
+          border-color: #c4183c;
+        }
+      }
+    }
+  }
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  /* display: none; <- Crashes Chrome on hover */
+  -webkit-appearance: none;
+  margin: 0; /* <-- Apparently some margin are still there even though it's hidden */
+}

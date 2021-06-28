@@ -10,7 +10,7 @@ export const tokenExpire = new Date(new Date().getTime() + 240 * 60 * 1000);
 
 export const menuItem = [
   // { id: 1, link: "/", src: pensil, name: "Карточка Автомобиля" },
-  { id: 2, link: "/", src: blogPost, name: "Список авто" },
+  { id: 2, link: "/Cars", src: blogPost, name: "Список авто" },
   { id: 3, link: "/Orders", src: orders, name: "Заказы" },
   { id: 4, link: "/", src: menu, name: "Меню 4" },
   { id: 5, link: "/", src: menu1, name: "Меню 5" },

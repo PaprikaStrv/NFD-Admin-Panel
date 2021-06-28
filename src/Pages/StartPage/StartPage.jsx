@@ -7,14 +7,15 @@ import { refreshToken } from "../../Redux/login-reducer";
 import { connect } from "react-redux";
 
 const StartPage = ({ refreshToken }) => {
+  let token = "";
   if (new Date(new Date().getTime()) >= tokenExpire) {
     refreshToken();
+  } else {
+    token = Cookies.get("userToken");
   }
-  
-
   return (
     <div>
-      {Cookies.get("userToken") ? <AdminPage /> : <LoginFormContainer />}
+      {token ? <AdminPage /> : <LoginFormContainer />}
     </div>
   );
 };
