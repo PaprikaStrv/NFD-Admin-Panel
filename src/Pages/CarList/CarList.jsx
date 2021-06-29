@@ -39,7 +39,7 @@ const CarList = ({ cars, handlePageChange, addCarHandler, isCarAddAcitve }) => {
                       {categoryId ? categoryId.name : "No Cat"}
                     </td>
                     <td className={s.changeCarBtn}>
-                      <button>Изменить</button>
+                      <NavLink to={`/ChangeCar/${id}`}>Изменить</NavLink>
                     </td>
                   </tr>
                 )

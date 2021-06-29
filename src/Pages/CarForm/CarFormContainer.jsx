@@ -1,21 +1,53 @@
 import React, { useEffect } from "react";
 import { connect } from "react-redux";
-import { getCategory } from "../../Redux/cars-reducer";
+import {
+  getCategory,
+  getCurrentCar,
+  deleteCar,
+} from "../../Redux/cars-reducer";
 import CarForm from "./CarForm";
 import Preloader from "./../../Components/Preloader/Preloader";
+import { useRouteMatch } from "react-router";
 
-const CarFormContainer = ({ getCategory, category }) => {
+const CarFormContainer = ({
+  getCategory,
+  category,
+  getCurrentCar,
+  curCar,
+  deleteCar,
+}) => {
+  let match = useRouteMatch();
+  const carId = match.params.carId;
+
+  const handlerCarDelete = () => {
+    deleteCar(carId);
+  };
+
+  useEffect(() => {
+    if (carId) getCurrentCar(carId);
+  }, [carId]);
+
   useEffect(() => {
     getCategory();
-  }, []);
-  if (!category || category.length === 0) {
+  }, [carId]);
+
+  if (
+    !category ||
+    category.length === 0 ||
+    (carId && (!curCar || curCar.length === 0))
+  ) {
     return <Preloader />;
   }
-  return <CarForm {...{ category }} />;
+  return <CarForm {...{ category, curCar, carId, handlerCarDelete }} />;
 };
 
 const mapStateToProps = (state) => ({
   category: state.cars.category,
+  curCar: state.cars.currentCar,
 });
 
-export default connect(mapStateToProps, { getCategory })(CarFormContainer);
+export default connect(mapStateToProps, {
+  getCategory,
+  getCurrentCar,
+  deleteCar,
+})(CarFormContainer);

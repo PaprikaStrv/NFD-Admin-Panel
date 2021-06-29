@@ -59,7 +59,9 @@
         .changeCarBtn {
           @include rowCenterFlex();
           justify-content: flex-end;
-          button {
+          a {
+            @include rowCenterFlex();
+            justify-content: center;
             @include btn(95px, 29px, #0ec261, #ffffff);
           }
         }

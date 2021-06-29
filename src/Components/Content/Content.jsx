@@ -22,6 +22,9 @@ const Content = () => {
         <Route path="/AddCar">
           <CarFormContainer />
         </Route>
+        <Route path="/ChangeCar/:carId">
+          <CarFormContainer/>
+        </Route>
       </Switch>
       <Footer />
     </div>

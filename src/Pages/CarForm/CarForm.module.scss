@@ -293,16 +293,26 @@
 
     .buttonsWrapper {
       @include rowCenterFlex();
+      justify-content: space-between;
       margin-top: 26px;
       margin-bottom: 18px;
-      button {
-        @include btn(110px, 29px, #007bff, #ffffff);
-        margin-right: 20px;
-      }
-      a {
+      .addCarBtns {
         @include rowCenterFlex();
-        justify-content: center;
-        @include btn(110px, 29px, #e9ecef, #3d5170);
+        button {
+          @include btn(110px, 29px, #007bff, #ffffff);
+          margin-right: 20px;
+        }
+        a {
+          @include rowCenterFlex();
+          justify-content: center;
+          @include btn(110px, 29px, #e9ecef, #3d5170);
+        }
+      }
+
+      .deleteBtn {
+        button {
+          @include btn(110px, 29px, #CB3656, #ffffff);
+        }
       }
     }
 

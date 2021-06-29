@@ -103,4 +103,16 @@ export const simbirSoftAPI = {
       return response.data;
     });
   },
+
+  getCurrentCar(id) {
+    return instanceWithToken.get(`car?id=${id}`).then((response) => {
+      return response.data;
+    });
+  },
+
+  deleteCar(id) {
+    return instanceWithToken.delete(`car/${id}`).then((response) => {
+      return response.data;
+    });
+  },
 };
