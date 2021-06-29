@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.css": "/nfd-admin-panel/static/css/main.7569c0a8.chunk.css",
-    "main.js": "/nfd-admin-panel/static/js/main.f2103060.chunk.js",
-    "main.js.map": "/nfd-admin-panel/static/js/main.f2103060.chunk.js.map",
+    "main.css": "/nfd-admin-panel/static/css/main.918906b2.chunk.css",
+    "main.js": "/nfd-admin-panel/static/js/main.97433df0.chunk.js",
+    "main.js.map": "/nfd-admin-panel/static/js/main.97433df0.chunk.js.map",
     "runtime-main.js": "/nfd-admin-panel/static/js/runtime-main.373bff25.js",
     "runtime-main.js.map": "/nfd-admin-panel/static/js/runtime-main.373bff25.js.map",
-    "static/js/2.ba3e7edf.chunk.js": "/nfd-admin-panel/static/js/2.ba3e7edf.chunk.js",
-    "static/js/2.ba3e7edf.chunk.js.map": "/nfd-admin-panel/static/js/2.ba3e7edf.chunk.js.map",
+    "static/js/2.b05dd8fe.chunk.js": "/nfd-admin-panel/static/js/2.b05dd8fe.chunk.js",
+    "static/js/2.b05dd8fe.chunk.js.map": "/nfd-admin-panel/static/js/2.b05dd8fe.chunk.js.map",
     "index.html": "/nfd-admin-panel/index.html",
-    "static/css/main.7569c0a8.chunk.css.map": "/nfd-admin-panel/static/css/main.7569c0a8.chunk.css.map",
-    "static/js/2.ba3e7edf.chunk.js.LICENSE.txt": "/nfd-admin-panel/static/js/2.ba3e7edf.chunk.js.LICENSE.txt",
+    "static/css/main.918906b2.chunk.css.map": "/nfd-admin-panel/static/css/main.918906b2.chunk.css.map",
+    "static/js/2.b05dd8fe.chunk.js.LICENSE.txt": "/nfd-admin-panel/static/js/2.b05dd8fe.chunk.js.LICENSE.txt",
     "static/media/Add New Post Icon.f2c1be7b.svg": "/nfd-admin-panel/static/media/Add New Post Icon.f2c1be7b.svg",
     "static/media/Avatar.338afc99.svg": "/nfd-admin-panel/static/media/Avatar.338afc99.svg",
     "static/media/Blog Posts Icon.738fc3f8.svg": "/nfd-admin-panel/static/media/Blog Posts Icon.738fc3f8.svg",
@@ -22,22 +22,27 @@
     "static/media/Overview (Components) Icon.f1fc228f.svg": "/nfd-admin-panel/static/media/Overview (Components) Icon.f1fc228f.svg",
     "static/media/Person Icon.83a584d6.svg": "/nfd-admin-panel/static/media/Person Icon.83a584d6.svg",
     "static/media/SmallLogoIcon.554e71f6.svg": "/nfd-admin-panel/static/media/SmallLogoIcon.554e71f6.svg",
+    "static/media/addColorBtnBorder.b9549218.svg": "/nfd-admin-panel/static/media/addColorBtnBorder.b9549218.svg",
+    "static/media/check.5f6c1f54.svg": "/nfd-admin-panel/static/media/check.5f6c1f54.svg",
     "static/media/checkBoxIcon.2be04cd8.svg": "/nfd-admin-panel/static/media/checkBoxIcon.2be04cd8.svg",
     "static/media/checkIcon.35a8bd90.svg": "/nfd-admin-panel/static/media/checkIcon.35a8bd90.svg",
+    "static/media/colorCheckBox.48dffe58.svg": "/nfd-admin-panel/static/media/colorCheckBox.48dffe58.svg",
     "static/media/disabledCheckBox.12832ce6.svg": "/nfd-admin-panel/static/media/disabledCheckBox.12832ce6.svg",
     "static/media/dropdown_icon.e709e3e8.svg": "/nfd-admin-panel/static/media/dropdown_icon.e709e3e8.svg",
     "static/media/edit.850cde24.svg": "/nfd-admin-panel/static/media/edit.850cde24.svg",
+    "static/media/horizontlLine.741cc272.svg": "/nfd-admin-panel/static/media/horizontlLine.741cc272.svg",
     "static/media/linza.c8b5b3af.svg": "/nfd-admin-panel/static/media/linza.c8b5b3af.svg",
     "static/media/menu_btn.71008687.svg": "/nfd-admin-panel/static/media/menu_btn.71008687.svg",
     "static/media/pensil.ad2cc03f.svg": "/nfd-admin-panel/static/media/pensil.ad2cc03f.svg",
     "static/media/preloader.d5c185d4.svg": "/nfd-admin-panel/static/media/preloader.d5c185d4.svg",
     "static/media/reject.ebfbf7fc.svg": "/nfd-admin-panel/static/media/reject.ebfbf7fc.svg",
-    "static/media/Select.module.scss": "/nfd-admin-panel/static/media/selectArrow.551085a2.svg"
+    "static/media/Select.module.scss": "/nfd-admin-panel/static/media/selectArrow.551085a2.svg",
+    "static/media/verticalLine.f9f3390a.svg": "/nfd-admin-panel/static/media/verticalLine.f9f3390a.svg"
   },
   "entrypoints": [
     "static/js/runtime-main.373bff25.js",
-    "static/js/2.ba3e7edf.chunk.js",
-    "static/css/main.7569c0a8.chunk.css",
-    "static/js/main.f2103060.chunk.js"
+    "static/js/2.b05dd8fe.chunk.js",
+    "static/css/main.918906b2.chunk.css",
+    "static/js/main.97433df0.chunk.js"
   ]
 }
