@@ -85,7 +85,21 @@ export const simbirSoftAPI = {
   },
 
   getCars(page) {
-    return instanceWithToken.get(`car?page=${page}&limit=7`).then((response) => {
+    return instanceWithToken
+      .get(`car?page=${page}&limit=7`)
+      .then((response) => {
+        return response.data;
+      });
+  },
+
+  getCategory() {
+    return instanceWithToken.get(`category`).then((response) => {
+      return response.data;
+    });
+  },
+
+  postCar(formData) {
+    return instanceWithToken.post("car", formData).then((response) => {
       return response.data;
     });
   },
