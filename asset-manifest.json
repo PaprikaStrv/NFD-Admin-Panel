@@ -1,14 +1,14 @@
 {
   "files": {
-    "main.css": "/nfd-admin-panel/static/css/main.918906b2.chunk.css",
-    "main.js": "/nfd-admin-panel/static/js/main.97433df0.chunk.js",
-    "main.js.map": "/nfd-admin-panel/static/js/main.97433df0.chunk.js.map",
+    "main.css": "/nfd-admin-panel/static/css/main.25efc6c0.chunk.css",
+    "main.js": "/nfd-admin-panel/static/js/main.69439e4e.chunk.js",
+    "main.js.map": "/nfd-admin-panel/static/js/main.69439e4e.chunk.js.map",
     "runtime-main.js": "/nfd-admin-panel/static/js/runtime-main.373bff25.js",
     "runtime-main.js.map": "/nfd-admin-panel/static/js/runtime-main.373bff25.js.map",
     "static/js/2.b05dd8fe.chunk.js": "/nfd-admin-panel/static/js/2.b05dd8fe.chunk.js",
     "static/js/2.b05dd8fe.chunk.js.map": "/nfd-admin-panel/static/js/2.b05dd8fe.chunk.js.map",
     "index.html": "/nfd-admin-panel/index.html",
-    "static/css/main.918906b2.chunk.css.map": "/nfd-admin-panel/static/css/main.918906b2.chunk.css.map",
+    "static/css/main.25efc6c0.chunk.css.map": "/nfd-admin-panel/static/css/main.25efc6c0.chunk.css.map",
     "static/js/2.b05dd8fe.chunk.js.LICENSE.txt": "/nfd-admin-panel/static/js/2.b05dd8fe.chunk.js.LICENSE.txt",
     "static/media/Add New Post Icon.f2c1be7b.svg": "/nfd-admin-panel/static/media/Add New Post Icon.f2c1be7b.svg",
     "static/media/Avatar.338afc99.svg": "/nfd-admin-panel/static/media/Avatar.338afc99.svg",
@@ -42,7 +42,7 @@
   "entrypoints": [
     "static/js/runtime-main.373bff25.js",
     "static/js/2.b05dd8fe.chunk.js",
-    "static/css/main.918906b2.chunk.css",
-    "static/js/main.97433df0.chunk.js"
+    "static/css/main.25efc6c0.chunk.css",
+    "static/js/main.69439e4e.chunk.js"
   ]
 }
