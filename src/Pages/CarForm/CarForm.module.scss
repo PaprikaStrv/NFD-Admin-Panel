@@ -31,6 +31,13 @@
   }
 }
 
+.inputErrorMsg {
+  @include inputErrorMsg();
+}
+.inputWithError {
+  border-color: #c4183c !important;
+}
+
 .carChangePageWrapper {
   max-height: 550px;
   overflow-y: auto;
@@ -230,12 +237,6 @@
           font-family: "HelveticaNeueCyr-Medium";
           margin-top: 4px;
         }
-        .inputErrorMsg {
-          @include inputErrorMsg();
-        }
-        .inputWithError {
-          border-color: #c4183c;
-        }
 
         .addColorsInput {
           @include rowCenterFlex();
@@ -311,7 +312,7 @@
 
       .deleteBtn {
         button {
-          @include btn(110px, 29px, #CB3656, #ffffff);
+          @include btn(110px, 29px, #cb3656, #ffffff);
         }
       }
     }

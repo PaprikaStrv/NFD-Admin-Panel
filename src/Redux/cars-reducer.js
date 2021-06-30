@@ -85,6 +85,8 @@ export const postCar = (formData) => {
   return async (dispatch) => {
     const response = await simbirSoftAPI.postCar(formData);
     dispatch(setResponse(response));
+    // window.location.reload();
+    // window.location = "/nfd-admin-panel/";
   };
 };
 
@@ -100,7 +102,16 @@ export const deleteCar = (id) => {
     const response = await simbirSoftAPI.deleteCar(id);
     dispatch(setResponse(response));
     window.location.reload();
-    window.location = "/nfd-admin-panel/";
+    // window.location = "/nfd-admin-panel/";
+  };
+};
+
+export const updateCar = (id, formData) => {
+  return async (dispatch) => {
+    const response = await simbirSoftAPI.updateCar(id, formData);
+    dispatch(setResponse(response));
+    // window.location.reload();
+    // window.location = "/nfd-admin-panel/";
   };
 };
 

@@ -8,7 +8,7 @@ import horizonLine from "../../Images/horizontlLine.svg";
 import vertivalLine from "../../Images/verticalLine.svg";
 import colorCheckBox from "../../Images/colorCheckBox.svg";
 import check from "../../Images/check.svg";
-import { postCar, setResponse } from "./../../Redux/cars-reducer";
+import { postCar, setResponse, updateCar } from "./../../Redux/cars-reducer";
 import { connect } from "react-redux";
 import close from "../../Images/close.png";
 import checkIcon from "../../Images/check_icon.png";
@@ -23,8 +23,11 @@ const CarForm = React.memo(
     curCar,
     carId,
     handlerCarDelete,
+    updateCar,
   }) => {
     const [carImg, setCarImg] = useState();
+    const [isCarImgTouched, setCarImageTouched] = useState(false);
+
     const [preview, setPreview] = useState();
     const [progress, setProgress] = useState(0);
     const [innerLineColor, setLineColor] = useState("#007bff");
@@ -96,6 +99,7 @@ const CarForm = React.memo(
 
     const handlerPhotoSelect = (e) => {
       setCarImg(e.target.files[0]);
+      setCarImageTouched(true);
       if (!carImg) {
         setProgress(progress + 11, 1111);
       }
@@ -232,15 +236,31 @@ const CarForm = React.memo(
         const formData = new FormData();
         formData.append("priceMax", parseInt(priceMax));
         formData.append("priceMin", parseInt(priceMin));
+        formData.append("number", carNumber);
         formData.append("name", carModel);
         formData.append("thumbnail[]", carImg);
         formData.append("description", carDescription);
         formData.append("categoryId[id]", curCategory);
+        formData.append("tank", tankValue);
         for (let i = 0; i < availabelColors.length; i++) {
           formData.append(`colors[${i}]`, availabelColors[i]);
         }
 
-        postCar(formData);
+        if (!carId) {
+          postCar(formData);
+        } else {
+          updateCar(carId, formData);
+        }
+      } else {
+        setCarImageTouched(true);
+        setCarModelTouched(true);
+        setCarNumberTouched(true);
+        setPriceMinTouched(true);
+        setPriceMaxTouched(true);
+        setCurCategoryTouched(true);
+        setCarDescriptionTouched(true);
+        setTankValueTouched(true);
+        setColorValueTouched(true);
       }
     };
 
@@ -281,12 +301,25 @@ const CarForm = React.memo(
                     onChange={handlerPhotoSelect}
                   />
                   <label htmlFor="input_file">
-                    <div className={s.labelWrapper}>
+                    <div
+                      onClick={() => setCarImageTouched(true)}
+                      className={
+                        (isCarImgTouched && !carImg && !preview) || !carImg
+                          ? `${s.labelWrapper} ${s.inputWithError}`
+                          : s.labelWrapper
+                      }
+                    >
                       <div className={s.selectFileText}>
                         {carImg ? carImg.name : "Выберите файл..."}
                       </div>
                       <div className={s.selectBtn}>Обзор</div>
                     </div>
+                    {(isCarImgTouched && !carImg && !preview) ||
+                      (!carImg && (
+                        <div className={s.inputErrorMsg}>
+                          Выберите фото автомобиля
+                        </div>
+                      ))}
                   </label>
                 </div>
 
@@ -472,12 +505,12 @@ const CarForm = React.memo(
                       <label>Доступные цвета</label>
                       <div className={s.addColorsInput}>
                         <input
-                          // className={
-                          //   isColorValueTouched && !colorValue
-                          //     ? `${s.inputField} ${s.inputWithError}`
-                          //     : s.inputField
-                          // }
-                          className={s.inputField}
+                          className={
+                            isColorValueTouched && !availabelColors
+                              ? `${s.inputField} ${s.inputWithError}`
+                              : s.inputField
+                          }
+                          // className={s.inputField}
                           type="text"
                           value={colorValue}
                           onChange={(e) => handlerColorInput(e.target.value)}
@@ -515,9 +548,9 @@ const CarForm = React.memo(
                           ))}
                       </div>
 
-                      {/* {isColorValueTouched && !colorValue && (
-                      <div className={s.inputErrorMsg}>Добавьте цвет</div>
-                    )} */}
+                      {isColorValueTouched && !availabelColors && (
+                        <div className={s.inputErrorMsg}>Добавьте цвет</div>
+                      )}
                     </div>
                   </div>
                 </div>
@@ -547,4 +580,6 @@ const mapStateToProps = (state) => ({
   response: state.cars.response,
 });
 
-export default connect(mapStateToProps, { postCar, setResponse })(CarForm);
+export default connect(mapStateToProps, { postCar, setResponse, updateCar })(
+  CarForm
+);

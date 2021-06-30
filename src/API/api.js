@@ -115,4 +115,10 @@ export const simbirSoftAPI = {
       return response.data;
     });
   },
+
+  updateCar(id, formData) {
+    return instanceWithToken.put(`car/${id}`, formData).then((response) => {
+      return response.data;
+    });
+  },
 };
