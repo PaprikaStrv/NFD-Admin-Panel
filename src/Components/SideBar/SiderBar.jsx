@@ -28,12 +28,21 @@ const SideBar = () => {
             {menuItem.map(({ id, link, src, name }) => {
               return (
                 <li key={id}>
-                  <NavLink to={link}>
+                  <NavLink
+                    to={link}
+                    activeStyle={{
+                      backgroundColor: "#fbfbfb",
+                      boxShadow:
+                        "inset 0px -1px 0px #e1e5eb, inset 4px 0px 0px #007bff",
+                        color: "#007bff",
+                    }}
+                  >
                     <div className={s.iconWrapper}>
                       <ReactSVG src={src} />
                     </div>
 
-                    <div className={s.linkName}>{name}</div>
+                    {/* <div className={s.linkName}>{name}</div> */}
+                    {name}
                   </NavLink>
                 </li>
               );

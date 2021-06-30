@@ -34,25 +34,22 @@
         .iconWrapper {
           width: 14px;
           height: 14px;
+          margin-right: 12px;
         }
-        .linkName {
-          font-size: 15px;
-          @include greyBlueText();
-          margin-left: 12px;
-          &:hover {
-            @include blue();
-          }
+        font-size: 15px;
+        @include greyBlueText();
+        &:hover {
+          @include blue();
         }
-        &:focus {
-          background: #fbfbfb;
-          box-shadow: inset 0px -1px 0px #e1e5eb, inset 4px 0px 0px #007bff;
-          .linkName {
-            @include blue();
-            &:hover {
-              @include blue();
-            }
-          }
-        }
+
+        // .linkName {
+        //   font-size: 15px;
+        //   @include greyBlueText();
+        //   margin-left: 12px;
+        //   &:hover {
+        //     @include blue();
+        //   }
+        // }
       }
     }
   }

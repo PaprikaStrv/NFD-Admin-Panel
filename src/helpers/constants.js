@@ -12,8 +12,8 @@ export const menuItem = [
   // { id: 1, link: "/", src: pensil, name: "Карточка Автомобиля" },
   { id: 2, link: "/Cars", src: blogPost, name: "Список авто" },
   { id: 3, link: "/Orders", src: orders, name: "Заказы" },
-  { id: 4, link: "/", src: menu, name: "Меню 4" },
-  { id: 5, link: "/", src: menu1, name: "Меню 5" },
-  { id: 6, link: "/", src: person, name: "Меню 6" },
-  { id: 7, link: "/", src: warring, name: "Меню 7" },
+  { id: 4, link: "/Menu1", src: menu, name: "Меню 4" },
+  { id: 5, link: "/Menu2", src: menu1, name: "Меню 5" },
+  { id: 6, link: "/Menu3", src: person, name: "Меню 6" },
+  { id: 7, link: "/Menu4", src: warring, name: "Меню 7" },
 ];
