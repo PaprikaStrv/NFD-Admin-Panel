@@ -15,6 +15,7 @@
   @include rowCenterFlex();
   height: 68px;
   // padding: 24px 116px 24px 46px;
+  border-bottom: 1px solid #e1e5eb;
   .logoText {
     font-size: 16px;
     margin-left: 8px;
@@ -41,15 +42,6 @@
         &:hover {
           @include blue();
         }
-
-        // .linkName {
-        //   font-size: 15px;
-        //   @include greyBlueText();
-        //   margin-left: 12px;
-        //   &:hover {
-        //     @include blue();
-        //   }
-        // }
       }
     }
   }

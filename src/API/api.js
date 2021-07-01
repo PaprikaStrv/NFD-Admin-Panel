@@ -121,4 +121,42 @@ export const simbirSoftAPI = {
       return response.data;
     });
   },
+
+  getLimitCities(page) {
+    return instanceWithToken
+      .get(`city?page=${page}&limit=0`)
+      .then((response) => {
+        return response.data;
+      });
+  },
+
+  getPoints(page) {
+    return instanceWithToken.get(`point`).then((response) => {
+      return response.data;
+    });
+  },
+
+  getRates() {
+    return instanceWithToken.get("rate").then((response) => {
+      return response.data;
+    });
+  },
+
+  getRateType() {
+    return instanceWithToken.get("rateType").then((response) => {
+      return response.data;
+    });
+  },
+
+  getCarCategory() {
+    return instanceWithToken.get("category").then((response) => {
+      return response.data;
+    });
+  },
+
+  getOrderStatus() {
+    return instanceWithToken.get("orderStatus").then((response) => {
+      return response.data;
+    });
+  },
 };

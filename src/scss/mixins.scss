@@ -115,3 +115,45 @@
   outline: 0;
   cursor: pointer;
 }
+
+@mixin entityTable {
+  table {
+    padding-left: 22px;
+    padding-right: 22px;
+    width: 100%;
+    margin-top: 14px;
+    font-family: "Roboto-Medium";
+    font-size: 14px;
+    color: #3d5170;
+
+    thead {
+      background-color: #f5f6f8;
+      tr {
+        th {
+          padding: 10px;
+        }
+      }
+    }
+    tbody {
+      text-align: center;
+      margin-top: 8px;
+      tr {
+        .carName {
+          text-align: left;
+        }
+        .changeCarBtn {
+          @include rowCenterFlex();
+          justify-content: flex-end;
+          a {
+            @include rowCenterFlex();
+            justify-content: center;
+            @include btn(95px, 29px, #0ec261, #ffffff);
+          }
+        }
+        td {
+          padding: 10px;
+        }
+      }
+    }
+  }
+}

@@ -13,14 +13,12 @@ const orderReducer = (state = initialState, action) => {
     case SET_ORDER_LIST: {
       return {
         ...state,
-        ...action,
         orders: action.orders,
       };
     }
     case SET_RESPONSE_ERROR: {
       return {
         ...state,
-        ...action,
         responseError: action.response,
       };
     }

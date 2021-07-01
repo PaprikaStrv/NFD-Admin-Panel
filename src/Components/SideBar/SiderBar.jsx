@@ -34,7 +34,7 @@ const SideBar = () => {
                       backgroundColor: "#fbfbfb",
                       boxShadow:
                         "inset 0px -1px 0px #e1e5eb, inset 4px 0px 0px #007bff",
-                        color: "#007bff",
+                      color: "#007bff",
                     }}
                   >
                     <div className={s.iconWrapper}>

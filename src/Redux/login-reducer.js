@@ -23,7 +23,6 @@ const loginReducer = (state = initialState, action) => {
     case SET_RESPONSE: {
       return {
         ...state,
-        ...action,
         response: action.response,
       };
     }

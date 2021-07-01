@@ -17,28 +17,24 @@ const carsReducer = (state = initialState, action) => {
     case SET_CAR_LIST: {
       return {
         ...state,
-        ...action,
         cars: action.cars,
       };
     }
     case SET_CURRENT_CAR: {
       return {
         ...state,
-        ...action,
         currentCar: action.currentCar,
       };
     }
     case SET_CATEGORY: {
       return {
         ...state,
-        ...action,
         category: action.category,
       };
     }
     case SET_RESPONSE: {
       return {
         ...state,
-        ...action,
         response: action.response,
       };
     }

@@ -9,7 +9,6 @@ const orderStatusReducer = (state = initialState, action) => {
     case SET_ORDER_STATUS: {
       return {
         ...state,
-        ...action,
         orderStatus: action.orderStatus,
       };
     }
