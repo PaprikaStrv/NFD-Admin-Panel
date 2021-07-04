@@ -1,10 +1,10 @@
 import React from "react";
 import s from "./ChangeEntityBtn.module.scss";
 
-const ChangeEntityButton = () => {
+const ChangeEntityButton = ({handlerChangeEntity, id}) => {
   return (
     <div className={s.buttonWrapper}>
-      <button>Изменить</button>
+      <button onClick={() => handlerChangeEntity(id)}>Изменить</button>
     </div>
   );
 };

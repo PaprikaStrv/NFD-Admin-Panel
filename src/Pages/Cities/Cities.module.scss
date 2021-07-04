@@ -1,0 +1,9 @@
+@import "../../scss/mixins";
+
+.citiesTableWrapper {
+  @include entityScroll();
+}
+
+.hide {
+  display: none;
+}

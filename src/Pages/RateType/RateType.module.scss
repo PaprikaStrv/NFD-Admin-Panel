@@ -1,0 +1,17 @@
+.hide {
+  display: none;
+}
+
+@media screen and (max-width: 360px) {
+  .rateTypeTableWrapper {
+    table {
+      tbody {
+        tr {
+          td {
+            padding: 0;
+          }
+        }
+      }
+    }
+  }
+}

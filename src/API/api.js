@@ -122,16 +122,56 @@ export const simbirSoftAPI = {
     });
   },
 
-  getLimitCities(page) {
-    return instanceWithToken
-      .get(`city?page=${page}&limit=0`)
-      .then((response) => {
-        return response.data;
-      });
+  getCurCity(id) {
+    return instanceWithToken.get(`city/${id}`).then((response) => {
+      return response.data;
+    });
   },
 
-  getPoints(page) {
+  postCity(formData) {
+    return instanceWithToken.post("city", formData).then((response) => {
+      return response.data;
+    });
+  },
+
+  updateCity(id, formData) {
+    return instanceWithToken.put(`city/${id}`, formData).then((response) => {
+      return response.data;
+    });
+  },
+
+  deleteCity(id) {
+    return instanceWithToken.delete(`city/${id}`).then((response) => {
+      return response.data;
+    });
+  },
+
+  getPoints() {
     return instanceWithToken.get(`point`).then((response) => {
+      return response.data;
+    });
+  },
+
+  getPoint(id) {
+    return instanceWithToken.get(`point/${id}`).then((response) => {
+      return response.data;
+    });
+  },
+
+  postPoint(formdata) {
+    return instanceWithToken.post("point", formdata).then((response) => {
+      return response.data;
+    });
+  },
+
+  updatePoint(id, formData) {
+    return instanceWithToken.put(`point/${id}`, formData).then((response) => {
+      return response.data;
+    });
+  },
+
+  deletePoint(id) {
+    return instanceWithToken.delete(`point/${id}`).then((response) => {
       return response.data;
     });
   },
@@ -142,8 +182,58 @@ export const simbirSoftAPI = {
     });
   },
 
+  getRate(id) {
+    return instanceWithToken.get(`rate/${id}`).then((response) => {
+      return response.data;
+    });
+  },
+
+  postRate(formData) {
+    return instanceWithToken.post("rate", formData).then((response) => {
+      return response.data;
+    });
+  },
+
+  updateRate(id, formData) {
+    return instanceWithToken.put(`rate/${id}`, formData).then((response) => {
+      return response.data;
+    });
+  },
+
+  deleteRate(id) {
+    return instanceWithToken.delete(`rate/${id}`).then((response) => {
+      return response.data;
+    });
+  },
+
   getRateType() {
     return instanceWithToken.get("rateType").then((response) => {
+      return response.data;
+    });
+  },
+
+  getCurRateType(id) {
+    return instanceWithToken.get(`rateType/${id}`).then((response) => {
+      return response.data;
+    });
+  },
+
+  postRateType(formData) {
+    return instanceWithToken.post("rateType", formData).then((response) => {
+      return response.data;
+    });
+  },
+
+  updateRateType(id, formData) {
+    return instanceWithToken
+      .put(`rateType/${id}`, formData)
+      .then((response) => {
+        return response.data;
+      });
+  },
+
+  deleteRateType(id) {
+    return instanceWithToken.delete(`rateType/${id}`).then((response) => {
       return response.data;
     });
   },
@@ -154,8 +244,60 @@ export const simbirSoftAPI = {
     });
   },
 
+  getCurCarCategory(id) {
+    return instanceWithToken.get(`category/${id}`).then((response) => {
+      return response.data;
+    });
+  },
+
+  updateCarCategory(id, formData) {
+    return instanceWithToken
+      .put(`category/${id}`, formData)
+      .then((response) => {
+        return response.data;
+      });
+  },
+
+  postCarCategory(formData) {
+    return instanceWithToken.post("category", formData).then((response) => {
+      return response.data;
+    });
+  },
+
+  deleteCarCategory(id) {
+    return instanceWithToken.delete(`category/${id}`).then((response) => {
+      return response.data;
+    });
+  },
+
   getOrderStatus() {
     return instanceWithToken.get("orderStatus").then((response) => {
+      return response.data;
+    });
+  },
+
+  getCurOrderStatus(id) {
+    return instanceWithToken.get(`orderStatus/${id}`).then((response) => {
+      return response.data;
+    });
+  },
+
+  postOrderStatus(formData) {
+    return instanceWithToken.post("orderStatus", formData).then((response) => {
+      return response.data;
+    });
+  },
+
+  updateOrderStatus(id, formData) {
+    return instanceWithToken
+      .put(`orderStatus/${id}`, formData)
+      .then((response) => {
+        return response.data;
+      });
+  },
+
+  deleteOrderStatus(id) {
+    return instanceWithToken.delete(`orderStatus/${id}`).then((response) => {
       return response.data;
     });
   },

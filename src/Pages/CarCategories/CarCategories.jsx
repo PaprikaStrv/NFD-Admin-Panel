@@ -4,35 +4,57 @@ import ChangeEntityButton from "../../Components/Entity/ChangeEntityBtn/ChangeEn
 import EntityWrapper from "../../Components/Entity/EntityWrapper/EntityWrapper";
 import PageTitle from "../../Components/PageTitle/PageTitle";
 import Paginator from "../../Components/Paginator/Paginator";
+import s from "./CarCategory.module.scss";
+import DeleteEntityButton from "./../../Components/Entity/DeleteEntityBtn/DeleteEntityBtn";
 
-const CarCategories = ({ carCategories, handlePageChange }) => {
-  const pagesCount = Math.ceil(carCategories.count / 6);
+const CarCategories = ({
+  carCategories,
+  handlePageChange,
+  handlerAddCarCategory,
+  isAddCarCategory,
+  handlerDeleteCarCategory,
+  hanlderChangeCarCategory,
+  isChangeCarCategotyActive,
+}) => {
   return (
-    <section>
+    <section
+      className={isAddCarCategory || isChangeCarCategotyActive ? s.hide : null}
+    >
       <PageTitle title="Города" />
       <EntityWrapper>
-        <AddEntityButton />
-        <table>
-          <thead>
-            <tr>
-              <th>Название</th>
-              <th>Описание</th>
-              <th>Изменить</th>
-            </tr>
-          </thead>
-          <tbody>
-            {carCategories.data.map(({ id, name, description }) => (
-              <tr key={id}>
-                <td>{name ? name : "No Name"}</td>
-                <td>{description ? description : "No description"}</td>
-                <td>
-                  <ChangeEntityButton />
-                </td>
+        <AddEntityButton handlerAddEntity={handlerAddCarCategory} />
+        <div className={s.carCategoryTableWrapper}>
+          <table>
+            <thead>
+              <tr>
+                <th>Название</th>
+                <th>Описание</th>
+                <th>Изменить</th>
+                <th>Удалить</th>
               </tr>
-            ))}
-          </tbody>
-        </table>
-        <Paginator {...{ handlePageChange, pagesCount }} />
+            </thead>
+            <tbody>
+              {carCategories.data.map(({ id, name, description }) => (
+                <tr key={id}>
+                  <td>{name ? name : "No Name"}</td>
+                  <td>{description ? description : "No description"}</td>
+                  <td>
+                    <ChangeEntityButton
+                      handlerChangeEntity={hanlderChangeCarCategory}
+                      id={id}
+                    />
+                  </td>
+                  <td>
+                    <DeleteEntityButton
+                      handlerDeleteEntity={handlerDeleteCarCategory}
+                      id={id}
+                    />
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
       </EntityWrapper>
     </section>
   );

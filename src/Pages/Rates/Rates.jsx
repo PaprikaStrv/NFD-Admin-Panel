@@ -3,21 +3,30 @@ import AddEntityButton from "../../Components/Entity/AddEntityBtn/AddEntityBtn";
 import ChangeEntityButton from "../../Components/Entity/ChangeEntityBtn/ChangeEntityBtn";
 import EntityWrapper from "../../Components/Entity/EntityWrapper/EntityWrapper";
 import PageTitle from "../../Components/PageTitle/PageTitle";
-import Paginator from "../../Components/Paginator/Paginator";
+import DeleteEntityButton from "./../../Components/Entity/DeleteEntityBtn/DeleteEntityBtn";
+import s from "./Rates.module.scss";
 
-const Rates = ({ rates, handlePageChange }) => {
-  const pagesCount = Math.ceil(rates.count / 6);
+const Rates = ({
+  rates,
+  handlePageChange,
+  handlerDeleteRate,
+  handlerAddRate,
+  isAddRateActive,
+  handlerChangeRate,
+  isChangeRateActive,
+}) => {
   return (
-    <section>
+    <section className={isAddRateActive || isChangeRateActive ? s.hide : null}>
       <PageTitle title="Города" />
       <EntityWrapper>
-        <AddEntityButton />
+        <AddEntityButton handlerAddEntity={handlerAddRate} />
         <table>
           <thead>
             <tr>
               <th>Название</th>
               <th>Цена</th>
               <th>Изменить</th>
+              <th>Удалить</th>
             </tr>
           </thead>
           <tbody>
@@ -30,13 +39,21 @@ const Rates = ({ rates, handlePageChange }) => {
                 </td>
                 <td>{price ? price : "No price"}</td>
                 <td>
-                  <ChangeEntityButton />
+                  <ChangeEntityButton
+                    handlerChangeEntity={handlerChangeRate}
+                    id={id}
+                  />
+                </td>
+                <td>
+                  <DeleteEntityButton
+                    handlerDeleteEntity={handlerDeleteRate}
+                    id={id}
+                  />
                 </td>
               </tr>
             ))}
           </tbody>
         </table>
-        <Paginator {...{ handlePageChange, pagesCount }} />
       </EntityWrapper>
     </section>
   );

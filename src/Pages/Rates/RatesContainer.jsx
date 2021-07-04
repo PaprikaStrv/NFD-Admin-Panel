@@ -1,28 +1,61 @@
 import React, { useEffect, useState } from "react";
 import { connect } from "react-redux";
 import Preloader from "../../Components/Preloader/Preloader";
-import { getRates } from "../../Redux/rate-reducer";
+import { deleteRate, getRates } from "../../Redux/rate-reducer";
+import AddRateContainer from "./AddRate/AddRateContainer";
+import ChangeRateContainer from "./ChangeRate/ChangeRateContainer";
 import Rates from "./Rates";
 
-const RatesContainer = ({ getRates, rates }) => {
-  const [pageNumber, setPageNumber] = useState(1);
+const RatesContainer = ({ getRates, rates, deleteRate }) => {
+  const [isAddRateActive, setAddRateActive] = useState(false);
+  const [isChangeRateActive, setChangeRateActive] = useState(false);
+  const [curRateId, setCurRateId] = useState("");
 
-  const handlePageChange = ({ selected }) => {
-    setPageNumber(selected + 1);
+  const handlerAddRate = () => {
+    setAddRateActive(true);
   };
+
+  const handlerChangeRate = (id) => {
+    setCurRateId(id);
+    setChangeRateActive(true);
+  };
+
+  const handlerDeleteRate = (id) => {
+    deleteRate(id);
+  };
+
   useEffect(() => {
-    getRates(pageNumber);
-  }, [pageNumber]);
+    getRates();
+  }, []);
 
   if (!rates || rates.length === 0) {
-    return <Preloader/>;
+    return <Preloader />;
   }
 
-  return <Rates {...{ rates, handlePageChange }} />;
+  return (
+    <>
+      {isAddRateActive && <AddRateContainer {...{ setAddRateActive }} />}
+      {isChangeRateActive && (
+        <ChangeRateContainer {...{ curRateId, setChangeRateActive }} />
+      )}
+      <Rates
+        {...{
+          rates,
+          handlerDeleteRate,
+          handlerAddRate,
+          isAddRateActive,
+          handlerChangeRate,
+          isChangeRateActive,
+        }}
+      />
+    </>
+  );
 };
 
 const mapStateToProps = (state) => ({
   rates: state.rates.rates,
 });
 
-export default connect(mapStateToProps, { getRates })(RatesContainer);
+export default connect(mapStateToProps, { getRates, deleteRate })(
+  RatesContainer
+);

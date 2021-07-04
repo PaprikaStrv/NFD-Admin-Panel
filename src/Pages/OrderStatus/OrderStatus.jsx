@@ -3,20 +3,32 @@ import AddEntityButton from "../../Components/Entity/AddEntityBtn/AddEntityBtn";
 import ChangeEntityButton from "../../Components/Entity/ChangeEntityBtn/ChangeEntityBtn";
 import EntityWrapper from "../../Components/Entity/EntityWrapper/EntityWrapper";
 import PageTitle from "../../Components/PageTitle/PageTitle";
-import Paginator from "../../Components/Paginator/Paginator";
+import s from "./OrderStatus.module.scss";
+import DeleteEntityButton from "./../../Components/Entity/DeleteEntityBtn/DeleteEntityBtn";
 
-const OrderStatus = ({ orderStatus, handlePageChange }) => {
-  const pagesCount = Math.ceil(orderStatus.count / 6);
+const OrderStatus = ({
+  orderStatus,
+  isAddOrderStatusActive,
+  handlerAddOrderStatus,
+  handlerDeleteOrderStatus,
+  handlerChangeOrderStatus,
+  isChangeOrderStatusActive,
+}) => {
   return (
-    <section>
+    <section
+      className={
+        isAddOrderStatusActive || isChangeOrderStatusActive ? s.hide : null
+      }
+    >
       <PageTitle title="Города" />
       <EntityWrapper>
-        <AddEntityButton />
+        <AddEntityButton handlerAddEntity={handlerAddOrderStatus} />
         <table>
           <thead>
             <tr>
               <th>Название</th>
               <th>Изменить</th>
+              <th>Удалить</th>
             </tr>
           </thead>
           <tbody>
@@ -24,13 +36,21 @@ const OrderStatus = ({ orderStatus, handlePageChange }) => {
               <tr key={id}>
                 <td>{name ? name : "No name"}</td>
                 <td>
-                  <ChangeEntityButton />
+                  <ChangeEntityButton
+                    handlerChangeEntity={handlerChangeOrderStatus}
+                    id={id}
+                  />
+                </td>
+                <td>
+                  <DeleteEntityButton
+                    handlerDeleteEntity={handlerDeleteOrderStatus}
+                    id={id}
+                  />
                 </td>
               </tr>
             ))}
           </tbody>
         </table>
-        <Paginator {...{ handlePageChange, pagesCount }} />
       </EntityWrapper>
     </section>
   );
