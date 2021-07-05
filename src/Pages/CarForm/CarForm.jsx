@@ -13,6 +13,7 @@ import { connect } from "react-redux";
 import close from "../../Images/close.png";
 import checkIcon from "../../Images/check_icon.png";
 import { prepareImgLink } from "./../../helpers/imgPrepare";
+import { Form } from "react-final-form";
 
 const CarForm = React.memo(
   ({
@@ -285,290 +286,314 @@ const CarForm = React.memo(
         <div className={s.carChangePageWrapper}>
           <div className={s.carFormTitle}>Карточка Автомобиля</div>
           <div className={s.formWrapper}>
-            <form>
-              <div className={s.leftFormBlock}>
-                <div className={s.carImageWrapper}>
-                  <img src={preview ? preview : noCarImg} alt="NoCarImg" />
-                </div>
-                <div className={s.leftCarInfo}>
-                  <span className={s.carName}>{carModel}</span>
-                  <span className={s.category}>Люкс</span>
-                </div>
-                <div className={s.fileSelect}>
-                  <input
-                    type={"file"}
-                    id="input_file"
-                    onChange={handlerPhotoSelect}
-                  />
-                  <label htmlFor="input_file">
-                    <div
-                      onClick={() => setCarImageTouched(true)}
-                      className={
-                        (isCarImgTouched && !carImg && !preview) || !carImg
-                          ? `${s.labelWrapper} ${s.inputWithError}`
-                          : s.labelWrapper
-                      }
-                    >
-                      <div className={s.selectFileText}>
-                        {carImg ? carImg.name : "Выберите файл..."}
-                      </div>
-                      <div className={s.selectBtn}>Обзор</div>
+            <Form
+              onSubmit={onSubmit}
+              render={({
+                handleSubmit,
+                form,
+                submitting,
+                pristine,
+                values,
+              }) => (
+                <form onSubmit={handleSubmit}>
+                  <div className={s.leftFormBlock}>
+                    <div className={s.carImageWrapper}>
+                      <img src={preview ? preview : noCarImg} alt="NoCarImg" />
                     </div>
-                    {(isCarImgTouched && !carImg && !preview) ||
-                      (!carImg && (
-                        <div className={s.inputErrorMsg}>
-                          Выберите фото автомобиля
-                        </div>
-                      ))}
-                  </label>
-                </div>
-
-                <div className={s.loadProcessWrapper}>
-                  <div className={s.loadProcessContainer}>
-                    <div className={s.loadProcessText}>
-                      <span>Заполненно</span>
-                      <span>{progress}%</span>
+                    <div className={s.leftCarInfo}>
+                      <span className={s.carName}>{carModel}</span>
+                      <span className={s.category}>Люкс</span>
                     </div>
-                    <div className={s.outerProcessLine}>
-                      <div
-                        className={s.innerProcessLine}
-                        style={{
-                          width: `${progress}%`,
-                          background: `${innerLineColor}`,
-                        }}
-                      ></div>
-                    </div>
-                  </div>
-                </div>
-                <div className={s.carDescription}>
-                  <div className={s.descriptionText}>Описание</div>
-                  <p className={s.description}>{carDescription}</p>
-                </div>
-              </div>
-              <div className={s.rightFormBlock}>
-                <div className={s.carSettingsText}>Настройки автомобиля</div>
-                <div className={s.rightInputsWrapper}>
-                  <div className={s.leftColumn}>
-                    <div className={s.fieldWrapper}>
-                      <label>Модель автомобиля</label>
+                    <div className={s.fileSelect}>
                       <input
-                        className={
-                          isCarModelTouched && !carModel
-                            ? `${s.inputField} ${s.inputWithError}`
-                            : s.inputField
-                        }
-                        type="text"
-                        value={carModel}
-                        onChange={(event) =>
-                          handlerModelInput(event.target.value)
-                        }
+                        type={"file"}
+                        id="input_file"
+                        onChange={handlerPhotoSelect}
                       />
-
-                      {isCarModelTouched && !carModel && (
-                        <div className={s.inputErrorMsg}>
-                          Введите название модели автомобиля
-                        </div>
-                      )}
-                    </div>
-
-                    <div className={s.fieldWrapper}>
-                      <label>Номер</label>
-                      <input
-                        className={
-                          isCarNumberTouched && !carNumber
-                            ? `${s.inputField} ${s.inputWithError}`
-                            : s.inputField
-                        }
-                        type="text"
-                        value={carNumber}
-                        onChange={(event) =>
-                          handlerNumberInput(event.target.value)
-                        }
-                      />
-                      {isCarNumberTouched && !carNumber && (
-                        <div className={s.inputErrorMsg}>
-                          Введите номер автомобиля
-                        </div>
-                      )}
-                    </div>
-
-                    <div className={s.fieldWrapper}>
-                      <label>Мин. Цена</label>
-                      <input
-                        className={
-                          isPriceMinTouched && !priceMin
-                            ? `${s.inputField} ${s.inputWithError}`
-                            : s.inputField
-                        }
-                        type="number"
-                        value={priceMin}
-                        onChange={(event) =>
-                          handlerPriceMinInput(event.target.value)
-                        }
-                      />
-                      {isPriceMinTouched && !priceMin && (
-                        <div className={s.inputErrorMsg}>
-                          Введите минимальную цену
-                        </div>
-                      )}
-                    </div>
-
-                    <div className={s.fieldWrapper}>
-                      <label>Макс. цена</label>
-                      <input
-                        className={
-                          isPriceMaxTouched && !priceMax
-                            ? `${s.inputField} ${s.inputWithError}`
-                            : s.inputField
-                        }
-                        type="number"
-                        value={priceMax}
-                        onChange={(event) =>
-                          handlerPriceMaxInput(event.target.value)
-                        }
-                      />
-                      {isPriceMaxTouched && !priceMax && (
-                        <div className={s.inputErrorMsg}>
-                          Введите максимальную цену
-                        </div>
-                      )}
-                    </div>
-                  </div>
-
-                  <div className={s.rightColumn}>
-                    <div className={s.fieldWrapper}>
-                      <label>Категория</label>
-                      <select
-                        value={curCategory}
-                        onChange={(e) => handlerCarCategory(e.target.value)}
-                        className={
-                          isCurCategoryTouched && !curCategory
-                            ? `${s.inputField} ${s.inputWithError}`
-                            : s.inputField
-                        }
-                      >
-                        <option></option>
-                        {category.data.map(({ id, name }) => (
-                          <option key={id} value={id}>
-                            {name}
-                          </option>
-                        ))}
-                      </select>
-                      {isCurCategoryTouched && !curCategory && (
-                        <div className={s.inputErrorMsg}>
-                          Выберите категорию
-                        </div>
-                      )}
-                    </div>
-
-                    <div className={s.fieldWrapper}>
-                      <label>Описание</label>
-                      <textarea
-                        className={
-                          isCarDescriptionTouched && !carDescription
-                            ? `${s.inputField} ${s.inputWithError}`
-                            : s.inputField
-                        }
-                        type="text"
-                        value={carDescription}
-                        onChange={(e) =>
-                          handlerDescriptionInput(e.target.value)
-                        }
-                      />
-                      {isCarDescriptionTouched && !carDescription && (
-                        <div className={s.inputErrorMsg}>
-                          Заполните описание
-                        </div>
-                      )}
-                    </div>
-
-                    <div className={s.fieldWrapper}>
-                      <label>Количество топлива</label>
-                      <input
-                        className={
-                          isTankValueTouched && !tankValue
-                            ? `${s.inputField} ${s.inputWithError}`
-                            : s.inputField
-                        }
-                        type="number"
-                        value={tankValue}
-                        onChange={(e) => handlerTankInput(e.target.value)}
-                      />
-                      {isTankValueTouched && !tankValue && (
-                        <div className={s.inputErrorMsg}>
-                          Введите количество топлива
-                        </div>
-                      )}
-                    </div>
-
-                    <div className={s.fieldWrapper}>
-                      <label>Доступные цвета</label>
-                      <div className={s.addColorsInput}>
-                        <input
-                          className={
-                            isColorValueTouched && !availabelColors
-                              ? `${s.inputField} ${s.inputWithError}`
-                              : s.inputField
-                          }
-                          // className={s.inputField}
-                          type="text"
-                          value={colorValue}
-                          onChange={(e) => handlerColorInput(e.target.value)}
-                        />
+                      <label htmlFor="input_file">
                         <div
-                          className={s.addColorBtnWrapper}
-                          onClick={handlerAddColor}
+                          onClick={() => setCarImageTouched(true)}
+                          className={
+                            isCarImgTouched && !carImg && !preview
+                              ? `${s.labelWrapper} ${s.inputWithError}`
+                              : s.labelWrapper
+                          }
                         >
-                          <ReactSVG src={addColorBtn} />
-                          <div className={s.verticalLine}>
-                            <ReactSVG src={vertivalLine} />
+                          <div className={s.selectFileText}>
+                            {carImg ? carImg.name : "Выберите файл..."}
                           </div>
-                          <div className={s.horizontLine}>
-                            <ReactSVG src={horizonLine} />
-                          </div>
+                          <div className={s.selectBtn}>Обзор</div>
                         </div>
-                      </div>
-
-                      <div className={s.availabelColorsWrapper}>
-                        {availabelColors &&
-                          availabelColors.map((color, index) => (
-                            <div key={index} className={s.colorWrapper}>
-                              <div
-                                className={s.checkBoxSvgWrapper}
-                                onClick={() => handlerDeleteColor(color)}
-                              >
-                                <ReactSVG src={colorCheckBox} />
-                                <div className={s.checkSvg}>
-                                  <ReactSVG src={check} />
-                                </div>
-                              </div>
-
-                              {color}
+                        {(isCarImgTouched && !carImg && !preview) ||
+                          (!carImg && isCarImgTouched && (
+                            <div className={s.inputErrorMsg}>
+                              Выберите фото автомобиля
                             </div>
                           ))}
+                      </label>
+                    </div>
+
+                    <div className={s.loadProcessWrapper}>
+                      <div className={s.loadProcessContainer}>
+                        <div className={s.loadProcessText}>
+                          <span>Заполненно</span>
+                          <span>{progress}%</span>
+                        </div>
+                        <div className={s.outerProcessLine}>
+                          <div
+                            className={s.innerProcessLine}
+                            style={{
+                              width: `${progress}%`,
+                              background: `${innerLineColor}`,
+                            }}
+                          ></div>
+                        </div>
+                      </div>
+                    </div>
+                    <div className={s.carDescription}>
+                      <div className={s.descriptionText}>Описание</div>
+                      <p className={s.description}>{carDescription}</p>
+                    </div>
+                  </div>
+                  <div className={s.rightFormBlock}>
+                    <div className={s.carSettingsText}>
+                      Настройки автомобиля
+                    </div>
+                    <div className={s.rightInputsWrapper}>
+                      <div className={s.leftColumn}>
+                        <div className={s.fieldWrapper}>
+                          <label>Модель автомобиля</label>
+                          <input
+                            className={
+                              isCarModelTouched && !carModel
+                                ? `${s.inputField} ${s.inputWithError}`
+                                : s.inputField
+                            }
+                            type="text"
+                            value={carModel}
+                            onChange={(event) =>
+                              handlerModelInput(event.target.value)
+                            }
+                          />
+
+                          {isCarModelTouched && !carModel && (
+                            <div className={s.inputErrorMsg}>
+                              Введите название модели автомобиля
+                            </div>
+                          )}
+                        </div>
+
+                        <div className={s.fieldWrapper}>
+                          <label>Номер</label>
+                          <input
+                            className={
+                              isCarNumberTouched && !carNumber
+                                ? `${s.inputField} ${s.inputWithError}`
+                                : s.inputField
+                            }
+                            type="text"
+                            value={carNumber}
+                            onChange={(event) =>
+                              handlerNumberInput(event.target.value)
+                            }
+                          />
+                          {isCarNumberTouched && !carNumber && (
+                            <div className={s.inputErrorMsg}>
+                              Введите номер автомобиля
+                            </div>
+                          )}
+                        </div>
+
+                        <div className={s.fieldWrapper}>
+                          <label>Мин. Цена</label>
+                          <input
+                            className={
+                              isPriceMinTouched && !priceMin
+                                ? `${s.inputField} ${s.inputWithError}`
+                                : s.inputField
+                            }
+                            type="number"
+                            value={priceMin}
+                            onChange={(event) =>
+                              handlerPriceMinInput(event.target.value)
+                            }
+                          />
+                          {isPriceMinTouched && !priceMin && (
+                            <div className={s.inputErrorMsg}>
+                              Введите минимальную цену
+                            </div>
+                          )}
+                        </div>
+
+                        <div className={s.fieldWrapper}>
+                          <label>Макс. цена</label>
+                          <input
+                            className={
+                              isPriceMaxTouched && !priceMax
+                                ? `${s.inputField} ${s.inputWithError}`
+                                : s.inputField
+                            }
+                            type="number"
+                            value={priceMax}
+                            onChange={(event) =>
+                              handlerPriceMaxInput(event.target.value)
+                            }
+                          />
+                          {isPriceMaxTouched && !priceMax && (
+                            <div className={s.inputErrorMsg}>
+                              Введите максимальную цену
+                            </div>
+                          )}
+                        </div>
                       </div>
 
-                      {isColorValueTouched && !availabelColors && (
-                        <div className={s.inputErrorMsg}>Добавьте цвет</div>
+                      <div className={s.rightColumn}>
+                        <div className={s.fieldWrapper}>
+                          <label>Категория</label>
+                          <select
+                            value={curCategory}
+                            onChange={(e) => handlerCarCategory(e.target.value)}
+                            className={
+                              isCurCategoryTouched && !curCategory
+                                ? `${s.inputField} ${s.inputWithError}`
+                                : s.inputField
+                            }
+                          >
+                            <option></option>
+                            {category.data.map(({ id, name }) => (
+                              <option key={id} value={id}>
+                                {name}
+                              </option>
+                            ))}
+                          </select>
+                          {isCurCategoryTouched && !curCategory && (
+                            <div className={s.inputErrorMsg}>
+                              Выберите категорию
+                            </div>
+                          )}
+                        </div>
+
+                        <div className={s.fieldWrapper}>
+                          <label>Описание</label>
+                          <textarea
+                            className={
+                              isCarDescriptionTouched && !carDescription
+                                ? `${s.inputField} ${s.inputWithError}`
+                                : s.inputField
+                            }
+                            type="text"
+                            value={carDescription}
+                            onChange={(e) =>
+                              handlerDescriptionInput(e.target.value)
+                            }
+                          />
+                          {isCarDescriptionTouched && !carDescription && (
+                            <div className={s.inputErrorMsg}>
+                              Заполните описание
+                            </div>
+                          )}
+                        </div>
+
+                        <div className={s.fieldWrapper}>
+                          <label>Количество топлива</label>
+                          <input
+                            className={
+                              isTankValueTouched && !tankValue
+                                ? `${s.inputField} ${s.inputWithError}`
+                                : s.inputField
+                            }
+                            type="number"
+                            value={tankValue}
+                            onChange={(e) => handlerTankInput(e.target.value)}
+                          />
+                          {isTankValueTouched && !tankValue && (
+                            <div className={s.inputErrorMsg}>
+                              Введите количество топлива
+                            </div>
+                          )}
+                        </div>
+
+                        <div className={s.fieldWrapper}>
+                          <label>Доступные цвета</label>
+                          <div className={s.addColorsInput}>
+                            <input
+                              className={
+                                isColorValueTouched &&
+                                availabelColors.length === 0
+                                  ? `${s.inputField} ${s.inputWithError}`
+                                  : s.inputField
+                              }
+                              // className={s.inputField}
+                              type="text"
+                              value={colorValue}
+                              onChange={(e) =>
+                                handlerColorInput(e.target.value)
+                              }
+                            />
+                            <div
+                              className={s.addColorBtnWrapper}
+                              onClick={handlerAddColor}
+                            >
+                              <ReactSVG src={addColorBtn} />
+                              <div className={s.verticalLine}>
+                                <ReactSVG src={vertivalLine} />
+                              </div>
+                              <div className={s.horizontLine}>
+                                <ReactSVG src={horizonLine} />
+                              </div>
+                            </div>
+                          </div>
+
+                          {availabelColors.length !== 0 && (
+                            <div className={s.availabelColorsWrapper}>
+                              {availabelColors &&
+                                availabelColors.map((color, index) => (
+                                  <div key={index} className={s.colorWrapper}>
+                                    <div
+                                      className={s.checkBoxSvgWrapper}
+                                      onClick={() => handlerDeleteColor(color)}
+                                    >
+                                      <ReactSVG src={colorCheckBox} />
+                                      <div className={s.checkSvg}>
+                                        <ReactSVG src={check} />
+                                      </div>
+                                    </div>
+
+                                    {color}
+                                  </div>
+                                ))}
+                            </div>
+                          )}
+
+                          {isColorValueTouched &&
+                            availabelColors.length === 0 && (
+                              <div className={s.inputErrorMsg}>
+                                Добавьте цвет
+                              </div>
+                            )}
+                        </div>
+                      </div>
+                    </div>
+                    <div className={s.buttonsWrapper}>
+                      <div className={s.addCarBtns}>
+                        <button
+                          onClick={() => setColorValueTouched(true)}
+                          type="submit"
+                        >
+                          Сохранить
+                        </button>
+                        <NavLink to="/Cars">Отменить</NavLink>
+                      </div>
+                      {carId && (
+                        <div className={s.deleteBtn}>
+                          <button onClick={handlerCarDelete}>Удалить</button>
+                        </div>
                       )}
                     </div>
                   </div>
-                </div>
-                <div className={s.buttonsWrapper}>
-                  <div className={s.addCarBtns}>
-                    <button onClick={onSubmit} type="submit">
-                      Сохранить
-                    </button>
-                    <NavLink to="/Cars">Отменить</NavLink>
-                  </div>
-                  {carId && (
-                    <div className={s.deleteBtn}>
-                      <button onClick={handlerCarDelete}>Удалить</button>
-                    </div>
-                  )}
-                </div>
-              </div>
-            </form>
+                </form>
+              )}
+            />
           </div>
         </div>
       </section>
