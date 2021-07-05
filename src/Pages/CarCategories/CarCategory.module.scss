@@ -2,6 +2,12 @@
   display: none;
 }
 
+@media screen and (max-width: 380px) {
+  .categoryDescription {
+    display: none;
+  }
+}
+
 @media screen and (max-width: 360px) {
   .carCategoryTableWrapper {
     table {

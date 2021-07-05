@@ -19,7 +19,7 @@ const RateType = ({
     <section
       className={isAddRatyTypeActive || isChangeRateTypeActive ? s.hide : null}
     >
-      <PageTitle title="Города" />
+      <PageTitle title="Типы тарифов" />
       <EntityWrapper>
         <AddEntityButton handlerAddEntity={handlerAddRateType} />
         <div className={s.rateTypeTableWrapper}>
@@ -27,7 +27,7 @@ const RateType = ({
             <thead>
               <tr>
                 <th>Название</th>
-                <th>Ед. измерения</th>
+                <th className={s.rateTypeUnit}>Ед. измерения</th>
                 <th>Изменить</th>
                 <th>Удалить</th>
               </tr>
@@ -36,7 +36,7 @@ const RateType = ({
               {rateType.data.map(({ id, unit, name }) => (
                 <tr key={id}>
                   <td>{name ? name : "No Name"}</td>
-                  <td>{unit ? unit : "No unit"}</td>
+                  <td className={s.rateTypeUnit}>{unit ? unit : "No unit"}</td>
                   <td>
                     <ChangeEntityButton
                       handlerChangeEntity={handlerChangeRateType}

@@ -20,7 +20,7 @@ const OrderStatus = ({
         isAddOrderStatusActive || isChangeOrderStatusActive ? s.hide : null
       }
     >
-      <PageTitle title="Города" />
+      <PageTitle title="Статусы заказов" />
       <EntityWrapper>
         <AddEntityButton handlerAddEntity={handlerAddOrderStatus} />
         <table>

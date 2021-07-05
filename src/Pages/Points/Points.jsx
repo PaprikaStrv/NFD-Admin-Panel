@@ -18,7 +18,7 @@ const Points = ({
     <section
       className={isAddPointActive || isChangePointActive ? s.hide : null}
     >
-      <PageTitle title="Города" />
+      <PageTitle title="Места выдачи" />
       <EntityWrapper>
         <AddEntityButton handlerAddEntity={handlerAddPoint} />
         <div className={s.pointsTableWrapper}>

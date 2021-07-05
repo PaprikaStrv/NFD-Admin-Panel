@@ -12,8 +12,9 @@ import pensil from "../../Images/pensil.svg";
 import menuBtn from "../../Images/menu_btn.svg";
 import { NavLink } from "react-router-dom";
 import { ReactSVG } from "react-svg";
+import { menuItem } from "../../helpers/constants";
 
-const BurgerSideBar = () => {
+const BurgerSideBar = ({ setSideBarActive }) => {
   return (
     <div className={`${s.burgerSideBar} ${style.sideBarWrapper}`}>
       <div className={style.siderBarLogoWrapper}>
@@ -22,73 +23,28 @@ const BurgerSideBar = () => {
       </div>
       <div className={style.linksListWrapper}>
         <ul>
-          {4 > 3 ? (
-            <li className={style.currentLi}>
-              <NavLink to="/">
-                <div className={style.iconWrapper}>
-                  <ReactSVG src={pensil} />
-                </div>
+          {menuItem.map(({ id, link, src, name }) => {
+            return (
+              <li key={id} onClick={() => setSideBarActive(false)}>
+                <NavLink
+                  to={link}
+                  activeStyle={{
+                    backgroundColor: "#fbfbfb",
+                    boxShadow:
+                      "inset 0px -1px 0px #e1e5eb, inset 4px 0px 0px #007bff",
+                    color: "#007bff",
+                  }}
+                >
+                  <div className={s.iconWrapper}>
+                    <ReactSVG src={src} />
+                  </div>
 
-                <div className={style.linkName}>Карточка автомобиля</div>
-              </NavLink>
-            </li>
-          ) : null}
-
-          <li>
-            <NavLink to="/">
-              <div className={style.iconWrapper}>
-                <ReactSVG src={blogPost} />
-              </div>
-
-              <div className={style.linkName}>Список авто</div>
-            </NavLink>
-          </li>
-
-          <li>
-            <NavLink to="/Orders">
-              <div className={style.iconWrapper}>
-                <ReactSVG src={orders} />
-              </div>
-
-              <div className={style.linkName}>Заказы</div>
-            </NavLink>
-          </li>
-
-          <li>
-            <NavLink to="/">
-              <div className={style.iconWrapper}>
-                <ReactSVG src={menu} />
-              </div>
-              <div className={style.linkName}>Меню 4</div>
-            </NavLink>
-          </li>
-
-          <li>
-            <NavLink to="/">
-              <div className={style.iconWrapper}>
-                <ReactSVG src={menu1} />
-              </div>
-              <div className={style.linkName}>Меню 5</div>
-            </NavLink>
-          </li>
-
-          <li>
-            <NavLink to="/">
-              <div className={style.iconWrapper}>
-                <ReactSVG src={person} />
-              </div>
-              <div className={style.linkName}>Меню 6</div>
-            </NavLink>
-          </li>
-
-          <li>
-            <NavLink to="/">
-              <div className={style.iconWrapper}>
-                <ReactSVG src={warring} />
-              </div>
-              <div className={style.linkName}>Меню 7</div>
-            </NavLink>
-          </li>
+                  {/* <div className={s.linkName}>{name}</div> */}
+                  {name}
+                </NavLink>
+              </li>
+            );
+          })}
         </ul>
       </div>
     </div>

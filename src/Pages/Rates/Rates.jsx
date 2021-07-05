@@ -17,14 +17,14 @@ const Rates = ({
 }) => {
   return (
     <section className={isAddRateActive || isChangeRateActive ? s.hide : null}>
-      <PageTitle title="Города" />
+      <PageTitle title="Тарифы" />
       <EntityWrapper>
         <AddEntityButton handlerAddEntity={handlerAddRate} />
         <table>
           <thead>
             <tr>
               <th>Название</th>
-              <th>Цена</th>
+              <th className={s.ratePrice}>Цена</th>
               <th>Изменить</th>
               <th>Удалить</th>
             </tr>
@@ -37,7 +37,7 @@ const Rates = ({
                     ? rateTypeId.name
                     : "No Name"}
                 </td>
-                <td>{price ? price : "No price"}</td>
+                <td className={s.ratePrice}>{price ? price : "No price"}</td>
                 <td>
                   <ChangeEntityButton
                     handlerChangeEntity={handlerChangeRate}

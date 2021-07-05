@@ -20,7 +20,7 @@ const CarCategories = ({
     <section
       className={isAddCarCategory || isChangeCarCategotyActive ? s.hide : null}
     >
-      <PageTitle title="Города" />
+      <PageTitle title="Категории автомобилей" />
       <EntityWrapper>
         <AddEntityButton handlerAddEntity={handlerAddCarCategory} />
         <div className={s.carCategoryTableWrapper}>
@@ -28,7 +28,7 @@ const CarCategories = ({
             <thead>
               <tr>
                 <th>Название</th>
-                <th>Описание</th>
+                <th className={s.categoryDescription}>Описание</th>
                 <th>Изменить</th>
                 <th>Удалить</th>
               </tr>
@@ -37,7 +37,7 @@ const CarCategories = ({
               {carCategories.data.map(({ id, name, description }) => (
                 <tr key={id}>
                   <td>{name ? name : "No Name"}</td>
-                  <td>{description ? description : "No description"}</td>
+                  <td className={s.categoryDescription}>{description ? description : "No description"}</td>
                   <td>
                     <ChangeEntityButton
                       handlerChangeEntity={hanlderChangeCarCategory}

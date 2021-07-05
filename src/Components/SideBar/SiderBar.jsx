@@ -17,7 +17,7 @@ const SideBar = () => {
       <div className={s.sideBarBtn} onClick={() => activateSiderBar()}>
         <ReactSVG src={menuBtn} />
       </div>
-      {isSideBarActive && <BurgerSideBar />}
+      {isSideBarActive && <BurgerSideBar {...{ setSideBarActive }} />}
       <div className={s.sideBarWrapper}>
         <div className={s.siderBarLogoWrapper}>
           <ReactSVG src={logo} />
