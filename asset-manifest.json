@@ -1,15 +1,17 @@
 {
   "files": {
-    "main.css": "/nfd-admin-panel/static/css/main.6140dc66.chunk.css",
-    "main.js": "/nfd-admin-panel/static/js/main.8fd46482.chunk.js",
-    "main.js.map": "/nfd-admin-panel/static/js/main.8fd46482.chunk.js.map",
+    "main.css": "/nfd-admin-panel/static/css/main.04821fb2.chunk.css",
+    "main.js": "/nfd-admin-panel/static/js/main.b3829b40.chunk.js",
+    "main.js.map": "/nfd-admin-panel/static/js/main.b3829b40.chunk.js.map",
     "runtime-main.js": "/nfd-admin-panel/static/js/runtime-main.373bff25.js",
     "runtime-main.js.map": "/nfd-admin-panel/static/js/runtime-main.373bff25.js.map",
-    "static/js/2.6c46c2f2.chunk.js": "/nfd-admin-panel/static/js/2.6c46c2f2.chunk.js",
-    "static/js/2.6c46c2f2.chunk.js.map": "/nfd-admin-panel/static/js/2.6c46c2f2.chunk.js.map",
+    "static/css/2.496dcee5.chunk.css": "/nfd-admin-panel/static/css/2.496dcee5.chunk.css",
+    "static/js/2.8899beb4.chunk.js": "/nfd-admin-panel/static/js/2.8899beb4.chunk.js",
+    "static/js/2.8899beb4.chunk.js.map": "/nfd-admin-panel/static/js/2.8899beb4.chunk.js.map",
     "index.html": "/nfd-admin-panel/index.html",
-    "static/css/main.6140dc66.chunk.css.map": "/nfd-admin-panel/static/css/main.6140dc66.chunk.css.map",
-    "static/js/2.6c46c2f2.chunk.js.LICENSE.txt": "/nfd-admin-panel/static/js/2.6c46c2f2.chunk.js.LICENSE.txt",
+    "static/css/2.496dcee5.chunk.css.map": "/nfd-admin-panel/static/css/2.496dcee5.chunk.css.map",
+    "static/css/main.04821fb2.chunk.css.map": "/nfd-admin-panel/static/css/main.04821fb2.chunk.css.map",
+    "static/js/2.8899beb4.chunk.js.LICENSE.txt": "/nfd-admin-panel/static/js/2.8899beb4.chunk.js.LICENSE.txt",
     "static/media/Add New Post Icon.f2c1be7b.svg": "/nfd-admin-panel/static/media/Add New Post Icon.f2c1be7b.svg",
     "static/media/Avatar.338afc99.svg": "/nfd-admin-panel/static/media/Avatar.338afc99.svg",
     "static/media/Blog Posts Icon.738fc3f8.svg": "/nfd-admin-panel/static/media/Blog Posts Icon.738fc3f8.svg",
@@ -25,7 +27,9 @@
     "static/media/addColorBtnBorder.b9549218.svg": "/nfd-admin-panel/static/media/addColorBtnBorder.b9549218.svg",
     "static/media/check.5f6c1f54.svg": "/nfd-admin-panel/static/media/check.5f6c1f54.svg",
     "static/media/checkBoxIcon.2be04cd8.svg": "/nfd-admin-panel/static/media/checkBoxIcon.2be04cd8.svg",
+    "static/media/CheckBoxInput.module.scss": "/nfd-admin-panel/static/media/checkBoxSvg.17659989.svg",
     "static/media/checkIcon.35a8bd90.svg": "/nfd-admin-panel/static/media/checkIcon.35a8bd90.svg",
+    "static/media/clean_input.13854ee1.svg": "/nfd-admin-panel/static/media/clean_input.13854ee1.svg",
     "static/media/colorCheckBox.48dffe58.svg": "/nfd-admin-panel/static/media/colorCheckBox.48dffe58.svg",
     "static/media/disabledCheckBox.12832ce6.svg": "/nfd-admin-panel/static/media/disabledCheckBox.12832ce6.svg",
     "static/media/dropdown_icon.e709e3e8.svg": "/nfd-admin-panel/static/media/dropdown_icon.e709e3e8.svg",
@@ -41,8 +45,9 @@
   },
   "entrypoints": [
     "static/js/runtime-main.373bff25.js",
-    "static/js/2.6c46c2f2.chunk.js",
-    "static/css/main.6140dc66.chunk.css",
-    "static/js/main.8fd46482.chunk.js"
+    "static/css/2.496dcee5.chunk.css",
+    "static/js/2.8899beb4.chunk.js",
+    "static/css/main.04821fb2.chunk.css",
+    "static/js/main.b3829b40.chunk.js"
   ]
 }
