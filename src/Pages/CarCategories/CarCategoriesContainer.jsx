@@ -8,11 +8,14 @@ import {
 import AddCarCategoryContainer from "./AddCarCategory/AddCarCategoryContainer";
 import CarCategories from "./CarCategories";
 import ChangeCarCategoryContainer from "./ChangeCarCategory/ChangeCarCategoryContainer";
+import { setCarCategoryResponse } from "./../../Redux/carCategory-reducer";
 
 const CarCategoriesContainer = ({
   getCarCategories,
   carCategories,
   deleteCarCategory,
+  response,
+  setCarCategoryResponse,
 }) => {
   const [isAddCarCategory, setCarCategoryActive] = useState(false);
   const [isChangeCarCategotyActive, setChangeCarCategoryActive] =
@@ -32,6 +35,11 @@ const CarCategoriesContainer = ({
     deleteCarCategory(id);
   };
 
+  const closeCarCategoryResponse = () => {
+    setCarCategoryResponse("");
+    window.location.reload();
+  };
+
   useEffect(() => {
     getCarCategories();
   }, []);
@@ -43,11 +51,18 @@ const CarCategoriesContainer = ({
   return (
     <>
       {isAddCarCategory && (
-        <AddCarCategoryContainer {...{ setCarCategoryActive }} />
+        <AddCarCategoryContainer
+          {...{ setCarCategoryActive, response, closeCarCategoryResponse }}
+        />
       )}
       {isChangeCarCategotyActive && (
         <ChangeCarCategoryContainer
-          {...{ curCarCategoryId, setChangeCarCategoryActive }}
+          {...{
+            curCarCategoryId,
+            setChangeCarCategoryActive,
+            response,
+            closeCarCategoryResponse,
+          }}
         />
       )}
       <CarCategories
@@ -58,6 +73,8 @@ const CarCategoriesContainer = ({
           handlerDeleteCarCategory,
           hanlderChangeCarCategory,
           isChangeCarCategotyActive,
+          response,
+          closeCarCategoryResponse,
         }}
       />
     </>
@@ -66,9 +83,11 @@ const CarCategoriesContainer = ({
 
 const mapStateToProps = (state) => ({
   carCategories: state.carCategories.carCategories,
+  response: state.carCategories.response,
 });
 
 export default connect(mapStateToProps, {
   getCarCategories,
   deleteCarCategory,
+  setCarCategoryResponse,
 })(CarCategoriesContainer);

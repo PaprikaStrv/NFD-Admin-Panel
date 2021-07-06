@@ -15,6 +15,8 @@ const ChangeCityContainer = ({
   setCurOrderStatus,
   getCurOrderStatus,
   updateOrderStatus,
+  response,
+  closeOrderStatusResponse,
 }) => {
   const handlerCancel = () => {
     setCurOrderStatus();
@@ -34,7 +36,17 @@ const ChangeCityContainer = ({
   if (!curOrderStatus || curOrderStatus.length === 0) {
     return <Preloader />;
   }
-  return <ChangeOrderStatus {...{ onSubmit, handlerCancel, curOrderStatus }} />;
+  return (
+    <ChangeOrderStatus
+      {...{
+        onSubmit,
+        handlerCancel,
+        curOrderStatus,
+        response,
+        closeOrderStatusResponse,
+      }}
+    />
+  );
 };
 
 const mapStateToProps = (state) => ({

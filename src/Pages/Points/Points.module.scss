@@ -4,24 +4,10 @@
   @include entityScroll();
 }
 
+.changeTableColumn, .deleteTableColumn {
+  width: 60px;
+}
+
 .hide {
   display: none;
-}
-@media screen and (max-width: 600px) {
-  table {
-    padding-left: 0px;
-    font-size: 13px;
-  }
-}
-
-@media screen and (max-width: 500px) {
-  .pointName {
-    display: none;
-  }
-}
-
-@media screen and (max-width: 413px) {
-  .pointCity {
-    display: none;
-  }
 }

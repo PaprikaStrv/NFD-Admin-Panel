@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import { Form } from "react-final-form";
 import { Field } from "react-final-form";
 import s from "../../Cities/AddCity/AddCity.module.scss";
+import Response from "./../../../Components/Response/Response";
 
 const ChangeRate = ({
   onSubmit,
@@ -12,9 +13,14 @@ const ChangeRate = ({
   handlerCancel,
   setRateTouched,
   rateType,
+  response,
+  closeRateResponse,
 }) => {
   return (
     <div className={s.entityFormWrapper}>
+      {response.length !== 0 && (
+        <Response response={response} closeSuccessInfo={closeRateResponse} />
+      )}
       <Form
         onSubmit={onSubmit}
         validate={(values) => {
@@ -58,15 +64,26 @@ const ChangeRate = ({
                 }
               >
                 <option></option>
-                {rateType.data.map(({ id, name }) => (
-                  <option
-                    key={id}
-                    value={id}
-                    selected={id === rate.data.rateTypeId.id}
-                  >
-                    {name}
-                  </option>
-                ))}
+
+                {rateType.data.map(({ id, name }) => {
+                  if (rate.data.rateTypeId) {
+                    return (
+                      <option
+                        key={id}
+                        value={id}
+                        selected={id === rate.data.rateTypeId.id}
+                      >
+                        {name}
+                      </option>
+                    );
+                  } else {
+                    return (
+                      <option key={id} value={id}>
+                        {name}
+                      </option>
+                    );
+                  }
+                })}
               </select>
               {isRateTouched && !curRate && (
                 <div className={s.inputErrorMsg}>Выберите тип тарифа</div>

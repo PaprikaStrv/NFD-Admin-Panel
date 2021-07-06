@@ -35,11 +35,9 @@ const BurgerSideBar = ({ setSideBarActive }) => {
                     color: "#007bff",
                   }}
                 >
-                  <div className={s.iconWrapper}>
+                  <div className={style.iconWrapper}>
                     <ReactSVG src={src} />
                   </div>
-
-                  {/* <div className={s.linkName}>{name}</div> */}
                   {name}
                 </NavLink>
               </li>

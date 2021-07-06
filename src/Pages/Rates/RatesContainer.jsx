@@ -1,12 +1,22 @@
 import React, { useEffect, useState } from "react";
 import { connect } from "react-redux";
 import Preloader from "../../Components/Preloader/Preloader";
-import { deleteRate, getRates } from "../../Redux/rate-reducer";
+import {
+  deleteRate,
+  getRates,
+  setRateResponse,
+} from "../../Redux/rate-reducer";
 import AddRateContainer from "./AddRate/AddRateContainer";
 import ChangeRateContainer from "./ChangeRate/ChangeRateContainer";
 import Rates from "./Rates";
 
-const RatesContainer = ({ getRates, rates, deleteRate }) => {
+const RatesContainer = ({
+  getRates,
+  rates,
+  deleteRate,
+  response,
+  setRateResponse,
+}) => {
   const [isAddRateActive, setAddRateActive] = useState(false);
   const [isChangeRateActive, setChangeRateActive] = useState(false);
   const [curRateId, setCurRateId] = useState("");
@@ -24,6 +34,11 @@ const RatesContainer = ({ getRates, rates, deleteRate }) => {
     deleteRate(id);
   };
 
+  const closeRateResponse = () => {
+    setRateResponse("");
+    window.location.reload();
+  };
+
   useEffect(() => {
     getRates();
   }, []);
@@ -34,9 +49,15 @@ const RatesContainer = ({ getRates, rates, deleteRate }) => {
 
   return (
     <>
-      {isAddRateActive && <AddRateContainer {...{ setAddRateActive }} />}
+      {isAddRateActive && (
+        <AddRateContainer
+          {...{ setAddRateActive, response, closeRateResponse }}
+        />
+      )}
       {isChangeRateActive && (
-        <ChangeRateContainer {...{ curRateId, setChangeRateActive }} />
+        <ChangeRateContainer
+          {...{ curRateId, setChangeRateActive, response, closeRateResponse }}
+        />
       )}
       <Rates
         {...{
@@ -46,6 +67,8 @@ const RatesContainer = ({ getRates, rates, deleteRate }) => {
           isAddRateActive,
           handlerChangeRate,
           isChangeRateActive,
+          response,
+          closeRateResponse
         }}
       />
     </>
@@ -54,8 +77,11 @@ const RatesContainer = ({ getRates, rates, deleteRate }) => {
 
 const mapStateToProps = (state) => ({
   rates: state.rates.rates,
+  response: state.rates.response,
 });
 
-export default connect(mapStateToProps, { getRates, deleteRate })(
-  RatesContainer
-);
+export default connect(mapStateToProps, {
+  getRates,
+  deleteRate,
+  setRateResponse,
+})(RatesContainer);

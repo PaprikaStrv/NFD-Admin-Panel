@@ -2,10 +2,12 @@ import { simbirSoftAPI } from "../API/api";
 
 const SET_CAR_CATEGORIES = "SET_CAR_CATEGORIES";
 const SET_CUR_CAR_CATEGORY = "SET_CUR_CAT_CATEGORY";
+const SET_CAR_CATEGORY_RESPONSE = "SET_CAR_CATEGORY_RESPONSE";
 
 let intitialState = {
   carCategories: [],
   carCategory: [],
+  response: [],
 };
 
 const carCategoriesReducer = (state = intitialState, action) => {
@@ -22,6 +24,12 @@ const carCategoriesReducer = (state = intitialState, action) => {
         carCategory: action.carCategory,
       };
     }
+    case SET_CAR_CATEGORY_RESPONSE: {
+      return {
+        ...state,
+        response: action.response,
+      };
+    }
     default:
       return state;
   }
@@ -35,6 +43,11 @@ export const setCarCategories = (carCategories) => ({
 export const setCarCategory = (carCategory) => ({
   type: SET_CUR_CAR_CATEGORY,
   carCategory,
+});
+
+export const setCarCategoryResponse = (response) => ({
+  type: SET_CAR_CATEGORY_RESPONSE,
+  response,
 });
 
 export const getCarCategories = () => {
@@ -54,24 +67,24 @@ export const getCarCategory = (id) => {
 export const postCarCategory = (formData) => {
   return async (dispatch) => {
     const response = await simbirSoftAPI.postCarCategory(formData);
-    window.location.reload();
-    alert("Категория добавлена успшно");
+    dispatch(setCarCategoryResponse(response));
+    setTimeout(() => window.location.reload(), 1000);
   };
 };
 
 export const updateCarCategory = (id, formData) => {
   return async (dispatch) => {
     const response = await simbirSoftAPI.updateCarCategory(id, formData);
-    window.location.reload();
-    alert("Категория изменена успшно");
+    dispatch(setCarCategoryResponse(response));
+    setTimeout(() => window.location.reload(), 1000);
   };
 };
 
 export const deleteCarCategory = (id) => {
   return async (dispatch) => {
     const response = await simbirSoftAPI.deleteCarCategory(id);
-    window.location.reload();
-    alert("Категория удалена успшно");
+    dispatch(setCarCategoryResponse(response));
+    setTimeout(() => window.location.reload(), 1000);
   };
 };
 

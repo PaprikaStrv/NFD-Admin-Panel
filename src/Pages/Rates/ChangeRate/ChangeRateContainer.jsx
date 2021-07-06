@@ -16,6 +16,8 @@ const ChangeRateContainer = ({
   rate,
   rateType,
   updateRate,
+  response,
+  closeRateResponse,
 }) => {
   const [curRate, setCurRate] = useState();
   const [isRateTouched, setRateTouched] = useState(false);
@@ -57,6 +59,8 @@ const ChangeRateContainer = ({
         handlerCancel,
         setRateTouched,
         rateType,
+        response,
+        closeRateResponse,
       }}
     />
   );

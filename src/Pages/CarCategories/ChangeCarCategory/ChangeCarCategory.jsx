@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import { Form } from "react-final-form";
 import { Field } from "react-final-form";
 import s from "../../Cities/AddCity/AddCity.module.scss";
+import Response from "./../../../Components/Response/Response";
 
 const ChangeCarCategory = ({
   handlerCancel,
@@ -12,6 +13,8 @@ const ChangeCarCategory = ({
   setDescriptionActive,
   handlerSetDescr,
   setCategoryDescription,
+  response,
+  closeCarCategoryResponse,
 }) => {
   useEffect(() => {
     if (carCategory.data.description)
@@ -20,6 +23,12 @@ const ChangeCarCategory = ({
 
   return (
     <div className={s.entityFormWrapper}>
+      {response.length !== 0 && (
+        <Response
+          response={response}
+          closeSuccessInfo={closeCarCategoryResponse}
+        />
+      )}
       <Form
         onSubmit={onSubmit}
         validate={(values) => {

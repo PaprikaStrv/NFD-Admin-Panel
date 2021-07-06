@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { Form } from "react-final-form";
 import { Field } from "react-final-form";
 import s from "../../Cities/AddCity/AddCity.module.scss";
+import Response from "./../../../Components/Response/Response";
 
 const AddPoint = ({
   setAddPointActive,
@@ -11,9 +12,14 @@ const AddPoint = ({
   handlerPutCity,
   isCityTouched,
   setCityTouched,
+  response,
+  closePointResponse,
 }) => {
   return (
     <div className={s.entityFormWrapper}>
+      {response.length !== 0 && (
+        <Response response={response} closeSuccessInfo={closePointResponse} />
+      )}
       <Form
         onSubmit={onSubmit}
         validate={(values) => {

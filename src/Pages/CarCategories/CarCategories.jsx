@@ -6,6 +6,7 @@ import PageTitle from "../../Components/PageTitle/PageTitle";
 import Paginator from "../../Components/Paginator/Paginator";
 import s from "./CarCategory.module.scss";
 import DeleteEntityButton from "./../../Components/Entity/DeleteEntityBtn/DeleteEntityBtn";
+import Response from "./../../Components/Response/Response";
 
 const CarCategories = ({
   carCategories,
@@ -15,11 +16,19 @@ const CarCategories = ({
   handlerDeleteCarCategory,
   hanlderChangeCarCategory,
   isChangeCarCategotyActive,
+  response,
+  closeCarCategoryResponse,
 }) => {
   return (
     <section
       className={isAddCarCategory || isChangeCarCategotyActive ? s.hide : null}
     >
+      {response.length !== 0 && (
+        <Response
+          response={response}
+          closeSuccessInfo={closeCarCategoryResponse}
+        />
+      )}
       <PageTitle title="Категории автомобилей" />
       <EntityWrapper>
         <AddEntityButton handlerAddEntity={handlerAddCarCategory} />
@@ -28,23 +37,23 @@ const CarCategories = ({
             <thead>
               <tr>
                 <th>Название</th>
-                <th className={s.categoryDescription}>Описание</th>
-                <th>Изменить</th>
-                <th>Удалить</th>
+                <th>Описание</th>
+                <th className={s.changeTableColumn}>Изменить</th>
+                <th className={s.deleteTableColumn}>Удалить</th>
               </tr>
             </thead>
             <tbody>
               {carCategories.data.map(({ id, name, description }) => (
                 <tr key={id}>
                   <td>{name ? name : "No Name"}</td>
-                  <td className={s.categoryDescription}>{description ? description : "No description"}</td>
-                  <td>
+                  <td>{description ? description : "No description"}</td>
+                  <td className={s.changeTableColumn}>
                     <ChangeEntityButton
                       handlerChangeEntity={hanlderChangeCarCategory}
                       id={id}
                     />
                   </td>
-                  <td>
+                  <td className={s.deleteTableColumn}>
                     <DeleteEntityButton
                       handlerDeleteEntity={handlerDeleteCarCategory}
                       id={id}

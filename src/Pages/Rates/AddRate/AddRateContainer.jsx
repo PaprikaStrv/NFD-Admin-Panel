@@ -1,11 +1,18 @@
 import React, { useEffect, useState } from "react";
 import { connect } from "react-redux";
 import Preloader from "../../../Components/Preloader/Preloader";
-import { getRates } from "../../../Redux/rate-reducer";
 import AddRate from "./AddRate";
 import { postRate } from "./../../../Redux/rate-reducer";
+import { getRateType } from "./../../../Redux/rateType-reducer";
 
-const AddRateContainer = ({ getRates, setAddRateActive, rates, postRate }) => {
+const AddRateContainer = ({
+  getRateType,
+  setAddRateActive,
+  rateType,
+  postRate,
+  response,
+  closeRateResponse,
+}) => {
   const [curRate, setCurRate] = useState();
   const [isRateTouched, setRateTouched] = useState(false);
 
@@ -25,10 +32,10 @@ const AddRateContainer = ({ getRates, setAddRateActive, rates, postRate }) => {
   };
 
   useEffect(() => {
-    getRates();
+    getRateType();
   }, []);
 
-  if (!rates || rates.length === 0) {
+  if (!rateType || rateType.length === 0) {
     return <Preloader />;
   }
   return (
@@ -37,19 +44,21 @@ const AddRateContainer = ({ getRates, setAddRateActive, rates, postRate }) => {
         onSubmit,
         curRate,
         isRateTouched,
-        rates,
+        rateType,
         setAddRateActive,
         setRateTouched,
         handlerPutRate,
+        response,
+        closeRateResponse,
       }}
     />
   );
 };
 
 const mapStateToProps = (state) => ({
-  rates: state.rates.rates,
+  rateType: state.rateType.rateType,
 });
 
-export default connect(mapStateToProps, { getRates, postRate })(
+export default connect(mapStateToProps, { getRateType, postRate })(
   AddRateContainer
 );

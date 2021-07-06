@@ -2,11 +2,14 @@ import React from "react";
 import { Form } from "react-final-form";
 import { Field } from "react-final-form";
 import s from "./AddCity.module.scss";
+import Response from "./../../../Components/Response/Response";
 
-const AddCity = ({ setAddCityActive, onSubmit }) => {
-
+const AddCity = ({ setAddCityActive, onSubmit, closeCityResponse, response }) => {
   return (
     <div className={s.entityFormWrapper}>
+      {response.length !== 0 && (
+        <Response response={response} closeSuccessInfo={closeCityResponse} />
+      )}
       <Form
         onSubmit={onSubmit}
         validate={(values) => {
@@ -39,8 +42,15 @@ const AddCity = ({ setAddCityActive, onSubmit }) => {
               )}
             </Field>
             <div className={s.entityFormBtns}>
-              <button className={s.addBtn} type="submit">Добавить</button>
-              <button className={s.cancellBtn} onClick={() => setAddCityActive(false)}>Отменить</button>
+              <button className={s.addBtn} type="submit">
+                Добавить
+              </button>
+              <button
+                className={s.cancellBtn}
+                onClick={() => setAddCityActive(false)}
+              >
+                Отменить
+              </button>
             </div>
           </form>
         )}

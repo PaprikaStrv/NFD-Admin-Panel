@@ -1,9 +1,13 @@
+@import "../../scss/mixins";
+
 .hide {
   display: none;
 }
 
-@media screen and (max-width: 460px) {
-  .ratePrice {
-    display: none;
-  }
+.changeTableColumn, .deleteTableColumn {
+  width: 60px;
+}
+
+.ratesTableWrapper {
+  @include entityScroll();
 }

@@ -5,8 +5,15 @@ import { deletePoint, getPoints } from "../../Redux/points-reducer";
 import AddPointContainer from "./AddPoint/AddPointContainer";
 import ChangePointContainer from "./ChangePoint/ChangePointContainer";
 import Points from "./Points";
+import { setPointResponse } from "./../../Redux/points-reducer";
 
-const PointsContainer = ({ getPoints, points, deletePoint }) => {
+const PointsContainer = ({
+  getPoints,
+  points,
+  deletePoint,
+  response,
+  setPointResponse,
+}) => {
   const [isAddPointActive, setAddPointActive] = useState(false);
   const [isChangePointActive, setChangePointActive] = useState(false);
   const [curPointId, setCurPointId] = useState("");
@@ -28,15 +35,24 @@ const PointsContainer = ({ getPoints, points, deletePoint }) => {
     deletePoint(id);
   };
 
+  const closePointResponse = () => {
+    setPointResponse("");
+    window.location.reload();
+  };
+
   if (!points || points.length === 0) {
     return <Preloader />;
   }
 
   return (
     <>
-      {isAddPointActive && <AddPointContainer {...{ setAddPointActive }} />}
+      {isAddPointActive && (
+        <AddPointContainer {...{ setAddPointActive, response, closePointResponse }} />
+      )}
       {isChangePointActive && (
-        <ChangePointContainer {...{ setChangePointActive, curPointId }} />
+        <ChangePointContainer
+          {...{ setChangePointActive, curPointId, response, closePointResponse }}
+        />
       )}
       <Points
         {...{
@@ -46,6 +62,8 @@ const PointsContainer = ({ getPoints, points, deletePoint }) => {
           handlerDeletePoint,
           handlerChangePoint,
           isChangePointActive,
+          response,
+          closePointResponse
         }}
       />
     </>
@@ -54,8 +72,11 @@ const PointsContainer = ({ getPoints, points, deletePoint }) => {
 
 const mapStateToProps = (state) => ({
   points: state.points.points,
+  response: state.points.response,
 });
 
-export default connect(mapStateToProps, { getPoints, deletePoint })(
-  PointsContainer
-);
+export default connect(mapStateToProps, {
+  getPoints,
+  deletePoint,
+  setPointResponse,
+})(PointsContainer);

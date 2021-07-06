@@ -10,7 +10,9 @@ const ChangeCityContainer = ({
   curCityId,
   curCity,
   updateCity,
-  setCurCity
+  setCurCity,
+  response,
+  closeCityResponse
 }) => {
 
   const handlerCancel = () => {
@@ -31,11 +33,12 @@ const ChangeCityContainer = ({
   if (!curCity || curCity.length === 0) {
     return <Preloader />;
   }
-  return <ChangeCity {...{ curCity, setChangeCityActive, onSubmit, handlerCancel }} />;
+  return <ChangeCity {...{ curCity, setChangeCityActive, onSubmit, handlerCancel, response, closeCityResponse }} />;
 };
 
 const mapStateToProps = (state) => ({
   curCity: state.cities.curCity,
+  response: state.cities.response,
 });
 
 export default connect(mapStateToProps, { getCurCity, updateCity, setCurCity })(

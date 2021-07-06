@@ -6,11 +6,19 @@ import {
   deleteCity,
   getCities,
   getLimitCities,
+  setCityResponse,
 } from "./../../Redux/cities-reducer";
 import AddCityContainer from "./AddCity/AddCityContainer";
 import ChangeCityContainer from "./ChangeCity/ChangeCityContainer";
 
-const CitiesContainer = ({ getCities, cities, deleteCity }) => {
+const CitiesContainer = ({
+  getCities,
+  cities,
+  deleteCity,
+  setCityResponse,
+  response
+
+}) => {
   const [isAddCityActive, setAddCityActive] = useState(false);
   const [isChangeCityActive, setChangeCityActive] = useState(false);
   const [curCityId, setCurCityId] = useState("");
@@ -28,6 +36,11 @@ const CitiesContainer = ({ getCities, cities, deleteCity }) => {
     deleteCity(id);
   };
 
+  const closeCityResponse = () => {
+    setCityResponse("");
+    window.location.reload();
+  };
+
   useEffect(() => {
     getCities();
   }, []);
@@ -37,9 +50,9 @@ const CitiesContainer = ({ getCities, cities, deleteCity }) => {
   }
   return (
     <>
-      {isAddCityActive && <AddCityContainer {...{ setAddCityActive }} />}
+      {isAddCityActive && <AddCityContainer {...{ setAddCityActive, closeCityResponse }} />}
       {isChangeCityActive && (
-        <ChangeCityContainer {...{ setChangeCityActive, curCityId }} />
+        <ChangeCityContainer {...{ setChangeCityActive, curCityId, closeCityResponse }} />
       )}
       <Cities
         {...{
@@ -49,6 +62,8 @@ const CitiesContainer = ({ getCities, cities, deleteCity }) => {
           handlerDeleteCity,
           handlerChangeCity,
           isChangeCityActive,
+          closeCityResponse,
+          response,
         }}
       />
     </>
@@ -57,8 +72,11 @@ const CitiesContainer = ({ getCities, cities, deleteCity }) => {
 
 const mapStateToProps = (state) => ({
   cities: state.cities.cities,
+  response: state.cities.response,
 });
 
-export default connect(mapStateToProps, { getCities, deleteCity })(
-  CitiesContainer
-);
+export default connect(mapStateToProps, {
+  getCities,
+  deleteCity,
+  setCityResponse
+})(CitiesContainer);

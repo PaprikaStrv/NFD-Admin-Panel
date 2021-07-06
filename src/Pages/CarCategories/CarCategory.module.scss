@@ -1,23 +1,14 @@
+@import "../../scss/mixins";
+
 .hide {
   display: none;
 }
 
-@media screen and (max-width: 380px) {
-  .categoryDescription {
-    display: none;
-  }
+.changeTableColumn,
+.deleteTableColumn {
+  width: 60px;
 }
 
-@media screen and (max-width: 360px) {
-  .carCategoryTableWrapper {
-    table {
-      tbody {
-        tr {
-          td {
-            padding: 0;
-          }
-        }
-      }
-    }
-  }
+.carCategoryTableWrapper {
+  @include entityScroll();
 }

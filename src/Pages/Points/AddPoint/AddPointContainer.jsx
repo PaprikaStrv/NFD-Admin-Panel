@@ -10,6 +10,8 @@ const AddPointContainer = ({
   setAddPointActive,
   cities,
   postPoint,
+  response,
+  closePointResponse,
 }) => {
   const [curCity, setCurCity] = useState();
   const [isCityTouched, setCityTouched] = useState(false);
@@ -45,7 +47,9 @@ const AddPointContainer = ({
         curCity,
         handlerPutCity,
         isCityTouched,
-        setCityTouched
+        setCityTouched,
+        response,
+        closePointResponse,
       }}
     />
   );

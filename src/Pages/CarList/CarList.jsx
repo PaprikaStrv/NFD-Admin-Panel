@@ -2,11 +2,22 @@ import React from "react";
 import Paginator from "../../Components/Paginator/Paginator";
 import s from "./CarList.module.scss";
 import { NavLink } from "react-router-dom";
+import Response from "./../../Components/Response/Response";
 
-const CarList = ({ cars, handlePageChange, addCarHandler, isCarAddAcitve }) => {
-  const pagesCount = Math.ceil(cars.count / 7);
+const CarList = ({
+  cars,
+  handlePageChange,
+  addCarHandler,
+  isCarAddAcitve,
+  response,
+  closeCarResponse,
+}) => {
+  const pagesCount = Math.ceil(cars.count / 7 - 1);
   return (
     <section>
+      {response.length !== 0 && (
+        <Response response={response} closeSuccessInfo={closeCarResponse} />
+      )}
       <div className={isCarAddAcitve ? s.hideWrapper : null}>
         <div className={s.carListTitle}>Список автомобилей</div>
         <div className={s.carListWrapper}>

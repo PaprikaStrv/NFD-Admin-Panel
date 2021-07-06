@@ -8,11 +8,14 @@ import {
 import AddOrderStatusContainer from "./AddOrderStatus/AddOrderStatusContainer";
 import ChangeOrderStatusContainer from "./ChangeOrderStatus/ChangeOrderStatusContainer";
 import OrderStauts from "./OrderStatus";
+import { setOrderStatusResponse } from "./../../Redux/orderStatus-reducer";
 
 const OrderStatusContainer = ({
   getOrderStatus,
   orderStatus,
   deleteOrderStatus,
+  response,
+  setOrderStatusResponse,
 }) => {
   const [isAddOrderStatusActive, setAddOrderStatusActive] = useState(false);
   const [isChangeOrderStatusActive, setChangeOrderStatusActive] =
@@ -32,6 +35,11 @@ const OrderStatusContainer = ({
     deleteOrderStatus(id);
   };
 
+  const closeOrderStatusResponse = () => {
+    setOrderStatusResponse("");
+    window.location.reload();
+  };
+
   useEffect(() => {
     getOrderStatus();
   }, []);
@@ -43,11 +51,18 @@ const OrderStatusContainer = ({
   return (
     <>
       {isAddOrderStatusActive && (
-        <AddOrderStatusContainer {...{ setAddOrderStatusActive }} />
+        <AddOrderStatusContainer
+          {...{ setAddOrderStatusActive, response, closeOrderStatusResponse }}
+        />
       )}
       {isChangeOrderStatusActive && (
         <ChangeOrderStatusContainer
-          {...{ curOrderStatusId, setChangeOrderStatusActive }}
+          {...{
+            curOrderStatusId,
+            setChangeOrderStatusActive,
+            response,
+            closeOrderStatusResponse,
+          }}
         />
       )}
       <OrderStauts
@@ -58,6 +73,8 @@ const OrderStatusContainer = ({
           handlerDeleteOrderStatus,
           handlerChangeOrderStatus,
           isChangeOrderStatusActive,
+          response,
+          closeOrderStatusResponse,
         }}
       />
     </>
@@ -66,8 +83,11 @@ const OrderStatusContainer = ({
 
 const mapStateToProps = (state) => ({
   orderStatus: state.orderStatus.orderStatus,
+  response: state.orderStatus.response,
 });
 
-export default connect(mapStateToProps, { getOrderStatus, deleteOrderStatus })(
-  OrderStatusContainer
-);
+export default connect(mapStateToProps, {
+  getOrderStatus,
+  deleteOrderStatus,
+  setOrderStatusResponse,
+})(OrderStatusContainer);

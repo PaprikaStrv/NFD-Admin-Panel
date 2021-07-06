@@ -2,10 +2,14 @@ import React from "react";
 import { Form } from "react-final-form";
 import { Field } from "react-final-form";
 import s from "../AddCity/AddCity.module.scss";
+import Response from "./../../../Components/Response/Response";
 
-const ChangeCity = ({ curCity, handlerCancel, onSubmit }) => {
+const ChangeCity = ({ curCity, handlerCancel, onSubmit, response, closeCityResponse }) => {
   return (
     <div className={s.entityFormWrapper}>
+      {response.length !== 0 && (
+        <Response response={response} closeSuccessInfo={closeCityResponse} />
+      )}
       <Form
         onSubmit={onSubmit}
         validate={(values) => {

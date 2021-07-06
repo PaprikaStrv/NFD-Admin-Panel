@@ -129,21 +129,36 @@ export const simbirSoftAPI = {
   },
 
   postCity(formData) {
-    return instanceWithToken.post("city", formData).then((response) => {
-      return response.data;
-    });
+    return instanceWithToken
+      .post("city", formData)
+      .then((response) => {
+        return response;
+      })
+      .catch((error) => {
+        return error.response;
+      });
   },
 
   updateCity(id, formData) {
-    return instanceWithToken.put(`city/${id}`, formData).then((response) => {
-      return response.data;
-    });
+    return instanceWithToken
+      .put(`city/${id}`, formData)
+      .then((response) => {
+        return response.data;
+      })
+      .catch((error) => {
+        return error.response;
+      });
   },
 
   deleteCity(id) {
-    return instanceWithToken.delete(`city/${id}`).then((response) => {
-      return response.data;
-    });
+    return instanceWithToken
+      .delete(`city/${id}`)
+      .then((response) => {
+        return response.data;
+      })
+      .catch((error) => {
+        return error.response;
+      });
   },
 
   getPoints() {
@@ -159,21 +174,36 @@ export const simbirSoftAPI = {
   },
 
   postPoint(formdata) {
-    return instanceWithToken.post("point", formdata).then((response) => {
-      return response.data;
-    });
+    return instanceWithToken
+      .post("point", formdata)
+      .then((response) => {
+        return response.data;
+      })
+      .catch((error) => {
+        return error.response;
+      });
   },
 
   updatePoint(id, formData) {
-    return instanceWithToken.put(`point/${id}`, formData).then((response) => {
-      return response.data;
-    });
+    return instanceWithToken
+      .put(`point/${id}`, formData)
+      .then((response) => {
+        return response.data;
+      })
+      .catch((error) => {
+        return error.response;
+      });
   },
 
   deletePoint(id) {
-    return instanceWithToken.delete(`point/${id}`).then((response) => {
-      return response.data;
-    });
+    return instanceWithToken
+      .delete(`point/${id}`)
+      .then((response) => {
+        return response.data;
+      })
+      .catch((error) => {
+        return error.response;
+      });
   },
 
   getRates() {
@@ -189,21 +219,36 @@ export const simbirSoftAPI = {
   },
 
   postRate(formData) {
-    return instanceWithToken.post("rate", formData).then((response) => {
-      return response.data;
-    });
+    return instanceWithToken
+      .post("rate", formData)
+      .then((response) => {
+        return response.data;
+      })
+      .catch((error) => {
+        return error.response;
+      });
   },
 
   updateRate(id, formData) {
-    return instanceWithToken.put(`rate/${id}`, formData).then((response) => {
-      return response.data;
-    });
+    return instanceWithToken
+      .put(`rate/${id}`, formData)
+      .then((response) => {
+        return response.data;
+      })
+      .catch((error) => {
+        return error.response;
+      });
   },
 
   deleteRate(id) {
-    return instanceWithToken.delete(`rate/${id}`).then((response) => {
-      return response.data;
-    });
+    return instanceWithToken
+      .delete(`rate/${id}`)
+      .then((response) => {
+        return response.data;
+      })
+      .catch((error) => {
+        return error.response;
+      });
   },
 
   getRateType() {
@@ -219,9 +264,14 @@ export const simbirSoftAPI = {
   },
 
   postRateType(formData) {
-    return instanceWithToken.post("rateType", formData).then((response) => {
-      return response.data;
-    });
+    return instanceWithToken
+      .post("rateType", formData)
+      .then((response) => {
+        return response.data;
+      })
+      .catch((error) => {
+        return error.response;
+      });
   },
 
   updateRateType(id, formData) {
@@ -229,13 +279,21 @@ export const simbirSoftAPI = {
       .put(`rateType/${id}`, formData)
       .then((response) => {
         return response.data;
+      })
+      .catch((error) => {
+        return error.response;
       });
   },
 
   deleteRateType(id) {
-    return instanceWithToken.delete(`rateType/${id}`).then((response) => {
-      return response.data;
-    });
+    return instanceWithToken
+      .delete(`rateType/${id}`)
+      .then((response) => {
+        return response.data;
+      })
+      .catch((error) => {
+        return error.response;
+      });
   },
 
   getCarCategory() {
@@ -255,19 +313,32 @@ export const simbirSoftAPI = {
       .put(`category/${id}`, formData)
       .then((response) => {
         return response.data;
+      })
+      .catch((error) => {
+        return error.response;
       });
   },
 
   postCarCategory(formData) {
-    return instanceWithToken.post("category", formData).then((response) => {
-      return response.data;
-    });
+    return instanceWithToken
+      .post("category", formData)
+      .then((response) => {
+        return response.data;
+      })
+      .catch((error) => {
+        return error.response;
+      });
   },
 
   deleteCarCategory(id) {
-    return instanceWithToken.delete(`category/${id}`).then((response) => {
-      return response.data;
-    });
+    return instanceWithToken
+      .delete(`category/${id}`)
+      .then((response) => {
+        return response.data;
+      })
+      .catch((error) => {
+        return error.response;
+      });
   },
 
   getOrderStatus() {
@@ -283,9 +354,14 @@ export const simbirSoftAPI = {
   },
 
   postOrderStatus(formData) {
-    return instanceWithToken.post("orderStatus", formData).then((response) => {
-      return response.data;
-    });
+    return instanceWithToken
+      .post("orderStatus", formData)
+      .then((response) => {
+        return response.data;
+      })
+      .catch((error) => {
+        return error.response;
+      });
   },
 
   updateOrderStatus(id, formData) {
@@ -293,12 +369,20 @@ export const simbirSoftAPI = {
       .put(`orderStatus/${id}`, formData)
       .then((response) => {
         return response.data;
+      })
+      .catch((error) => {
+        return error.response;
       });
   },
 
   deleteOrderStatus(id) {
-    return instanceWithToken.delete(`orderStatus/${id}`).then((response) => {
-      return response.data;
-    });
+    return instanceWithToken
+      .delete(`orderStatus/${id}`)
+      .then((response) => {
+        return response.data;
+      })
+      .catch((error) => {
+        return error.response;
+      });
   },
 };

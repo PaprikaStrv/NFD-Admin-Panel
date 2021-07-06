@@ -53,12 +53,12 @@
       text-align: center;
       margin-top: 8px;
       tr {
-        .carName {
-          text-align: left;
-        }
+        // .carName {
+        //   text-align: left;
+        // }
         .changeCarBtn {
           @include rowCenterFlex();
-          justify-content: flex-end;
+          justify-content: center;
           a {
             @include rowCenterFlex();
             justify-content: center;

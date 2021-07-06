@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import { Form } from "react-final-form";
 import { Field } from "react-final-form";
 import s from "../../Cities/AddCity/AddCity.module.scss";
+import Response from "./../../../Components/Response/Response";
 
 const ChangePoint = ({
   onSubmit,
@@ -13,9 +14,14 @@ const ChangePoint = ({
   setCityTouched,
   handlerPutCity,
   setCurCity,
+  response,
+  closePointResponse,
 }) => {
   return (
     <div className={s.entityFormWrapper}>
+      {response.length !== 0 && (
+        <Response response={response} closeSuccessInfo={closePointResponse} />
+      )}
       <Form
         onSubmit={onSubmit}
         validate={(values) => {
@@ -83,15 +89,25 @@ const ChangePoint = ({
                 }
               >
                 <option></option>
-                {cities.data.map(({ id, name }) => (
-                  <option
-                    key={id}
-                    value={id}
-                    selected={id === point.data.cityId.id}
-                  >
-                    {name}
-                  </option>
-                ))}
+                {cities.data.map(({ id, name }) => {
+                  if (point.data.cityId) {
+                    return (
+                      <option
+                        key={id}
+                        value={id}
+                        selected={id === point.data.cityId.id}
+                      >
+                        {name}
+                      </option>
+                    );
+                  } else {
+                    return (
+                      <option key={id} value={id}>
+                        {name}
+                      </option>
+                    );
+                  }
+                })}
               </select>
               {isCityTouched && !curCity && (
                 <div className={s.inputErrorMsg}>Выберите город</div>

@@ -2,11 +2,12 @@ import { simbirSoftAPI } from "./../API/api";
 
 const SET_CITIES = "SET_CITIES";
 const SET_CUR_CITY = "SET_CUR_CITY";
-
+const SET_RESPONSE = "SET_RESPONSE";
 
 let initialState = {
   cities: [],
   curCity: [],
+  response: [],
 };
 
 const citiesReducer = (state = initialState, action) => {
@@ -21,7 +22,13 @@ const citiesReducer = (state = initialState, action) => {
       return {
         ...state,
         curCity: action.curCity,
-      }
+      };
+    }
+    case SET_RESPONSE: {
+      return {
+        ...state,
+        response: action.response,
+      };
     }
     default:
       return state;
@@ -36,7 +43,12 @@ export const setCities = (cities) => ({
 export const setCurCity = (curCity) => ({
   type: SET_CUR_CITY,
   curCity,
-})
+});
+
+export const setCityResponse = (response) => ({
+  type: SET_RESPONSE,
+  response,
+});
 
 export const getCities = () => {
   return async (dispatch) => {
@@ -55,24 +67,24 @@ export const getCurCity = (id) => {
 export const postCity = (formData) => {
   return async (dispatch) => {
     const response = await simbirSoftAPI.postCity(formData);
-    window.location.reload();
-    alert("Город добавлен успешно");
+    dispatch(setCityResponse(response));
+    setTimeout(() => window.location.reload(), 1000);
   };
 };
 
 export const updateCity = (id, formData) => {
   return async (dispatch) => {
     const response = await simbirSoftAPI.updateCity(id, formData);
-    window.location.reload();
-    alert("Город изменён успешно");
+    dispatch(setCityResponse(response));
+    setTimeout(() => window.location.reload(), 1000);
   };
 };
 
 export const deleteCity = (id) => {
   return async (dispatch) => {
     const response = await simbirSoftAPI.deleteCity(id);
-    window.location.reload();
-    alert("Город удалён успешно");
+    dispatch(setCityResponse(response));
+    setTimeout(() => window.location.reload(), 1000);
   };
 };
 

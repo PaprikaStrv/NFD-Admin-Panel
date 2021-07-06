@@ -15,6 +15,8 @@ const ChangeRateTypeContainer = ({
   setCurRateType,
   curRateType,
   updateRateType,
+  response,
+  closeRateTypeResponse,
 }) => {
   const handlerCancel = () => {
     setCurRateType();
@@ -37,7 +39,14 @@ const ChangeRateTypeContainer = ({
   }
   return (
     <ChangeRateType
-      {...{ onSubmit, handlerCancel, curRateType, curRateType }}
+      {...{
+        onSubmit,
+        handlerCancel,
+        curRateType,
+        curRateType,
+        response,
+        closeRateTypeResponse,
+      }}
     />
   );
 };

@@ -8,6 +8,10 @@
   display: none;
 }
 
+.changeTableColumn, .deleteTableColumn {
+  width: 60px;
+}
+
 @media screen and (max-width: 460px) {
   .citiesTableWrapper {
     table {

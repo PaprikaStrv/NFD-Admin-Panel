@@ -2,10 +2,22 @@ import React from "react";
 import { Form } from "react-final-form";
 import { Field } from "react-final-form";
 import s from "../../Cities/AddCity/AddCity.module.scss";
+import Response from './../../../Components/Response/Response';
 
-const AddRateType = ({ onSubmit, setAddRateTypeActive }) => {
+const AddRateType = ({
+  onSubmit,
+  setAddRateTypeActive,
+  response,
+  closeRateTypeResponse,
+}) => {
   return (
     <div className={s.entityFormWrapper}>
+      {response.length !== 0 && (
+        <Response
+          response={response}
+          closeSuccessInfo={closeRateTypeResponse}
+        />
+      )}
       <Form
         onSubmit={onSubmit}
         validate={(values) => {

@@ -44,6 +44,7 @@ const CarForm = React.memo(
 
     const [priceMax, setPriceMax] = useState();
     const [isPriceMaxTouched, setPriceMaxTouched] = useState(false);
+    const [errorText, setErrorText] = useState("Введите максимальную цену");
 
     const [curCategory, setCategory] = useState();
     const [isCurCategoryTouched, setCurCategoryTouched] = useState(false);
@@ -70,23 +71,52 @@ const CarForm = React.memo(
     }, [carImg]);
 
     useEffect(() => {
+      let count = 0;
       if (carId) {
-        setPreview(prepareImgLink(curCar.data[0].thumbnail.path));
-        setCarModel(curCar.data[0].name);
-        setCarNumber(curCar.data[0].number);
-        setPriceMin(curCar.data[0].priceMin);
-        setPriceMax(curCar.data[0].priceMax);
-        setCategory(curCar.data[0].categoryId.id);
-        setDescription(curCar.data[0].description);
-        setTankValue(curCar.data[0].tank);
-        curCar.data[0].colors.forEach((color) => {
-          setAvailableColors([...availabelColors, color]);
-        });
+        if (curCar.data[0].thumbnail.path) {
+          count++;
+          setPreview(prepareImgLink(curCar.data[0].thumbnail.path));
+        }
+        if (curCar.data[0].name) {
+          count++;
+          setCarModel(curCar.data[0].name);
+        }
+        if (curCar.data[0].number) {
+          count++;
+          setCarNumber(curCar.data[0].number);
+        }
+        if (curCar.data[0].priceMin) {
+          count++;
+          setPriceMin(curCar.data[0].priceMin);
+        }
+        if (curCar.data[0].priceMax) {
+          count++;
+          setPriceMax(curCar.data[0].priceMax);
+        }
+        if (curCar.data[0].categoryId) {
+          count++;
+          setCategory(curCar.data[0].categoryId.id);
+        }
+        if (curCar.data[0].description) {
+          count++;
+          setDescription(curCar.data[0].description);
+        }
+        if (curCar.data[0].tank) {
+          count++;
+          setTankValue(curCar.data[0].tank);
+        }
+        if (curCar.data[0].colors.length !== 0) {
+          count++;
+          curCar.data[0].colors.forEach((color) => {
+            setAvailableColors([...availabelColors, color]);
+          });
+        }
+        setProgress(count * 11, 1111);
       }
     }, [curCar]);
 
     const handlerAddColor = () => {
-      if (colorValue !== "") {
+      if (colorValue.trim() !== "") {
         setAvailableColors([...availabelColors, colorValue]);
         setColorValue("");
       }
@@ -123,7 +153,12 @@ const CarForm = React.memo(
     };
 
     const handlerPriceMinInput = (value) => {
-      setPriceMin(value);
+      if (value < 0) {
+        setPriceMin(0);
+      } else {
+        setPriceMin(value);
+      }
+
       setPriceMinTouched(true);
       if (!priceMin) {
         setProgress(progress + 11, 1111);
@@ -131,7 +166,11 @@ const CarForm = React.memo(
     };
 
     const handlerPriceMaxInput = (value) => {
-      setPriceMax(value);
+      if (value < 0) {
+        setPriceMax(0);
+      } else {
+        setPriceMax(value);
+      }
       setPriceMaxTouched(true);
       if (!priceMax) {
         setProgress(progress + 11, 1111);
@@ -155,7 +194,13 @@ const CarForm = React.memo(
     };
 
     const handlerTankInput = (value) => {
-      setTankValue(value);
+      if (value < 0) {
+        setTankValue(0);
+      } else if (value > 100) {
+        setTankValue(100);
+      } else {
+        setTankValue(value);
+      }
       setTankValueTouched(true);
       if (!tankValue) {
         setProgress(progress + 11, 1111);
@@ -223,7 +268,10 @@ const CarForm = React.memo(
     }, [progress]);
 
     const onSubmit = () => {
-      if (
+      if (priceMax < priceMin) {
+        setPriceMax();
+        setErrorText("Максимальная цена не может превышать минимальную");
+      } else if (
         carImg &&
         carModel &&
         carNumber &&
@@ -440,9 +488,7 @@ const CarForm = React.memo(
                             }
                           />
                           {isPriceMaxTouched && !priceMax && (
-                            <div className={s.inputErrorMsg}>
-                              Введите максимальную цену
-                            </div>
+                            <div className={s.inputErrorMsg}>{errorText}</div>
                           )}
                         </div>
                       </div>

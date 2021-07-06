@@ -5,6 +5,7 @@ import EntityWrapper from "../../Components/Entity/EntityWrapper/EntityWrapper";
 import PageTitle from "../../Components/PageTitle/PageTitle";
 import s from "./OrderStatus.module.scss";
 import DeleteEntityButton from "./../../Components/Entity/DeleteEntityBtn/DeleteEntityBtn";
+import Response from "./../../Components/Response/Response";
 
 const OrderStatus = ({
   orderStatus,
@@ -13,6 +14,8 @@ const OrderStatus = ({
   handlerDeleteOrderStatus,
   handlerChangeOrderStatus,
   isChangeOrderStatusActive,
+  response,
+  closeOrderStatusResponse,
 }) => {
   return (
     <section
@@ -20,37 +23,45 @@ const OrderStatus = ({
         isAddOrderStatusActive || isChangeOrderStatusActive ? s.hide : null
       }
     >
+      {response.length !== 0 && (
+        <Response
+          response={response}
+          closeSuccessInfo={closeOrderStatusResponse}
+        />
+      )}
       <PageTitle title="Статусы заказов" />
       <EntityWrapper>
         <AddEntityButton handlerAddEntity={handlerAddOrderStatus} />
-        <table>
-          <thead>
-            <tr>
-              <th>Название</th>
-              <th>Изменить</th>
-              <th>Удалить</th>
-            </tr>
-          </thead>
-          <tbody>
-            {orderStatus.data.map(({ id, name }) => (
-              <tr key={id}>
-                <td>{name ? name : "No name"}</td>
-                <td>
-                  <ChangeEntityButton
-                    handlerChangeEntity={handlerChangeOrderStatus}
-                    id={id}
-                  />
-                </td>
-                <td>
-                  <DeleteEntityButton
-                    handlerDeleteEntity={handlerDeleteOrderStatus}
-                    id={id}
-                  />
-                </td>
+        <div className={s.orderStatusTableWrapper}>
+          <table>
+            <thead>
+              <tr>
+                <th>Название</th>
+                <th className={s.changeTableColumn}>Изменить</th>
+                <th className={s.deleteTableColumn}>Удалить</th>
               </tr>
-            ))}
-          </tbody>
-        </table>
+            </thead>
+            <tbody>
+              {orderStatus.data.map(({ id, name }) => (
+                <tr key={id}>
+                  <td>{name ? name : "No name"}</td>
+                  <td className={s.changeTableColumn}>
+                    <ChangeEntityButton
+                      handlerChangeEntity={handlerChangeOrderStatus}
+                      id={id}
+                    />
+                  </td>
+                  <td className={s.deleteTableColumn}>
+                    <DeleteEntityButton
+                      handlerDeleteEntity={handlerDeleteOrderStatus}
+                      id={id}
+                    />
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
       </EntityWrapper>
     </section>
   );

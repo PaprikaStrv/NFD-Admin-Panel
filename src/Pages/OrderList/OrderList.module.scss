@@ -136,8 +136,17 @@
   }
 }
 
+.noFilteredOrders {
+  @include rowCenterFlex();
+  justify-content: center;
+  font-family: "HelveticaNeueCyr-Medium";
+  font-size: 16px;
+  color: #5a6169;
+  margin-bottom: 12px;
+}
+
 @media screen and (max-width: 1200px) {
-  .ordersWrapper{
+  .ordersWrapper {
     padding-left: 8px;
     padding-right: 8px;
   }

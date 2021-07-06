@@ -5,8 +5,15 @@ import { deleteRateType, getRateType } from "../../Redux/rateType-reducer";
 import RateType from "./RateType";
 import AddRateTypeContainer from "./AddRateType/AddRateTypeContainer";
 import ChangeRateTypeContainer from "./ChangeRateType/ChangeRateTypeContainer";
+import { setRateTypeResponse } from "./../../Redux/rateType-reducer";
 
-const RateTypeContainer = ({ getRateType, rateType, deleteRateType }) => {
+const RateTypeContainer = ({
+  getRateType,
+  rateType,
+  deleteRateType,
+  response,
+  setRateTypeResponse,
+}) => {
   const [isAddRatyTypeActive, setAddRateTypeActive] = useState(false);
   const [isChangeRateTypeActive, setChangeRateTypeActive] = useState(false);
   const [curRateTypeId, setCurRateTypeId] = useState("");
@@ -24,6 +31,11 @@ const RateTypeContainer = ({ getRateType, rateType, deleteRateType }) => {
     deleteRateType(id);
   };
 
+  const closeRateTypeResponse = () => {
+    setRateTypeResponse("");
+    window.location.reload();
+  };
+
   useEffect(() => {
     getRateType();
   }, []);
@@ -35,11 +47,18 @@ const RateTypeContainer = ({ getRateType, rateType, deleteRateType }) => {
   return (
     <>
       {isAddRatyTypeActive && (
-        <AddRateTypeContainer {...{ setAddRateTypeActive }} />
+        <AddRateTypeContainer
+          {...{ setAddRateTypeActive, response, closeRateTypeResponse }}
+        />
       )}
       {isChangeRateTypeActive && (
         <ChangeRateTypeContainer
-          {...{ curRateTypeId, setChangeRateTypeActive }}
+          {...{
+            curRateTypeId,
+            setChangeRateTypeActive,
+            response,
+            closeRateTypeResponse,
+          }}
         />
       )}
       <RateType
@@ -50,6 +69,8 @@ const RateTypeContainer = ({ getRateType, rateType, deleteRateType }) => {
           handlerDeleteRateType,
           handlerChangeRateType,
           isChangeRateTypeActive,
+          response,
+          closeRateTypeResponse,
         }}
       />
     </>
@@ -58,8 +79,11 @@ const RateTypeContainer = ({ getRateType, rateType, deleteRateType }) => {
 
 const mapStateToProps = (state) => ({
   rateType: state.rateType.rateType,
+  response: state.rateType.response,
 });
 
-export default connect(mapStateToProps, { getRateType, deleteRateType })(
-  RateTypeContainer
-);
+export default connect(mapStateToProps, {
+  getRateType,
+  deleteRateType,
+  setRateTypeResponse,
+})(RateTypeContainer);

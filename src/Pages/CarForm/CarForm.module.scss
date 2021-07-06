@@ -360,7 +360,6 @@ input::-webkit-inner-spin-button {
   margin: 0; /* <-- Apparently some margin are still there even though it's hidden */
 }
 
-
 @media screen and (max-width: 800px) {
   .rightInputsWrapper {
     flex-direction: column !important;
@@ -375,20 +374,33 @@ input::-webkit-inner-spin-button {
     flex-direction: column;
     align-items: center;
   }
+  .leftFormBlock {
+    margin-right: 0px !important;
+    width: 100% !important;
+  }
   .rightFormBlock {
     margin-top: 16px;
     width: 100% !important;
     .rightInputsWrapper {
-       align-items: center;
-       .inputField {
-         width: 200px !important;
-       }
+      align-items: center;
+      .inputField {
+        width: 200px !important;
+      }
     }
     .rightColumn {
       display: flex;
       flex-direction: column;
       align-items: center;
     }
-   
+  }
+}
+
+@media screen and (max-width: 470px) {
+  .addCarBtns {
+    flex-direction: column !important;
+    button {
+      margin-right: 0px !important;
+      margin-bottom: 12px !important;
+    }
   }
 }

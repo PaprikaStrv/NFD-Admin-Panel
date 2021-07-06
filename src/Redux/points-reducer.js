@@ -2,10 +2,12 @@ import { simbirSoftAPI } from "./../API/api";
 
 const SET_POINTS = "SET_POINTS";
 const SET_CUR_POINT = "SET_CUR_POINT";
+const SET_POINT_RESPONSE = "SET_POINT_RESPONSE";
 
 let intitialState = {
   points: [],
   point: [],
+  response: [],
 };
 
 const pointsReducer = (state = intitialState, action) => {
@@ -22,6 +24,12 @@ const pointsReducer = (state = intitialState, action) => {
         point: action.point,
       };
     }
+    case SET_POINT_RESPONSE: {
+      return {
+        ...state,
+        response: action.response,
+      };
+    }
     default:
       return state;
   }
@@ -35,6 +43,11 @@ export const setPoints = (points) => ({
 export const setPoint = (point) => ({
   type: SET_CUR_POINT,
   point,
+});
+
+export const setPointResponse = (response) => ({
+  type: SET_POINT_RESPONSE,
+  response,
 });
 
 export const getPoints = () => {
@@ -54,24 +67,24 @@ export const getPoint = (id) => {
 export const postPoint = (formData) => {
   return async (dispatch) => {
     const response = await simbirSoftAPI.postPoint(formData);
-    window.location.reload();
-    alert("Место выдачи добавлено успешно");
+    dispatch(setPointResponse(response));
+    setTimeout(() => window.location.reload(), 1000);
   };
 };
 
 export const updatePoint = (id, formData) => {
   return async (dispatch) => {
     const response = await simbirSoftAPI.updatePoint(id, formData);
-    window.location.reload();
-    alert("Место выдачи изменено успешно");
+    dispatch(setPointResponse(response));
+    setTimeout(() => window.location.reload(), 1000);
   };
 };
 
 export const deletePoint = (id) => {
   return async (dispatch) => {
     const response = await simbirSoftAPI.deletePoint(id);
-    window.location.reload();
-    alert("Место выдачи удалено успешно");
+    dispatch(setPointResponse(response));
+    setTimeout(() => window.location.reload(), 1000);
   };
 };
 

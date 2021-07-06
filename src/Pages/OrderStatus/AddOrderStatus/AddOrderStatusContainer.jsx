@@ -6,13 +6,24 @@ import { postOrderStatus } from "./../../../Redux/orderStatus-reducer";
 const AddOrderStatusContainer = ({
   setAddOrderStatusActive,
   postOrderStatus,
+  response,
+  closeOrderStatusResponse,
 }) => {
   const onSubmit = (values) => {
     const formData = new FormData();
     formData.append("name", values.name);
     postOrderStatus(formData);
   };
-  return <AddOrderStatus {...{ setAddOrderStatusActive, onSubmit }} />;
+  return (
+    <AddOrderStatus
+      {...{
+        setAddOrderStatusActive,
+        onSubmit,
+        response,
+        closeOrderStatusResponse,
+      }}
+    />
+  );
 };
 
 const mapStateToProps = (state) => ({});

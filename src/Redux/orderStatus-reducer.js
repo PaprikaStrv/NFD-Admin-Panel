@@ -2,10 +2,12 @@ import { simbirSoftAPI } from "../API/api";
 
 const SET_ORDER_STATUS = "SET_ORDER_STATUS";
 const SET_CUR_ORDER_STATUS = "SET_CUR_ORDER_STATUS";
+const SET_ORDER_STATUS_RESPONSE = "SET_ORDER_STATUS_RESPONSE";
 
 let initialState = {
   orderStatus: [],
   curOrderStatus: [],
+  response: [],
 };
 
 const orderStatusReducer = (state = initialState, action) => {
@@ -22,6 +24,12 @@ const orderStatusReducer = (state = initialState, action) => {
         curOrderStatus: action.curOrderStatus,
       };
     }
+    case SET_ORDER_STATUS_RESPONSE: {
+      return {
+        ...state,
+        response: action.response,
+      };
+    }
     default:
       return state;
   }
@@ -35,6 +43,11 @@ export const setOrderStatus = (orderStatus) => ({
 export const setCurOrderStatus = (curOrderStatus) => ({
   type: SET_CUR_ORDER_STATUS,
   curOrderStatus,
+});
+
+export const setOrderStatusResponse = (response) => ({
+  type: SET_ORDER_STATUS_RESPONSE,
+  response,
 });
 
 export const getOrderStatus = () => {
@@ -54,24 +67,24 @@ export const getCurOrderStatus = (id) => {
 export const postOrderStatus = (formData) => {
   return async (dispatch) => {
     const response = await simbirSoftAPI.postOrderStatus(formData);
-    window.location.reload();
-    alert("Статус заказа добавлен успешно");
+    dispatch(setOrderStatusResponse(response));
+    setTimeout(() => window.location.reload(), 1000);
   };
 };
 
 export const updateOrderStatus = (id, formData) => {
   return async (dispatch) => {
     const response = await simbirSoftAPI.updateOrderStatus(id, formData);
-    window.location.reload();
-    alert("Статус заказа обновлён успешно");
+    dispatch(setOrderStatusResponse(response));
+    setTimeout(() => window.location.reload(), 1000);
   };
 };
 
 export const deleteOrderStatus = (id) => {
   return async (dispatch) => {
     const response = await simbirSoftAPI.deleteOrderStatus(id);
-    window.location.reload();
-    alert("Статус заказа удалён успешно");
+    dispatch(setOrderStatusResponse(response));
+    setTimeout(() => window.location.reload(), 1000);
   };
 };
 

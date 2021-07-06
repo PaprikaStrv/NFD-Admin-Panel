@@ -2,10 +2,12 @@ import { simbirSoftAPI } from "../API/api";
 
 const SET_RATES = "SET_RATES";
 const SET_CUR_RATE = "SET_CUR_RATE";
+const SET_RATE_RESPONSE = "SET_RATE_RESPONSE";
 
 let intitialState = {
   rates: [],
   rate: [],
+  response: [],
 };
 
 const ratesReducer = (state = intitialState, action) => {
@@ -22,6 +24,12 @@ const ratesReducer = (state = intitialState, action) => {
         rate: action.rate,
       };
     }
+    case SET_RATE_RESPONSE: {
+      return {
+        ...state,
+        response: action.response,
+      };
+    }
     default:
       return state;
   }
@@ -35,6 +43,11 @@ export const setRates = (rates) => ({
 export const setRate = (rate) => ({
   type: SET_CUR_RATE,
   rate,
+});
+
+export const setRateResponse = (response) => ({
+  type: SET_RATE_RESPONSE,
+  response,
 });
 
 export const getRates = () => {
@@ -54,24 +67,24 @@ export const getRate = (id) => {
 export const postRate = (formData) => {
   return async (dispatch) => {
     const response = await simbirSoftAPI.postRate(formData);
-    window.location.reload();
-    alert("Тариф добавлен успешно");
+    dispatch(setRateResponse(response));
+    setTimeout(() => window.location.reload(), 1000);
   };
 };
 
 export const updateRate = (id, formData) => {
   return async (dispatch) => {
     const response = await simbirSoftAPI.updateRate(id, formData);
-    window.location.reload();
-    alert("Тариф изменён успешно");
+    dispatch(setRateResponse(response));
+    setTimeout(() => window.location.reload(), 1000);
   };
 };
 
 export const deleteRate = (id) => {
   return async (dispatch) => {
     const response = await simbirSoftAPI.deleteRate(id);
-    window.location.reload();
-    alert("Тариф удалён успешно");
+    dispatch(setRateResponse(response));
+    setTimeout(() => window.location.reload(), 1000);
   };
 };
 

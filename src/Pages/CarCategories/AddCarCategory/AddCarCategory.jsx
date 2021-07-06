@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Form } from "react-final-form";
 import { Field } from "react-final-form";
 import s from "../../Cities/AddCity/AddCity.module.scss";
+import Response from './../../../Components/Response/Response';
 
 const AddCarCategory = ({
   onSubmit,
@@ -10,9 +11,17 @@ const AddCarCategory = ({
   handlerSetDescr,
   categoryDescription,
   setDescriptionActive,
+  response,
+  closeCarCategoryResponse,
 }) => {
   return (
     <div className={s.entityFormWrapper}>
+      {response.length !== 0 && (
+        <Response
+          response={response}
+          closeSuccessInfo={closeCarCategoryResponse}
+        />
+      )}
       <Form
         onSubmit={onSubmit}
         validate={(values) => {

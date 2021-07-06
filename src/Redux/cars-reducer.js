@@ -97,8 +97,8 @@ export const deleteCar = (id) => {
   return async (dispatch) => {
     const response = await simbirSoftAPI.deleteCar(id);
     dispatch(setResponse(response));
-    window.location.reload();
-    window.location = "/nfd-admin-panel/";
+    // window.location.reload();
+    // window.location = "nfd-admin-panel/Cars";
   };
 };
 

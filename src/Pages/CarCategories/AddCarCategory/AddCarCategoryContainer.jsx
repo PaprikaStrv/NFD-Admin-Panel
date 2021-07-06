@@ -3,7 +3,12 @@ import { connect } from "react-redux";
 import { postCarCategory } from "../../../Redux/carCategory-reducer";
 import AddCarCategory from "./AddCarCategory";
 
-const AddCarCategotyContainer = ({ setCarCategoryActive, postCarCategory }) => {
+const AddCarCategotyContainer = ({
+  setCarCategoryActive,
+  postCarCategory,
+  response,
+  closeCarCategoryResponse,
+}) => {
   const [categoryDescription, setCategoryDescription] = useState("");
   const [isDescriptionActive, setDescriptionActive] = useState(false);
 
@@ -29,6 +34,8 @@ const AddCarCategotyContainer = ({ setCarCategoryActive, postCarCategory }) => {
         handlerSetDescr,
         categoryDescription,
         setDescriptionActive,
+        response,
+        closeCarCategoryResponse,
       }}
     />
   );

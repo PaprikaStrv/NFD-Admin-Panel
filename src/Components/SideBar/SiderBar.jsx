@@ -40,8 +40,6 @@ const SideBar = () => {
                     <div className={s.iconWrapper}>
                       <ReactSVG src={src} />
                     </div>
-
-                    {/* <div className={s.linkName}>{name}</div> */}
                     {name}
                   </NavLink>
                 </li>

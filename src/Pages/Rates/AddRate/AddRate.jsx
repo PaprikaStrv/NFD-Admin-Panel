@@ -2,18 +2,24 @@ import React, { useState } from "react";
 import { Form } from "react-final-form";
 import { Field } from "react-final-form";
 import s from "../../Cities/AddCity/AddCity.module.scss";
+import Response from "./../../../Components/Response/Response";
 
 const AddRate = ({
   onSubmit,
   curRate,
   isRateTouched,
   handlerPutRate,
-  rates,
+  rateType,
   setAddRateActive,
   setRateTouched,
+  response,
+  closeRateResponse,
 }) => {
   return (
     <div className={s.entityFormWrapper}>
+      {response.length !== 0 && (
+        <Response response={response} closeSuccessInfo={closeRateResponse} />
+      )}
       <Form
         onSubmit={onSubmit}
         validate={(values) => {
@@ -58,9 +64,9 @@ const AddRate = ({
                 }
               >
                 <option></option>
-                {rates.data.map(({ rateTypeId }) => (
-                  <option key={rateTypeId.id} value={rateTypeId.id}>
-                    {rateTypeId.name}
+                {rateType.data.map(({ id, name }) => (
+                  <option key={id} value={id}>
+                    {name}
                   </option>
                 ))}
               </select>

@@ -7,7 +7,7 @@ import {
 } from "../../Redux/cars-reducer";
 import CarForm from "./CarForm";
 import Preloader from "./../../Components/Preloader/Preloader";
-import { useRouteMatch } from "react-router";
+import { useHistory, useRouteMatch } from "react-router";
 
 const CarFormContainer = ({
   getCategory,
@@ -18,9 +18,11 @@ const CarFormContainer = ({
 }) => {
   let match = useRouteMatch();
   const carId = match.params.carId;
+  const history = useHistory();
 
   const handlerCarDelete = () => {
     deleteCar(carId);
+    history.push(`/Cars`)
   };
 
   useEffect(() => {

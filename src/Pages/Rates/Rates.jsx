@@ -5,6 +5,7 @@ import EntityWrapper from "../../Components/Entity/EntityWrapper/EntityWrapper";
 import PageTitle from "../../Components/PageTitle/PageTitle";
 import DeleteEntityButton from "./../../Components/Entity/DeleteEntityBtn/DeleteEntityBtn";
 import s from "./Rates.module.scss";
+import Response from "./../../Components/Response/Response";
 
 const Rates = ({
   rates,
@@ -14,46 +15,53 @@ const Rates = ({
   isAddRateActive,
   handlerChangeRate,
   isChangeRateActive,
+  response,
+  closeRateResponse,
 }) => {
   return (
     <section className={isAddRateActive || isChangeRateActive ? s.hide : null}>
+      {response.length !== 0 && (
+        <Response response={response} closeSuccessInfo={closeRateResponse} />
+      )}
       <PageTitle title="Тарифы" />
       <EntityWrapper>
         <AddEntityButton handlerAddEntity={handlerAddRate} />
-        <table>
-          <thead>
-            <tr>
-              <th>Название</th>
-              <th className={s.ratePrice}>Цена</th>
-              <th>Изменить</th>
-              <th>Удалить</th>
-            </tr>
-          </thead>
-          <tbody>
-            {rates.data.map(({ id, rateTypeId, price }) => (
-              <tr key={id}>
-                <td>
-                  {rateTypeId.length !== 0 && rateTypeId.name
-                    ? rateTypeId.name
-                    : "No Name"}
-                </td>
-                <td className={s.ratePrice}>{price ? price : "No price"}</td>
-                <td>
-                  <ChangeEntityButton
-                    handlerChangeEntity={handlerChangeRate}
-                    id={id}
-                  />
-                </td>
-                <td>
-                  <DeleteEntityButton
-                    handlerDeleteEntity={handlerDeleteRate}
-                    id={id}
-                  />
-                </td>
+        <div className={s.ratesTableWrapper}>
+          <table>
+            <thead>
+              <tr>
+                <th>Название</th>
+                <th>Цена</th>
+                <th className={s.changeTableColumn}>Изменить</th>
+                <th className={s.deleteTableColumn}>Удалить</th>
               </tr>
-            ))}
-          </tbody>
-        </table>
+            </thead>
+            <tbody>
+              {rates.data.map(({ id, rateTypeId, price }) => (
+                <tr key={id}>
+                  <td>
+                    {rateTypeId && rateTypeId.length !== 0 && rateTypeId.name
+                      ? rateTypeId.name
+                      : "No Name"}
+                  </td>
+                  <td>{price ? price : "No price"}</td>
+                  <td className={s.changeTableColumn}>
+                    <ChangeEntityButton
+                      handlerChangeEntity={handlerChangeRate}
+                      id={id}
+                    />
+                  </td>
+                  <td className={s.deleteTableColumn}>
+                    <DeleteEntityButton
+                      handlerDeleteEntity={handlerDeleteRate}
+                      id={id}
+                    />
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
       </EntityWrapper>
     </section>
   );

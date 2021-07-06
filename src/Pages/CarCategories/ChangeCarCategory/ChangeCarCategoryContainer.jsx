@@ -15,6 +15,8 @@ const ChangeCarCategoryContainer = ({
   setCarCategory,
   carCategory,
   updateCarCategory,
+  response,
+  closeCarCategoryResponse,
 }) => {
   const [categoryDescription, setCategoryDescription] = useState("");
   const [isDescriptionActive, setDescriptionActive] = useState(false);
@@ -56,6 +58,8 @@ const ChangeCarCategoryContainer = ({
         setDescriptionActive,
         handlerSetDescr,
         setCategoryDescription,
+        response,
+        closeCarCategoryResponse,
       }}
     />
   );

@@ -14,6 +14,8 @@ const ChangePointContainer = ({
   updatePoint,
   setPoint,
   getCities,
+  response,
+  closePointResponse,
 }) => {
   const [curCity, setCurCity] = useState();
   const [isCityTouched, setCityTouched] = useState(false);
@@ -39,10 +41,10 @@ const ChangePointContainer = ({
     getPoint(curPointId);
     getCities();
   }, [curPointId]);
-  
+
   if (!point || point.length === 0 || !cities || cities.length === 0) {
     return <Preloader />;
-  } 
+  }
   return (
     <ChangePoint
       {...{
@@ -55,6 +57,8 @@ const ChangePointContainer = ({
         setCityTouched,
         handlerPutCity,
         setCurCity,
+        response,
+        closePointResponse,
       }}
     />
   );

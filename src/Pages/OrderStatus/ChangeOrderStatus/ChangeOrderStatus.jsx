@@ -2,10 +2,23 @@ import React from "react";
 import { Form } from "react-final-form";
 import { Field } from "react-final-form";
 import s from "../../Cities/AddCity/AddCity.module.scss";
+import Response from "./../../../Components/Response/Response";
 
-const ChangeOrderStatus = ({ curOrderStatus, handlerCancel, onSubmit }) => {
+const ChangeOrderStatus = ({
+  curOrderStatus,
+  handlerCancel,
+  onSubmit,
+  response,
+  closeOrderStatusResponse,
+}) => {
   return (
     <div className={s.entityFormWrapper}>
+      {response.length !== 0 && (
+        <Response
+          response={response}
+          closeSuccessInfo={closeOrderStatusResponse}
+        />
+      )}
       <Form
         onSubmit={onSubmit}
         validate={(values) => {

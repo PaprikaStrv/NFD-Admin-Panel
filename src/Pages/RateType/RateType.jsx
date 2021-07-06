@@ -5,6 +5,7 @@ import EntityWrapper from "../../Components/Entity/EntityWrapper/EntityWrapper";
 import PageTitle from "../../Components/PageTitle/PageTitle";
 import s from "./RateType.module.scss";
 import DeleteEntityButton from "./../../Components/Entity/DeleteEntityBtn/DeleteEntityBtn";
+import Response from "./../../Components/Response/Response";
 
 const RateType = ({
   rateType,
@@ -14,11 +15,19 @@ const RateType = ({
   handlerDeleteRateType,
   handlerChangeRateType,
   isChangeRateTypeActive,
+  response,
+  closeRateTypeResponse,
 }) => {
   return (
     <section
       className={isAddRatyTypeActive || isChangeRateTypeActive ? s.hide : null}
     >
+      {response.length !== 0 && (
+        <Response
+          response={response}
+          closeSuccessInfo={closeRateTypeResponse}
+        />
+      )}
       <PageTitle title="Типы тарифов" />
       <EntityWrapper>
         <AddEntityButton handlerAddEntity={handlerAddRateType} />
@@ -27,23 +36,23 @@ const RateType = ({
             <thead>
               <tr>
                 <th>Название</th>
-                <th className={s.rateTypeUnit}>Ед. измерения</th>
-                <th>Изменить</th>
-                <th>Удалить</th>
+                <th>Ед. измерения</th>
+                <th className={s.changeTableColumn}>Изменить</th>
+                <th className={s.deleteTableColumn}>Удалить</th>
               </tr>
             </thead>
             <tbody>
               {rateType.data.map(({ id, unit, name }) => (
                 <tr key={id}>
                   <td>{name ? name : "No Name"}</td>
-                  <td className={s.rateTypeUnit}>{unit ? unit : "No unit"}</td>
-                  <td>
+                  <td>{unit ? unit : "No unit"}</td>
+                  <td className={s.deleteTableColumn}>
                     <ChangeEntityButton
                       handlerChangeEntity={handlerChangeRateType}
                       id={id}
                     />
                   </td>
-                  <td>
+                  <td className={s.deleteTableColumn}>
                     <DeleteEntityButton
                       handlerDeleteEntity={handlerDeleteRateType}
                       id={id}
