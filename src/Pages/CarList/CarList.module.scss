@@ -8,6 +8,10 @@
   @include pageTitle();
 }
 
+.carListTableWrapper {
+  @include entityScroll();
+}
+
 .carListWrapper {
   max-width: 1062px;
   background: #ffffff;
@@ -73,24 +77,26 @@
   }
 }
 
-@media screen and (max-width: 772px) {
-  .category {
-    display: none;
-  }
-}
-@media screen and (max-width: 550px) {
-  .number {
-    display: none;
-  }
-}
+// @media screen and (max-width: 772px) {
+//   .category {
+//     display: none;
+//   }
+// }
+// @media screen and (max-width: 550px) {
+//   .number {
+//     display: none;
+//   }
+// }
 
-@media screen and (max-width: 420px) {
-  table {
-    padding-left: 0px !important;
-    padding-right: 0px !important;
-    font-size: 12px !important;
-  }
-  .priceMax {
-    display: none;
-  }
+
+
+@media screen and (max-width: 800px) {
+  // table {
+  //   padding-left: 0px !important;
+  //   padding-right: 0px !important;
+  //   font-size: 12px !important;
+  // }
+  // .priceMax {
+  //   display: none;
+  // }
 }

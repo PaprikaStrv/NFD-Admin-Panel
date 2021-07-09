@@ -26,10 +26,12 @@ const OrderList = ({
   handlerApplyFilter,
   orderStatus,
   setFilterStatusId,
+  handleOrderChange,
+  isOrderChangeActive
 }) => {
   const pagesCount = Math.ceil(orderList.count / 3 - 1);
   return (
-    <section>
+    <section className={isOrderChangeActive ? s.hide : null}>
       {response ? (
         <ServerError {...{ response }} />
       ) : (
@@ -183,7 +185,7 @@ const OrderList = ({
                           <div className={s.btnIconWrapper}>
                             <ReactSVG src={edit} />
                           </div>
-                          <div>Изменить</div>
+                          <div onClick={() => handleOrderChange(id)}>Изменить</div>
                         </button>
                       </div>
                     </div>

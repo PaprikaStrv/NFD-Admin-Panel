@@ -5,6 +5,7 @@ import { getOrderList } from "./../../Redux/order-reducer";
 import Preloader from "./../../Components/Preloader/Preloader";
 import { getCities } from "../../Redux/cities-reducer";
 import { getOrderStatus } from "../../Redux/orderStatus-reducer";
+import ChangeOrderContainer from "./ChangeOrder/ChangeOrderContainer";
 
 const OrderListContainer = ({
   getOrderList,
@@ -18,9 +19,16 @@ const OrderListContainer = ({
   const [pageNumber, setPageNumber] = useState(1);
   const [filerCityId, setFilterId] = useState("");
   const [filterStatusId, setFilterStatusId] = useState("");
+  const [isOrderChangeActive, setOrderChangeActive] = useState(false);
+  const [curOrderId, setCurOrderId] = useState("");
 
   const handlePageChange = ({ selected }) => {
     setPageNumber(selected + 1);
+  };
+
+  const handleOrderChange = (id) => {
+    setCurOrderId(id);
+    setOrderChangeActive(true);
   };
 
   const handlerApplyFilter = () => {
@@ -29,7 +37,7 @@ const OrderListContainer = ({
     } else if (filterStatusId === "" && filerCityId !== "") {
       getOrderList(pageNumber, filerCityId);
     } else if (filerCityId === "" && filterStatusId !== "") {
-      getOrderList(pageNumber, null,filterStatusId);
+      getOrderList(pageNumber, null, filterStatusId);
     } else {
       getOrderList(pageNumber, filerCityId, filterStatusId);
     }
@@ -41,7 +49,7 @@ const OrderListContainer = ({
     } else if (filterStatusId === "" && filerCityId !== "") {
       getOrderList(pageNumber, filerCityId);
     } else if (filerCityId === "" && filterStatusId !== "") {
-      getOrderList(pageNumber, null,filterStatusId);
+      getOrderList(pageNumber, null, filterStatusId);
     } else {
       getOrderList(pageNumber, filerCityId, filterStatusId);
     }
@@ -61,18 +69,25 @@ const OrderListContainer = ({
     return <Preloader />;
   }
   return (
-    <OrderList
-      {...{
-        orderList,
-        response,
-        handlePageChange,
-        cities,
-        setFilterId,
-        handlerApplyFilter,
-        orderStatus,
-        setFilterStatusId,
-      }}
-    />
+    <>
+      {isOrderChangeActive && (
+        <ChangeOrderContainer {...{ setOrderChangeActive, curOrderId }} />
+      )}
+      <OrderList
+        {...{
+          orderList,
+          response,
+          handlePageChange,
+          cities,
+          setFilterId,
+          handlerApplyFilter,
+          orderStatus,
+          setFilterStatusId,
+          handleOrderChange,
+          isOrderChangeActive,
+        }}
+      />
+    </>
   );
 };
 

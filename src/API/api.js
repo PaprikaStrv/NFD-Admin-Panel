@@ -72,6 +72,12 @@ export const simbirSoftAPI = {
       });
   },
 
+  getOrder(id) {
+    return instanceWithToken.get(`order/${id}`).then((response) => {
+      return response.data;
+    });
+  },
+
   getCities() {
     return instanceWithToken.get(`city`).then((response) => {
       return response.data;

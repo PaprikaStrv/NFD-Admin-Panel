@@ -2,10 +2,12 @@ import { simbirSoftAPI } from "./../API/api";
 
 const SET_ORDER_LIST = "SET_ORDER_LIST";
 const SET_RESPONSE_ERROR = "SET_RESPONSE_ERROR";
+const SET_ORDER = "SET_ORDER";
 
 let initialState = {
   orders: [],
   responseError: [],
+  order: [],
 };
 
 const orderReducer = (state = initialState, action) => {
@@ -14,6 +16,12 @@ const orderReducer = (state = initialState, action) => {
       return {
         ...state,
         orders: action.orders,
+      };
+    }
+    case SET_ORDER: {
+      return {
+        ...state,
+        order: action.order,
       };
     }
     case SET_RESPONSE_ERROR: {
@@ -37,14 +45,30 @@ export const setResponseError = (response) => ({
   response,
 });
 
+export const setOrder = (order) => ({
+  type: SET_ORDER,
+  order,
+});
+
 export const getOrderList = (pageNumber, cityId, orderStatusId) => {
   return async (dispatch) => {
-    const response = await simbirSoftAPI.getOrders(pageNumber, cityId, orderStatusId);
+    const response = await simbirSoftAPI.getOrders(
+      pageNumber,
+      cityId,
+      orderStatusId
+    );
     if (response.status !== 200) {
       dispatch(setResponseError(response));
     } else {
       dispatch(setOrderList(response.data));
     }
+  };
+};
+
+export const getOrder = (id) => {
+  return async (dispatch) => {
+    const response = await simbirSoftAPI.getOrder(id);
+    dispatch(setOrder(response));
   };
 };
 

@@ -186,7 +186,9 @@ const CarForm = React.memo(
     };
 
     const handlerDescriptionInput = (value) => {
-      setDescription(value);
+      if(value.trim() !== "") {
+          setDescription(value);
+      }
       setCarDescriptionTouched(true);
       if (!carDescription) {
         setProgress(progress + 11, 1111);
@@ -268,9 +270,9 @@ const CarForm = React.memo(
     }, [progress]);
 
     const onSubmit = () => {
-      if (priceMax < priceMin) {
-        setPriceMax();
-        setErrorText("Максимальная цена не может превышать минимальную");
+      if (parseInt(priceMin) > parseInt(priceMax)) {
+        setPriceMax(0);
+        setErrorText("Максимальная цена не может быть меньше минимальной");
       } else if (
         carImg &&
         carModel &&
