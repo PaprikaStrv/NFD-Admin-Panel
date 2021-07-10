@@ -16,6 +16,7 @@ const RatesContainer = ({
   deleteRate,
   response,
   setRateResponse,
+  errorResponse,
 }) => {
   const [isAddRateActive, setAddRateActive] = useState(false);
   const [isChangeRateActive, setChangeRateActive] = useState(false);
@@ -43,7 +44,10 @@ const RatesContainer = ({
     getRates();
   }, []);
 
-  if (!rates || rates.length === 0) {
+  if (
+    (!rates || rates.length === 0) &&
+    (!errorResponse || errorResponse.length === 0)
+  ) {
     return <Preloader />;
   }
 
@@ -68,7 +72,8 @@ const RatesContainer = ({
           handlerChangeRate,
           isChangeRateActive,
           response,
-          closeRateResponse
+          closeRateResponse,
+          errorResponse,
         }}
       />
     </>
@@ -78,6 +83,7 @@ const RatesContainer = ({
 const mapStateToProps = (state) => ({
   rates: state.rates.rates,
   response: state.rates.response,
+  errorResponse: state.rates.errorResponse,
 });
 
 export default connect(mapStateToProps, {

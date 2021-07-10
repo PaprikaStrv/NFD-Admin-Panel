@@ -395,6 +395,28 @@ input::-webkit-inner-spin-button {
   }
 }
 
+@media screen and (max-width: 420px) {
+  .buttonsWrapper {
+    flex-direction: column !important;
+    .addCarBtns {
+      margin-bottom: 12px !important;
+      width: 100% !important;
+      button {
+        width: 100% !important;
+      }
+      a {
+        width: 100% !important;
+      }
+    }
+    .deleteBtn {
+      width: 100% !important;
+      button {
+        width: 100% !important;
+      }
+    }
+  }
+}
+
 @media screen and (max-width: 470px) {
   .addCarBtns {
     flex-direction: column !important;

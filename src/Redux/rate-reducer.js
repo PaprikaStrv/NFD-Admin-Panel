@@ -3,11 +3,13 @@ import { simbirSoftAPI } from "../API/api";
 const SET_RATES = "SET_RATES";
 const SET_CUR_RATE = "SET_CUR_RATE";
 const SET_RATE_RESPONSE = "SET_RATE_RESPONSE";
+const SET_ERROR_RESPONSE = "SET_ERROR_RESPONSE";
 
 let intitialState = {
   rates: [],
   rate: [],
   response: [],
+  errorResponse: [],
 };
 
 const ratesReducer = (state = intitialState, action) => {
@@ -30,6 +32,12 @@ const ratesReducer = (state = intitialState, action) => {
         response: action.response,
       };
     }
+    case SET_ERROR_RESPONSE: {
+      return {
+        ...state,
+        errorResponse: action.errorResponse,
+      };
+    }
     default:
       return state;
   }
@@ -50,10 +58,19 @@ export const setRateResponse = (response) => ({
   response,
 });
 
+export const setErrorResponse = (errorResponse) => ({
+  type: SET_ERROR_RESPONSE,
+  errorResponse,
+});
+
 export const getRates = () => {
   return async (dispatch) => {
     const response = await simbirSoftAPI.getRates();
-    dispatch(setRates(response));
+    if (response.status !== 200) {
+      dispatch(setErrorResponse(response));
+    } else {
+      dispatch(setRates(response.data));
+    }
   };
 };
 

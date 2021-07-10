@@ -13,6 +13,7 @@ const RateTypeContainer = ({
   deleteRateType,
   response,
   setRateTypeResponse,
+  errorResponse,
 }) => {
   const [isAddRatyTypeActive, setAddRateTypeActive] = useState(false);
   const [isChangeRateTypeActive, setChangeRateTypeActive] = useState(false);
@@ -40,7 +41,10 @@ const RateTypeContainer = ({
     getRateType();
   }, []);
 
-  if (!rateType || rateType.length === 0) {
+  if (
+    (!rateType || rateType.length === 0) &&
+    (!errorResponse || errorResponse.length === 0)
+  ) {
     return <Preloader />;
   }
 
@@ -71,6 +75,7 @@ const RateTypeContainer = ({
           isChangeRateTypeActive,
           response,
           closeRateTypeResponse,
+          errorResponse,
         }}
       />
     </>
@@ -80,6 +85,7 @@ const RateTypeContainer = ({
 const mapStateToProps = (state) => ({
   rateType: state.rateType.rateType,
   response: state.rateType.response,
+  errorResponse: state.rateType.errorResponse,
 });
 
 export default connect(mapStateToProps, {

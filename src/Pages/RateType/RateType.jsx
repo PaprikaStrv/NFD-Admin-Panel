@@ -6,6 +6,7 @@ import PageTitle from "../../Components/PageTitle/PageTitle";
 import s from "./RateType.module.scss";
 import DeleteEntityButton from "./../../Components/Entity/DeleteEntityBtn/DeleteEntityBtn";
 import Response from "./../../Components/Response/Response";
+import ServerError from "./../ServerError/ServerError";
 
 const RateType = ({
   rateType,
@@ -17,6 +18,7 @@ const RateType = ({
   isChangeRateTypeActive,
   response,
   closeRateTypeResponse,
+  errorResponse,
 }) => {
   return (
     <section
@@ -28,42 +30,48 @@ const RateType = ({
           closeSuccessInfo={closeRateTypeResponse}
         />
       )}
-      <PageTitle title="Типы тарифов" />
-      <EntityWrapper>
-        <AddEntityButton handlerAddEntity={handlerAddRateType} />
-        <div className={s.rateTypeTableWrapper}>
-          <table>
-            <thead>
-              <tr>
-                <th>Название</th>
-                <th>Ед. измерения</th>
-                <th className={s.changeTableColumn}>Изменить</th>
-                <th className={s.deleteTableColumn}>Удалить</th>
-              </tr>
-            </thead>
-            <tbody>
-              {rateType.data.map(({ id, unit, name }) => (
-                <tr key={id}>
-                  <td>{name ? name : "No Name"}</td>
-                  <td>{unit ? unit : "No unit"}</td>
-                  <td className={s.deleteTableColumn}>
-                    <ChangeEntityButton
-                      handlerChangeEntity={handlerChangeRateType}
-                      id={id}
-                    />
-                  </td>
-                  <td className={s.deleteTableColumn}>
-                    <DeleteEntityButton
-                      handlerDeleteEntity={handlerDeleteRateType}
-                      id={id}
-                    />
-                  </td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
-        </div>
-      </EntityWrapper>
+      {errorResponse.length !== 0 ? (
+        <ServerError response={errorResponse} />
+      ) : (
+        <>
+          <PageTitle title="Типы тарифов" />
+          <EntityWrapper>
+            <AddEntityButton handlerAddEntity={handlerAddRateType} />
+            <div className={s.rateTypeTableWrapper}>
+              <table>
+                <thead>
+                  <tr>
+                    <th>Название</th>
+                    <th>Ед. измерения</th>
+                    <th className={s.changeTableColumn}>Изменить</th>
+                    <th className={s.deleteTableColumn}>Удалить</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {rateType.data.map(({ id, unit, name }) => (
+                    <tr key={id}>
+                      <td>{name ? name : "No Name"}</td>
+                      <td>{unit ? unit : "No unit"}</td>
+                      <td className={s.deleteTableColumn}>
+                        <ChangeEntityButton
+                          handlerChangeEntity={handlerChangeRateType}
+                          id={id}
+                        />
+                      </td>
+                      <td className={s.deleteTableColumn}>
+                        <DeleteEntityButton
+                          handlerDeleteEntity={handlerDeleteRateType}
+                          id={id}
+                        />
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          </EntityWrapper>
+        </>
+      )}
     </section>
   );
 };

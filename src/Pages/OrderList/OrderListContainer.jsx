@@ -59,12 +59,13 @@ const OrderListContainer = ({
   }, [pageNumber]);
 
   if (
-    !orderList ||
-    orderList.length === 0 ||
-    !cities ||
-    cities.length === 0 ||
-    !orderStatus ||
-    (orderStatus.length === 0 && !response)
+    (!orderList ||
+      orderList.length === 0 ||
+      !cities ||
+      cities.length === 0 ||
+      !orderStatus ||
+      orderStatus.length === 0) &&
+    (!response || response.length === 0)
   ) {
     return <Preloader />;
   }
@@ -93,7 +94,7 @@ const OrderListContainer = ({
 
 const mapStateToProps = (state) => ({
   orderList: state.order.orders,
-  response: state.order.response,
+  response: state.order.responseError,
   cities: state.cities.cities,
   orderStatus: state.orderStatus.orderStatus,
 });

@@ -16,6 +16,7 @@ const CarCategoriesContainer = ({
   deleteCarCategory,
   response,
   setCarCategoryResponse,
+  errorResponse,
 }) => {
   const [isAddCarCategory, setCarCategoryActive] = useState(false);
   const [isChangeCarCategotyActive, setChangeCarCategoryActive] =
@@ -44,7 +45,10 @@ const CarCategoriesContainer = ({
     getCarCategories();
   }, []);
 
-  if (!carCategories || carCategories.length === 0) {
+  if (
+    (!carCategories || carCategories.length === 0) &&
+    (!errorResponse || errorResponse.length === 0)
+  ) {
     return <Preloader />;
   }
 
@@ -75,6 +79,7 @@ const CarCategoriesContainer = ({
           isChangeCarCategotyActive,
           response,
           closeCarCategoryResponse,
+          errorResponse,
         }}
       />
     </>
@@ -84,6 +89,7 @@ const CarCategoriesContainer = ({
 const mapStateToProps = (state) => ({
   carCategories: state.carCategories.carCategories,
   response: state.carCategories.response,
+  errorResponse: state.carCategories.errorResponse,
 });
 
 export default connect(mapStateToProps, {

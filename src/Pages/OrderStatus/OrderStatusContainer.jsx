@@ -16,6 +16,7 @@ const OrderStatusContainer = ({
   deleteOrderStatus,
   response,
   setOrderStatusResponse,
+  errorResponse,
 }) => {
   const [isAddOrderStatusActive, setAddOrderStatusActive] = useState(false);
   const [isChangeOrderStatusActive, setChangeOrderStatusActive] =
@@ -44,7 +45,10 @@ const OrderStatusContainer = ({
     getOrderStatus();
   }, []);
 
-  if (!orderStatus || orderStatus.length === 0) {
+  if (
+    (!orderStatus || orderStatus.length === 0) &&
+    (!errorResponse || errorResponse.length === 0)
+  ) {
     return <Preloader />;
   }
 
@@ -75,6 +79,7 @@ const OrderStatusContainer = ({
           isChangeOrderStatusActive,
           response,
           closeOrderStatusResponse,
+          errorResponse,
         }}
       />
     </>
@@ -84,6 +89,7 @@ const OrderStatusContainer = ({
 const mapStateToProps = (state) => ({
   orderStatus: state.orderStatus.orderStatus,
   response: state.orderStatus.response,
+  errorResponse: state.orderStatus.errorResponse,
 });
 
 export default connect(mapStateToProps, {

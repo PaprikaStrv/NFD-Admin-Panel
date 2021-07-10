@@ -3,11 +3,13 @@ import { simbirSoftAPI } from "./../API/api";
 const SET_CITIES = "SET_CITIES";
 const SET_CUR_CITY = "SET_CUR_CITY";
 const SET_RESPONSE = "SET_RESPONSE";
+const SET_ERROR_RESPONSE = "SET_ERROR_RESPONSE";
 
 let initialState = {
   cities: [],
   curCity: [],
   response: [],
+  errorResponse: [],
 };
 
 const citiesReducer = (state = initialState, action) => {
@@ -30,6 +32,12 @@ const citiesReducer = (state = initialState, action) => {
         response: action.response,
       };
     }
+    case SET_ERROR_RESPONSE: {
+      return {
+        ...state,
+        errorResponse: action.errorResponse,
+      };
+    }
     default:
       return state;
   }
@@ -50,10 +58,19 @@ export const setCityResponse = (response) => ({
   response,
 });
 
+export const setErrorResponse = (errorResponse) => ({
+  type: SET_ERROR_RESPONSE,
+  errorResponse,
+});
+
 export const getCities = () => {
   return async (dispatch) => {
     const response = await simbirSoftAPI.getCities();
-    dispatch(setCities(response));
+    if (response.status !== 200) {
+      dispatch(setErrorResponse(response));
+    } else {
+      dispatch(setCities(response.data));
+    }
   };
 };
 

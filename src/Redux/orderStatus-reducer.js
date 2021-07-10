@@ -3,11 +3,13 @@ import { simbirSoftAPI } from "../API/api";
 const SET_ORDER_STATUS = "SET_ORDER_STATUS";
 const SET_CUR_ORDER_STATUS = "SET_CUR_ORDER_STATUS";
 const SET_ORDER_STATUS_RESPONSE = "SET_ORDER_STATUS_RESPONSE";
+const SET_ERROR_RESPONSE = "SET_ERROR_RESPONSE";
 
 let initialState = {
   orderStatus: [],
   curOrderStatus: [],
   response: [],
+  errorResponse: [],
 };
 
 const orderStatusReducer = (state = initialState, action) => {
@@ -30,6 +32,12 @@ const orderStatusReducer = (state = initialState, action) => {
         response: action.response,
       };
     }
+    case SET_ERROR_RESPONSE: {
+      return {
+        ...state,
+        errorResponse: action.errorResponse,
+      };
+    }
     default:
       return state;
   }
@@ -50,10 +58,20 @@ export const setOrderStatusResponse = (response) => ({
   response,
 });
 
+export const setErrorResponse = (errorResponse) => ({
+  type: SET_ERROR_RESPONSE,
+  errorResponse,
+});
+
 export const getOrderStatus = () => {
   return async (dispatch) => {
     const response = await simbirSoftAPI.getOrderStatus();
-    dispatch(setOrderStatus(response));
+    if (response.status !== 200) {
+      dispatch(setErrorResponse(response));
+    } else {
+      dispatch(setOrderStatus(response.data));
+    }
+    
   };
 };
 

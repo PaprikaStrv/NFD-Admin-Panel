@@ -79,9 +79,14 @@ export const simbirSoftAPI = {
   },
 
   getCities() {
-    return instanceWithToken.get(`city`).then((response) => {
-      return response.data;
-    });
+    return instanceWithToken
+      .get(`city`)
+      .then((response) => {
+        return response;
+      })
+      .catch((error) => {
+        return error.response;
+      });
   },
 
   getOrderStatus() {
@@ -94,7 +99,10 @@ export const simbirSoftAPI = {
     return instanceWithToken
       .get(`car?page=${page}&limit=7`)
       .then((response) => {
-        return response.data;
+        return response;
+      })
+      .catch((error) => {
+        return error.response;
       });
   },
 
@@ -168,9 +176,14 @@ export const simbirSoftAPI = {
   },
 
   getPoints() {
-    return instanceWithToken.get(`point`).then((response) => {
-      return response.data;
-    });
+    return instanceWithToken
+      .get(`point`)
+      .then((response) => {
+        return response;
+      })
+      .catch((error) => {
+        return error.response;
+      });
   },
 
   getPoint(id) {
@@ -213,9 +226,14 @@ export const simbirSoftAPI = {
   },
 
   getRates() {
-    return instanceWithToken.get("rate").then((response) => {
-      return response.data;
-    });
+    return instanceWithToken
+      .get("rate")
+      .then((response) => {
+        return response;
+      })
+      .catch((error) => {
+        return error.response;
+      });
   },
 
   getRate(id) {
@@ -258,9 +276,14 @@ export const simbirSoftAPI = {
   },
 
   getRateType() {
-    return instanceWithToken.get("rateType").then((response) => {
-      return response.data;
-    });
+    return instanceWithToken
+      .get("rateType")
+      .then((response) => {
+        return response;
+      })
+      .catch((error) => {
+        return error.response;
+      });
   },
 
   getCurRateType(id) {
@@ -303,9 +326,14 @@ export const simbirSoftAPI = {
   },
 
   getCarCategory() {
-    return instanceWithToken.get("category").then((response) => {
-      return response.data;
-    });
+    return instanceWithToken
+      .get("category")
+      .then((response) => {
+        return response;
+      })
+      .catch((error) => {
+        return error.response;
+      });
   },
 
   getCurCarCategory(id) {
@@ -348,9 +376,14 @@ export const simbirSoftAPI = {
   },
 
   getOrderStatus() {
-    return instanceWithToken.get("orderStatus").then((response) => {
-      return response.data;
-    });
+    return instanceWithToken
+      .get("orderStatus")
+      .then((response) => {
+        return response;
+      })
+      .catch((error) => {
+        return error.response;
+      });
   },
 
   getCurOrderStatus(id) {

@@ -7,6 +7,7 @@ import Paginator from "../../Components/Paginator/Paginator";
 import s from "./CarCategory.module.scss";
 import DeleteEntityButton from "./../../Components/Entity/DeleteEntityBtn/DeleteEntityBtn";
 import Response from "./../../Components/Response/Response";
+import ServerError from "./../ServerError/ServerError";
 
 const CarCategories = ({
   carCategories,
@@ -18,6 +19,7 @@ const CarCategories = ({
   isChangeCarCategotyActive,
   response,
   closeCarCategoryResponse,
+  errorResponse,
 }) => {
   return (
     <section
@@ -29,42 +31,48 @@ const CarCategories = ({
           closeSuccessInfo={closeCarCategoryResponse}
         />
       )}
-      <PageTitle title="Категории автомобилей" />
-      <EntityWrapper>
-        <AddEntityButton handlerAddEntity={handlerAddCarCategory} />
-        <div className={s.carCategoryTableWrapper}>
-          <table>
-            <thead>
-              <tr>
-                <th>Название</th>
-                <th>Описание</th>
-                <th className={s.changeTableColumn}>Изменить</th>
-                <th className={s.deleteTableColumn}>Удалить</th>
-              </tr>
-            </thead>
-            <tbody>
-              {carCategories.data.map(({ id, name, description }) => (
-                <tr key={id}>
-                  <td>{name ? name : "No Name"}</td>
-                  <td>{description ? description : "No description"}</td>
-                  <td className={s.changeTableColumn}>
-                    <ChangeEntityButton
-                      handlerChangeEntity={hanlderChangeCarCategory}
-                      id={id}
-                    />
-                  </td>
-                  <td className={s.deleteTableColumn}>
-                    <DeleteEntityButton
-                      handlerDeleteEntity={handlerDeleteCarCategory}
-                      id={id}
-                    />
-                  </td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
-        </div>
-      </EntityWrapper>
+      {errorResponse.length !== 0 ? (
+        <ServerError response={errorResponse} />
+      ) : (
+        <>
+          <PageTitle title="Категории автомобилей" />
+          <EntityWrapper>
+            <AddEntityButton handlerAddEntity={handlerAddCarCategory} />
+            <div className={s.carCategoryTableWrapper}>
+              <table>
+                <thead>
+                  <tr>
+                    <th>Название</th>
+                    <th>Описание</th>
+                    <th className={s.changeTableColumn}>Изменить</th>
+                    <th className={s.deleteTableColumn}>Удалить</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {carCategories.data.map(({ id, name, description }) => (
+                    <tr key={id}>
+                      <td>{name ? name : "No Name"}</td>
+                      <td>{description ? description : "No description"}</td>
+                      <td className={s.changeTableColumn}>
+                        <ChangeEntityButton
+                          handlerChangeEntity={hanlderChangeCarCategory}
+                          id={id}
+                        />
+                      </td>
+                      <td className={s.deleteTableColumn}>
+                        <DeleteEntityButton
+                          handlerDeleteEntity={handlerDeleteCarCategory}
+                          id={id}
+                        />
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          </EntityWrapper>
+        </>
+      )}
     </section>
   );
 };

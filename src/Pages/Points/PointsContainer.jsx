@@ -13,6 +13,7 @@ const PointsContainer = ({
   deletePoint,
   response,
   setPointResponse,
+  errorResponse,
 }) => {
   const [isAddPointActive, setAddPointActive] = useState(false);
   const [isChangePointActive, setChangePointActive] = useState(false);
@@ -40,18 +41,28 @@ const PointsContainer = ({
     window.location.reload();
   };
 
-  if (!points || points.length === 0) {
+  if (
+    (!points || points.length === 0) &&
+    (!errorResponse || errorResponse.length === 0)
+  ) {
     return <Preloader />;
   }
 
   return (
     <>
       {isAddPointActive && (
-        <AddPointContainer {...{ setAddPointActive, response, closePointResponse }} />
+        <AddPointContainer
+          {...{ setAddPointActive, response, closePointResponse }}
+        />
       )}
       {isChangePointActive && (
         <ChangePointContainer
-          {...{ setChangePointActive, curPointId, response, closePointResponse }}
+          {...{
+            setChangePointActive,
+            curPointId,
+            response,
+            closePointResponse,
+          }}
         />
       )}
       <Points
@@ -63,7 +74,8 @@ const PointsContainer = ({
           handlerChangePoint,
           isChangePointActive,
           response,
-          closePointResponse
+          closePointResponse,
+          errorResponse,
         }}
       />
     </>
@@ -73,6 +85,7 @@ const PointsContainer = ({
 const mapStateToProps = (state) => ({
   points: state.points.points,
   response: state.points.response,
+  errorResponse: state.points.errorResponse,
 });
 
 export default connect(mapStateToProps, {

@@ -4,11 +4,13 @@ const SET_CAR_LIST = "SET_CAR_LIST";
 const SET_CATEGORY = "SET_CATEGORY";
 const SET_RESPONSE = "SET_RESPONSE";
 const SET_CURRENT_CAR = "SET_CURRENT_CAR";
+const SET_ERROR_RESPONSE = "SET_ERROR_RESPONSE";
 
 let initialState = {
   cars: [],
   category: [],
   response: [],
+  errorResponse: [],
   currentCar: [],
 };
 
@@ -38,6 +40,12 @@ const carsReducer = (state = initialState, action) => {
         response: action.response,
       };
     }
+    case SET_ERROR_RESPONSE: {
+      return {
+        ...state,
+        errorResponse: action.errorResponse,
+      }
+    }
     default:
       return state;
   }
@@ -63,10 +71,18 @@ export const setCurrentCar = (currentCar) => ({
   currentCar,
 });
 
+export const setErrorResponse = (errorResponse) => ({
+  type: SET_ERROR_RESPONSE,
+  errorResponse,
+})
+
 export const getCars = (page) => {
   return async (dispatch) => {
     const response = await simbirSoftAPI.getCars(page);
-    dispatch(setCarList(response));
+    if(response.status !== 200) {
+      dispatch(setErrorResponse(response))
+    } else 
+    dispatch(setCarList(response.data));
   };
 };
 

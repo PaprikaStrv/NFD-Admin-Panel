@@ -27,12 +27,12 @@ const OrderList = ({
   orderStatus,
   setFilterStatusId,
   handleOrderChange,
-  isOrderChangeActive
+  isOrderChangeActive,
 }) => {
   const pagesCount = Math.ceil(orderList.count / 3 - 1);
   return (
     <section className={isOrderChangeActive ? s.hide : null}>
-      {response ? (
+      {response.length !== 0 ? (
         <ServerError {...{ response }} />
       ) : (
         <>
@@ -59,8 +59,7 @@ const OrderList = ({
               <button onClick={() => handlerApplyFilter()}>Применить</button>
             </div>
 
-            {orderList.data.length  ? (
-             
+            {orderList.data.length ? (
               orderList.data.map(
                 ({
                   id,
@@ -185,7 +184,9 @@ const OrderList = ({
                           <div className={s.btnIconWrapper}>
                             <ReactSVG src={edit} />
                           </div>
-                          <div onClick={() => handleOrderChange(id)}>Изменить</div>
+                          <div onClick={() => handleOrderChange(id)}>
+                            Изменить
+                          </div>
                         </button>
                       </div>
                     </div>
@@ -193,7 +194,9 @@ const OrderList = ({
                 }
               )
             ) : (
-              <div className={s.noFilteredOrders}>Заказов с данными параметрами не найдено</div>
+              <div className={s.noFilteredOrders}>
+                Заказов с данными параметрами не найдено
+              </div>
             )}
 
             <Paginator {...{ handlePageChange, pagesCount }} />

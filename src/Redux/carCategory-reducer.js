@@ -3,11 +3,13 @@ import { simbirSoftAPI } from "../API/api";
 const SET_CAR_CATEGORIES = "SET_CAR_CATEGORIES";
 const SET_CUR_CAR_CATEGORY = "SET_CUR_CAT_CATEGORY";
 const SET_CAR_CATEGORY_RESPONSE = "SET_CAR_CATEGORY_RESPONSE";
+const SET_ERROR_RESPONSE = "SET_ERROR_RESPONSE";
 
 let intitialState = {
   carCategories: [],
   carCategory: [],
   response: [],
+  errorResponse: [],
 };
 
 const carCategoriesReducer = (state = intitialState, action) => {
@@ -30,6 +32,12 @@ const carCategoriesReducer = (state = intitialState, action) => {
         response: action.response,
       };
     }
+    case SET_ERROR_RESPONSE: {
+      return {
+        ...state,
+        errorResponse: action.errorResponse,
+      };
+    }
     default:
       return state;
   }
@@ -50,10 +58,19 @@ export const setCarCategoryResponse = (response) => ({
   response,
 });
 
+export const setErrorResponse = (errorResponse) => ({
+  type: SET_ERROR_RESPONSE,
+  errorResponse,
+});
+
 export const getCarCategories = () => {
   return async (dispatch) => {
     const response = await simbirSoftAPI.getCarCategory();
-    dispatch(setCarCategories(response));
+    if (response.status !== 200) {
+      dispatch(setErrorResponse(response));
+    } else {
+      dispatch(setCarCategories(response.data));
+    }
   };
 };
 

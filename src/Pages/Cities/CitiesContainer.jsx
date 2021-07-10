@@ -16,8 +16,8 @@ const CitiesContainer = ({
   cities,
   deleteCity,
   setCityResponse,
-  response
-
+  response,
+  errorResponse,
 }) => {
   const [isAddCityActive, setAddCityActive] = useState(false);
   const [isChangeCityActive, setChangeCityActive] = useState(false);
@@ -45,14 +45,21 @@ const CitiesContainer = ({
     getCities();
   }, []);
 
-  if (!cities || cities.length === 0) {
+  if (
+    (!cities || cities.length === 0) &&
+    (!errorResponse || errorResponse.length === 0)
+  ) {
     return <Preloader />;
   }
   return (
     <>
-      {isAddCityActive && <AddCityContainer {...{ setAddCityActive, closeCityResponse }} />}
+      {isAddCityActive && (
+        <AddCityContainer {...{ setAddCityActive, closeCityResponse }} />
+      )}
       {isChangeCityActive && (
-        <ChangeCityContainer {...{ setChangeCityActive, curCityId, closeCityResponse }} />
+        <ChangeCityContainer
+          {...{ setChangeCityActive, curCityId, closeCityResponse }}
+        />
       )}
       <Cities
         {...{
@@ -64,6 +71,7 @@ const CitiesContainer = ({
           isChangeCityActive,
           closeCityResponse,
           response,
+          errorResponse,
         }}
       />
     </>
@@ -73,10 +81,11 @@ const CitiesContainer = ({
 const mapStateToProps = (state) => ({
   cities: state.cities.cities,
   response: state.cities.response,
+  errorResponse: state.cities.errorResponse,
 });
 
 export default connect(mapStateToProps, {
   getCities,
   deleteCity,
-  setCityResponse
+  setCityResponse,
 })(CitiesContainer);

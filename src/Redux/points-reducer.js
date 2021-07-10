@@ -3,11 +3,13 @@ import { simbirSoftAPI } from "./../API/api";
 const SET_POINTS = "SET_POINTS";
 const SET_CUR_POINT = "SET_CUR_POINT";
 const SET_POINT_RESPONSE = "SET_POINT_RESPONSE";
+const SET_ERROR_RESPONSE = "SET_ERROR_RESPONSE";
 
 let intitialState = {
   points: [],
   point: [],
   response: [],
+  errorResponse: [],
 };
 
 const pointsReducer = (state = intitialState, action) => {
@@ -30,6 +32,12 @@ const pointsReducer = (state = intitialState, action) => {
         response: action.response,
       };
     }
+    case SET_ERROR_RESPONSE: {
+      return {
+        ...state,
+        errorResponse: action.errorResponse,
+      };
+    }
     default:
       return state;
   }
@@ -50,10 +58,19 @@ export const setPointResponse = (response) => ({
   response,
 });
 
+export const setErrorResponse = (errorResponse) => ({
+  type: SET_ERROR_RESPONSE,
+  errorResponse,
+});
+
 export const getPoints = () => {
   return async (dispatch) => {
     const response = await simbirSoftAPI.getPoints();
-    dispatch(setPoints(response));
+    if (response.status !== 200) {
+      dispatch(setErrorResponse(response));
+    } else {
+      dispatch(setPoints(response.data));
+    }
   };
 };
 
