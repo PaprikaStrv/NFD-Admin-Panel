@@ -35,6 +35,7 @@ const CarForm = React.memo(
 
     const [carModel, setCarModel] = useState("");
     const [isCarModelTouched, setCarModelTouched] = useState(false);
+    const [carModelError, setCarModelError] = useState("Введите название модели автомобиля");
 
     const [carNumber, setCarNumber] = useState("");
     const [isCarNumberTouched, setCarNumberTouched] = useState(false);
@@ -186,8 +187,8 @@ const CarForm = React.memo(
     };
 
     const handlerDescriptionInput = (value) => {
-      if(value.trim() !== "") {
-          setDescription(value);
+      if (value.trim() !== "") {
+        setDescription(value);
       }
       setCarDescriptionTouched(true);
       if (!carDescription) {
@@ -270,6 +271,10 @@ const CarForm = React.memo(
     }, [progress]);
 
     const onSubmit = () => {
+      if (carModel.trim() === "") {
+        setCarModel("");
+        setCarModelError("Модель не может быть пустым полем");
+      }
       if (parseInt(priceMin) > parseInt(priceMax)) {
         setPriceMax(0);
         setErrorText("Максимальная цена не может быть меньше минимальной");
@@ -364,7 +369,7 @@ const CarForm = React.memo(
                         <div
                           onClick={() => setCarImageTouched(true)}
                           className={
-                            isCarImgTouched && !carImg && !preview
+                            (isCarImgTouched && !carImg && !preview)
                               ? `${s.labelWrapper} ${s.inputWithError}`
                               : s.labelWrapper
                           }
@@ -428,7 +433,7 @@ const CarForm = React.memo(
 
                           {isCarModelTouched && !carModel && (
                             <div className={s.inputErrorMsg}>
-                              Введите название модели автомобиля
+                              {carModelError}
                             </div>
                           )}
                         </div>

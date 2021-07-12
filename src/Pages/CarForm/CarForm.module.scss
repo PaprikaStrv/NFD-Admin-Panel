@@ -396,6 +396,25 @@ input::-webkit-inner-spin-button {
 }
 
 @media screen and (max-width: 420px) {
+  .leftColumn {
+    width: 100% !important;
+    .fieldWrapper {
+      .inputField {
+        width: 100% !important;
+      }
+    }
+  }
+
+  .rightColumn {
+    width: 100% !important;
+    .fieldWrapper {
+      width: 100%;
+      .inputField {
+        width: 100% !important;
+      }
+    }
+  }
+
   .buttonsWrapper {
     flex-direction: column !important;
     .addCarBtns {
