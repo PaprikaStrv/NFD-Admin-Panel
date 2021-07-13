@@ -9,6 +9,7 @@ import pointsReducer from "./points-reducer";
 import ratesReducer from "./rate-reducer";
 import rateTypeReducer from "./rateType-reducer";
 import carCategoriesReducer from "./carCategory-reducer";
+import addParamsReducer from "./addParams-reducer";
 
 let reducers = combineReducers({
   login: loginReducer,
@@ -20,6 +21,7 @@ let reducers = combineReducers({
   rates: ratesReducer,
   rateType: rateTypeReducer,
   carCategories: carCategoriesReducer,
+  addParams: addParamsReducer,
 });
 
 let store = createStore(reducers, applyMiddleware(thunkMiddleware));

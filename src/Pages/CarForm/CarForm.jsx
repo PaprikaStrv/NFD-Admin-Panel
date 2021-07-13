@@ -132,7 +132,7 @@ const CarForm = React.memo(
     const handlerPhotoSelect = (e) => {
       setCarImg(e.target.files[0]);
       setCarImageTouched(true);
-      if (!carImg) {
+      if (!carImg && !preview) {
         setProgress(progress + 11, 1111);
       }
     };
@@ -279,7 +279,7 @@ const CarForm = React.memo(
         setPriceMax(0);
         setErrorText("Максимальная цена не может быть меньше минимальной");
       } else if (
-        carImg &&
+        // carImg &&
         carModel &&
         carNumber &&
         priceMin &&
@@ -294,7 +294,10 @@ const CarForm = React.memo(
         formData.append("priceMin", parseInt(priceMin));
         formData.append("number", carNumber);
         formData.append("name", carModel);
-        formData.append("thumbnail[]", carImg);
+        if(carImg) {
+          formData.append("thumbnail[]", carImg);
+        } 
+        
         formData.append("description", carDescription);
         formData.append("categoryId[id]", curCategory);
         formData.append("tank", tankValue);
@@ -308,7 +311,7 @@ const CarForm = React.memo(
           updateCar(carId, formData);
         }
       } else {
-        setCarImageTouched(true);
+        // setCarImageTouched(true);
         setCarModelTouched(true);
         setCarNumberTouched(true);
         setPriceMinTouched(true);

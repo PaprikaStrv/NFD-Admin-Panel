@@ -1,7 +1,7 @@
-import { XFormatPrice } from "./scripts";
 import moment from "moment";
 import "moment/locale/ru";
 import "moment-duration-format";
+import { formatPrice } from "./formatPrice";
 require("moment-duration-format");
 
 export const calcPrice = (rate, diffDate, priceMin, addParams) => {
@@ -18,23 +18,23 @@ export const calcPrice = (rate, diffDate, priceMin, addParams) => {
     }
   });
   switch (rate) {
-    case "На сутки": {
+    case "Суточный": {
       if (diffDate._data.hours !== 0 || diffDate._data.minutes !== 0) {
         days = diffDate._data.days + 1;
       } else days = diffDate._data.days;
-     
-      price = priceMin + (days * 1999) + paramsPrice;
-      return XFormatPrice(price);
+
+      price = priceMin + days * 1999 + paramsPrice;
+      return formatPrice(price);
     }
-    case "Недельный Плюс": {
-       weeks =  Math.ceil(diffDate._milliseconds / ONE_WEEK);
-       price = priceMin + (weeks * 7500) + paramsPrice;
-       return XFormatPrice(price);
+    case "Недельный": {
+      weeks = Math.ceil(diffDate._milliseconds / ONE_WEEK);
+      price = priceMin + weeks * 7500 + paramsPrice;
+      return formatPrice(price);
     }
     case "Поминутно": {
-        minutes = diffDate._milliseconds / ONE_MINUTE;
-        price = priceMin + (minutes * 7) + paramsPrice;
-        return XFormatPrice(price);
+      minutes = diffDate._milliseconds / ONE_MINUTE;
+      price = priceMin + minutes * 7 + paramsPrice;
+      return formatPrice(price);
     }
   }
 };

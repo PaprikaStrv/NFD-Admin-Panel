@@ -78,6 +78,17 @@ export const simbirSoftAPI = {
     });
   },
 
+  updateOrder(id, formData) {
+    return instanceWithToken
+      .put(`order/${id}`, formData)
+      .then((response) => {
+        return response;
+      })
+      .catch((error) => {
+        return error.response;
+      });
+  },
+
   getCities() {
     return instanceWithToken
       .get(`city`)

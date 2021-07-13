@@ -14,6 +14,7 @@ import { formatPrice } from "./../../helpers/formatPrice";
 import { ReactSVG } from "react-svg";
 import ServerError from "../ServerError/ServerError";
 import Select from "../../Components/Select/Select";
+import Response from "./../../Components/Response/Response";
 
 require("moment-duration-format");
 

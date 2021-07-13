@@ -8,13 +8,16 @@
     0px 7px 70px rgba(90, 97, 105, 0.1);
   border-radius: 9px;
   margin-top: 28px;
+  padding: 16px;
   .pageTitle {
     @include pageTitle();
     font-size: 20px;
     padding: 10px;
   }
   .orderInfoInputs {
-    @include rowCenterFlex();
+    display: flex;
+    flex-direction: column;
+    max-height: 250px;
     flex-wrap: wrap;
   }
 
@@ -35,5 +38,45 @@
     border: none;
     background: transparent;
     cursor: pointer;
+  }
+
+  .orderPrice {
+    @include pageTitle();
+    font-size: 16px;
+    padding: 12px;
+  }
+
+  .changeOrderBtnsWrapper {
+    button {
+      cursor: pointer;
+    }
+    .changeOrderBtn {
+      @include btn(95px, 29px, #007bff, #ffffff);
+    }
+    .cancellOrderBtn {
+      @include btn(95px, 29px, #c4183c, #ffffff);
+    }
+  }
+
+  .changeOrderBtnsWrapper {
+    width: 300px;
+    padding: 12px;
+    @include rowCenterFlex();
+    justify-content: space-between;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .changeOrderWrapper {
+    padding: 2px;
+    .addParams {
+      margin-top: 250px;
+    }
+    .orderInfoInputs {
+      flex-wrap: nowrap;
+    }
+    .changeOrderBtnsWrapper {
+      width: 100%;
+    }
   }
 }
