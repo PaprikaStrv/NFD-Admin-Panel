@@ -9,6 +9,8 @@
   border-radius: 9px;
   margin-top: 28px;
   padding: 16px;
+  margin: 32px auto;
+  max-width: 1100px;
   .pageTitle {
     @include pageTitle();
     font-size: 20px;
@@ -25,9 +27,11 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    border-bottom: 1px solid #999999;
-    width: 248px;
-    margin-left: 5px;
+    border: 0.5px solid #becad6;
+    border-radius: 4px;
+    // width: 248px;
+    height: 30px;
+    // margin-left: 5px;
     input {
       border: none;
       outline: none;
@@ -38,6 +42,7 @@
     border: none;
     background: transparent;
     cursor: pointer;
+    margin-right: 10px;
   }
 
   .orderPrice {
@@ -54,7 +59,7 @@
       @include btn(95px, 29px, #007bff, #ffffff);
     }
     .cancellOrderBtn {
-      @include btn(95px, 29px, #c4183c, #ffffff);
+      @include cancellBtn();
     }
   }
 

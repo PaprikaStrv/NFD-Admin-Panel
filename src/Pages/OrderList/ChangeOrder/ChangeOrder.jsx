@@ -139,10 +139,15 @@ const ChangeOrder = ({
 
   const [price, setPrice] = useState(order.data.price);
   useEffect(() => {
-    if (curRateName && diffDate && order.data.carId.priceMin && addParams)
+    if(order.data.carId) {
+       if (curRateName && diffDate && order.data.carId.priceMin && addParams)
       setPrice(
         calcPrice(curRateName, diffDate, order.data.carId.priceMin, addParams)
       );
+    } else {
+      setPrice("Невозможно расчитать цену без минимальной стоимости автомобиля");
+    }
+   
   }, [curRateName, diffDate, addParams]);
 
   const onSubmit = () => {
